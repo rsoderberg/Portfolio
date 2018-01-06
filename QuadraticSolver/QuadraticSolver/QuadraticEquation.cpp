@@ -25,16 +25,16 @@ void quadraticEquation() {
 	float root1 = 0; // First root
 	float root2 = 0; // Second root
 
-	cout << "Welcome to the Quadratic Equation Solver!\n\n";
-	cout << "Please enter the values for your equation below...\n"
+	std::cout << "Welcome to the Quadratic Equation Solver!\n\n";
+	std::cout << "Please enter the values for your equation below...\n"
 		<< "a: ";
-	cin >> a;
-	cout << "b: ";
-	cin >> b;
-	cout << "c: ";
-	cin >> c;
-	cout << "\n\nYour equation is: 0 = " << a << "x^2 + " << b << "x + " << c << "\n"; // Print out the simple equation
-	cout << "In the quadratic equation it looks like:             -" << b << " +- sqrt(" << b << "^2 - 4(" << "(" << a << ")" << "(" << c << ")" << ")\n" // Print out in solution format
+	std::cin >> a;
+	std::cout << "b: ";
+	std::cin >> b;
+	std::cout << "c: ";
+	std::cin >> c;
+	std::cout << "\n\nYour equation is: 0 = " << a << "x^2 + " << b << "x + " << c << "\n"; // Print out the simple equation
+	std::cout << "In the quadratic equation it looks like:             -" << b << " +- sqrt(" << b << "^2 - 4(" << "(" << a << ")" << "(" << c << ")" << ")\n" // Print out in solution format
 		<< "                                                 x = ------------------------------\n"
 		<< "                                                              2(" << a << ")\n\n";
 
@@ -42,11 +42,11 @@ void quadraticEquation() {
 	// whose value gives information about the roots of the polynomial.
 	discriminant = (pow(b, 2) - 4 * a * c); // descriminant = b^2 - 4ac
 
-	cout << "Now let's handle the solution!...\n"
+	std::cout << "Now let's handle the solution!...\n"
 		<< "The roots given your values for a, b, and c are...\n";
 
 	if (a == 0) {
-		cout << "\nDivide by zero error.\n\n";
+		std::cout << "\nDivide by zero error.\n\n";
 	}
 	else {
 		if (discriminant > 0) {
@@ -59,11 +59,11 @@ void quadraticEquation() {
 		else {
 			discriminant = -abs(discriminant);
 
-			cout << "x1 = " << "(" << -1 * (b) << " + i" << sqrt(discriminant) << ") / " << 2 * a << "\n";
-			cout << "x2 = " << "(" << -1 * (b) << " - i" << sqrt(discriminant) << ") / " << 2 * a << "\n";
+			std::cout << "x1 = " << "(" << -1 * (b) << " + i" << sqrt(discriminant) << ") / " << 2 * a << "\n";
+			std::cout << "x2 = " << "(" << -1 * (b) << " - i" << sqrt(discriminant) << ") / " << 2 * a << "\n";
 		}
 
-		cout << "x1 = " << root1 << "\n";
-		cout << "x2 = " << root2 << "\n\n";
+		std::cout << "x1 = " << root1 << "\n";
+		std::cout << "x2 = " << root2 << "\n\n";
 	}
 }
