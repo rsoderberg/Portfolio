@@ -1,8 +1,1 @@
-﻿  QuadraticEquation.cpp
-c:\users\rachel\documents\cpppracticeprojects\quadraticsolver\quadraticsolver\quadraticequation.cpp(43): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\rachel\documents\cpppracticeprojects\quadraticsolver\quadraticsolver\quadraticequation.cpp(53): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\rachel\documents\cpppracticeprojects\quadraticsolver\quadraticsolver\quadraticequation.cpp(54): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\rachel\documents\cpppracticeprojects\quadraticsolver\quadraticsolver\quadraticequation.cpp(57): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Main.cpp
-  Generating Code...
-  QuadraticSolver.vcxproj -> C:\Users\Rachel\Documents\CppPracticeProjects\QuadraticSolver\Debug\QuadraticSolver.exe
+﻿
