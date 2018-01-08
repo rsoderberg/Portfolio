@@ -5,3 +5,4 @@ Included in this Portfolio:
 	- Bulls and Cows
 	- Quadratic Equation Solver
 	- Rock Paper Scissors
+	- Prime Numbers Calculator
