@@ -1,7 +1,7 @@
 // Name: Quadratic Equation Solver
 // Programmer: Rachel Soderberg
 // Date Created: January 6th, 2018
-// Latest Edit: January 6th, 2018
+// Latest Edit: January 9th, 2018
 
 // Description: 
 // Quadratic equations are of the form:
@@ -14,6 +14,8 @@
 
 #include "Main.h"
 
-void main() {
+int main() {
 	quadraticEquation();
+
+	return 0;
 }

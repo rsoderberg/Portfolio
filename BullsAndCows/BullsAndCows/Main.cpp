@@ -1,7 +1,7 @@
 // Name: Bulls and Cows Game
 // Programmer: Rachel Soderberg
-// Date Created: December 30, 2017
-// Latest Edit: December 31, 2017
+// Date Created: December 30th, 2017
+// Latest Edit: January 9th, 2018
 
 // Description: Play "Bulls and Cows," the computer will generate four different integers in
 // the range of 0 to 9 (e.g., 1234 but not 1122) and it is the player's task to correctly
@@ -13,6 +13,8 @@
 
 #include "Header.h"
 
-void main() {
+int main() {
 	bullsAndCows();
+
+	return 0;
 }

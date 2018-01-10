@@ -1,1 +1,5 @@
-﻿
+﻿  Main.cpp
+  BullsAndCows.cpp
+c:\users\rachel\google drive\documents\portfolio2018\bullsandcows\bullsandcows\bullsandcows.cpp(143): warning C4551: function call missing argument list
+  Generating Code...
+  BullsAndCows.vcxproj -> C:\Users\Rachel\Google Drive\Documents\Portfolio2018\BullsAndCows\Debug\BullsAndCows.exe
