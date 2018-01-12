@@ -126,6 +126,8 @@ void bullsAndCows() {
 			playAgain(); // Loop the game
 		}
 	}
+	std::cin.clear();
+	std::cin.ignore();
 	std::cout << "\nPlease, only enter integer values. Try back again soon!\n\n";
 }
 

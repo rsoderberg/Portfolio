@@ -16,5 +16,6 @@
 int main() {
 	bullsAndCows();
 
+	system("pause");
 	return 0;
 }

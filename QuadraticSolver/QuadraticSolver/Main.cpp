@@ -17,5 +17,6 @@
 int main() {
 	quadraticEquation();
 
+	system("pause");
 	return 0;
 }

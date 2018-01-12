@@ -58,8 +58,8 @@ void rockPaperScissors() {
 				break;
 			}
 
-			std::cout << "Your score: " << playerScore << "\n";
-			std::cout << "My score: " << computerScore << "\n";
+			std::cout << "\nYour score: " << playerScore << "\n";
+			std::cout << "My score: " << computerScore << "\n\n";
 
 			if (computerScore == 3) {
 				std::cout << "I win!\n";

@@ -7,6 +7,5 @@
 // Description: Source file prototypes and definitions
 
 #include <iostream>
-#include <cmath>
 
 void quadraticEquation();
