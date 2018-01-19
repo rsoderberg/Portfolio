@@ -32,5 +32,4 @@ void createPersonCar() {
 		<< car3.get_make_model() << ". It currently has " << car3.get_mileage() << " miles on it.\n";
 	std::cout << person3.get_name() << ", age " << person3.get_age() << ", has the " << car2.get_color() << " " << car2.get_year() << " "
 		<< car2.get_make_model() << ". It currently has " << car2.get_mileage() << " miles on it.\n\n";
-
 }
