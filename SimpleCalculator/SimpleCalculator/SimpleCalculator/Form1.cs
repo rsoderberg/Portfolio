@@ -1,4 +1,13 @@
-﻿using System;
+﻿// Program: SimpleCalculator
+// Author: Rachel Soderberg
+// Date Created: January 19, 2018
+// Latest Edit: January 20, 2018
+
+// Description: A simple 0-9 integer calculator that performs basic arithmetic functions (+, -, *, /).
+// Goals: - Implement the ability to perform calculations on integers larger than 9.
+//        - Allow calculations with decimal values.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,9 +40,10 @@ namespace SimpleCalculator
             {
                 Variables.var2 = 1;
                 outputLabel.Text = Convert.ToString(Variables.var2);
-            }     
+            }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 1;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }  
@@ -48,6 +58,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 2;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -62,6 +73,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 3;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -76,6 +88,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 4;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -90,6 +103,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 5;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -104,6 +118,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 6;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -118,6 +133,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 7;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -132,6 +148,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 8;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -146,6 +163,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 9;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -160,6 +178,7 @@ namespace SimpleCalculator
             }
             else
             {
+                outputLabel.ResetText();
                 Variables.var1 = 0;
                 outputLabel.Text = Convert.ToString(Variables.var1);
             }
@@ -194,24 +213,32 @@ namespace SimpleCalculator
             // solve
             if (Variables.oper == "+")
             {
+                outputLabel.ResetText();
                 Variables.solution = Variables.var1 + Variables.var2;
+                outputLabel.Text = Convert.ToString(Variables.solution);
             }
             else if (Variables.oper == "-")
             {
+                outputLabel.ResetText();
                 Variables.solution = Variables.var1 - Variables.var2;
+                outputLabel.Text = Convert.ToString(Variables.solution);
             }
             else if (Variables.oper == "x")
             {
+                outputLabel.ResetText();
                 Variables.solution = Variables.var1 * Variables.var2;
+                outputLabel.Text = Convert.ToString(Variables.solution);
             }
             else if (Variables.oper == "/" && Variables.var2 != 0)
             {
+                outputLabel.ResetText();
                 Variables.solution = Variables.var1 / Variables.var2;
                 outputLabel.Text = Convert.ToString(Variables.solution); // Print result and reset variables
             }
             else
             {
-                outputLabel.Text = "Error";
+                outputLabel.ResetText();
+                outputLabel.Text = "ERR";
             }
             Variables.var1 = 0;
             Variables.var2 = 0;
