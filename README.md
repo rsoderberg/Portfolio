@@ -8,3 +8,6 @@ Included in this Portfolio:
 	- Rock Paper Scissors  
 	- Prime Numbers Calculator
 	- Class Practice
+	
+###### C# Projects
+	- Simple Calculator  
