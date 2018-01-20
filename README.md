@@ -1,13 +1,14 @@
-# Portfolio2018
-A collection of my programming projects as I develop my skills
-
+# Portfolio2018  
+A collection of my programming projects as I develop my skills  
+  
 Included in this Portfolio:  
-###### C++ Projects
+###### C++ Projects  
 	- Bulls and Cows  
 	- Quadratic Equation Solver  
 	- Rock Paper Scissors  
-	- Prime Numbers Calculator
-	- Class Practice
+	- Prime Numbers Calculator  
+	- Class Practice  
+	- Package Renamer  
 	
-###### C# Projects
+###### C# Projects  
 	- Simple Calculator  
