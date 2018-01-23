@@ -4,14 +4,16 @@
 ---  
 #### Method
 ##### Libraries:  
-iostream - handle input/output (May be removed after testing phases are complete)
-
+iostream - handle input/output
+string - access rfind and replace methods for modifying file extension 
+  
 ##### Data Structure:  
-None at this time, may implement a vector as data quantities will be unique to each use.  
+None at this time, may implement a vector as data quantities will be unique to each use and need to grow/shrink accordingly.  
   
 ##### Testing:  
 Necessary:  
-	- Excel file read.  
+	- Excel file conversion to .csv.  
+	- Excel file read.   
 	- Folder creation.  
 	- File copy to folders.  
 	- File renames.  
@@ -20,8 +22,9 @@ Implemented:
   
 ##### Error Handling:  
 Necessary:  
-	- Excel file exists and is not empty.  
+	- Excel file exists and is not empty. 
+	- File extension change was successful.  
 	- Folder containing ADI.DTD, .bmp, and .jpg was opened successfully.  
 	- .ADI, .bmp, and .jpg files exist.  
-	- Renames were successful.  
+	- .bmp and .jpg renames were successful.  
 Implemented:  

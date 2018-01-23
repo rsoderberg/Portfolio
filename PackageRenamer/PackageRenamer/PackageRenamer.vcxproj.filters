@@ -29,5 +29,8 @@
     <ClCompile Include="PackageRenamer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="filenameModification.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
