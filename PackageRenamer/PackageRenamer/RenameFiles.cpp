@@ -1,16 +1,12 @@
 /*
-PackageRenamer.cpp : Defines the entry point for the console application.
 Author: Rachel Soderberg
 Date Created: January 20, 2018
-Latest Edit: January 20, 2018
+Latest Edit: February 13, 2018
 
-Description: Source file containing the functions used to modify file names and file extensions.
+Description: Modify file names and file extensions.
 
 Required Files: (Currently contained in "Files" within PackageRenamer folder)
 - FUSE_20_HR_February_2018_V1_01192018.xlsm
-- ADI.DTD (This is an XML Document)
-- Fuse_VOD_105x147.jpg
-- Fuse_VOD_Logo_320x240px.bmp
 
 Steps: 1. Take in Excel spreadsheet name.
 2. If spreadsheet is .xlsm, convert to .csv.
@@ -35,8 +31,6 @@ void renameExcelFile() {
 	std::ofstream oldFile("fusetest");
 	std::ofstream newFile("fusetest.csv");
 
-	
-
 	/*
 	std::string codeFile = basename(filename) + ".code";
 	outFile.open(codeFile);
@@ -50,5 +44,5 @@ void renameExcelFile() {
 	myfile.close();
 	}
 	else cout << "Unable to open file";
-  */
+	*/
 }

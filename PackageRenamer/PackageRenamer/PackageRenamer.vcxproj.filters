@@ -32,7 +32,10 @@
     <ClCompile Include="PackageRenamer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="filenameModification.cpp">
+    <ClCompile Include="RenameFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatePackages.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
