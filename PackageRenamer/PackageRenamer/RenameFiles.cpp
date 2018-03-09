@@ -28,8 +28,8 @@ http://www.boost.org/doc/libs/1_66_0/libs/filesystem/doc/index.htm
 #include "Prototypes.h"
 
 void renameExcelFile() {
-	std::ofstream oldFile("fusetest");
-	std::ofstream newFile("fusetest.csv");
+	//std::ofstream oldFile("fusetest");
+	//std::ofstream newFile("fusetest.csv");
 
 	/*
 	std::string codeFile = basename(filename) + ".code";
@@ -45,4 +45,11 @@ void renameExcelFile() {
 	}
 	else cout << "Unable to open file";
 	*/
+}
+
+void renameImageFiles() {
+	// Open .csv file, read data, rename image using data read
+	// Test this concept with a single column .csv file at first
+
+
 }
