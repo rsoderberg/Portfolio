@@ -1,5 +1,5 @@
 # Portfolio2018  
-A collection of my projects and practice problems.
+A collection of my programming projects as I develop my skills  
   
 Included in this Portfolio:  
 ###### C++ Projects  
@@ -9,15 +9,6 @@ Included in this Portfolio:
 	- Prime Numbers Calculator  
 	- Class Practice  
 	- Package Renamer  
-  
-###### HackerRankCpp  
-	- Algorithms  
-	- Data Structures  
-	- Strings  
-	- Classes  
-	- 30 Days of Code 2017  
-	- Introduction  
-	- Practice Problems  
-  
-###### C# Windows Forms Projects  
+	
+###### C# Projects  
 	- Simple Calculator  
