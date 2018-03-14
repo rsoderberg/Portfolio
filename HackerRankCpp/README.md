@@ -1,0 +1,49 @@
+# HackerRankCpp  
+My solutions to HackerRank code problems:   
+  
+###### Algorithms  
+	- Simple Array Sum  
+	- Compare the Triplets  
+	- A Very Big Sum  
+	- Plus Minus  
+	- Staircase  
+	- Mini-Max Sum  
+	- Diagonal Difference  
+	- Birthday Cake Candles  
+	- Time Conversion  
+  
+###### Data Structures  
+	- Arrays - DS  
+  
+###### Strings  
+	- Strings  
+	- StringStream  
+  
+###### Classes  
+	- Structs  
+	- Class  
+	- Classes and Objects  
+  
+###### 30 Days of Code 2017  
+	1. Data Types  
+	2. Operators  
+	3. Conditionals  
+	4. Class Vs. Instance  
+	5. Printing Multiples  
+	6. Splitting a String  
+	7. Reversing Order  
+	8. Dictionaries and Maps  
+	9. Factorial (Recursion)  
+	10. Binary Numbers  
+	11. 2D Arrays  
+	16. Exceptions (String to Integer) 
+  
+###### Introduction
+	- Conditional Statements  
+	- Max of Four  
+	- Pointer  
+	- Arrays Introduction  
+	- Variable Sized Arrays  
+  
+###### Practice Problems  
+	- Conditionals PP  
