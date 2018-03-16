@@ -8,7 +8,18 @@ Included in this Portfolio:
 	- Rock Paper Scissors  
 	- Prime Numbers Calculator  
 	- Class Practice  
-	- Package Renamer  
+	- Multiplication Tables
 	
+	- Package Renamer (Contracted)  
+	
+###### HackerRank Solutions  
+	- Algorithms  
+	- Data Structures  
+	- Strings  
+	- Classes  
+	- 30 Days of Code  
+	- Introduction  
+	- Practice Problems  
+  
 ###### C# Projects  
 	- Simple Calculator  

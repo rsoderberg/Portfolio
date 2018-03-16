@@ -24,7 +24,7 @@ My solutions to HackerRank code problems:
 	- Class  
 	- Classes and Objects  
   
-###### 30 Days of Code 2017  
+###### 30 Days of Code 
 	1. Data Types  
 	2. Operators  
 	3. Conditionals  
