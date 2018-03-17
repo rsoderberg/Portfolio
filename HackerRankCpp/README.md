@@ -13,7 +13,8 @@ My solutions to HackerRank code problems:
 	- Time Conversion  
   
 ###### Data Structures  
-	- Arrays - DS  
+	- Arrays - Data Structure  
+	- 2D Array - Data Structure  
   
 ###### Strings  
 	- Strings  
