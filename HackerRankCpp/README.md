@@ -11,6 +11,7 @@ My solutions to HackerRank code problems:
 	- Diagonal Difference  
 	- Birthday Cake Candles  
 	- Time Conversion  
+	- Grading Students  
   
 ###### Data Structures  
 	- Arrays - Data Structure  
