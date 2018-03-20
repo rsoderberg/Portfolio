@@ -1,7 +1,7 @@
 /*
 Author: Rachel Soderberg
 Date Created: January 20, 2018
-Latest Edit: February 13, 2018
+Latest Edit: March 19, 2018
 
 Description: Modify file names and file extensions.
 
@@ -13,15 +13,6 @@ Steps: 1. Take in Excel spreadsheet name.
 3. Create packages corresponding to column N until end of file (or until coord == " "?).
 Note: Packages are always FUSE00.
 3. After package creation and file movement, rename .bmp (column S) and .jpg (column T)
-
-File Input/Output
-http://www.cplusplus.com/doc/tutorial/files/
-
-Changing file extensions:
-https://www.safaribooksonline.com/library/view/c-cookbook/0596007612/ch10s17.html
-https://stackoverflow.com/questions/757933/how-do-you-change-the-filename-extension-stored-in-a-string-in-c
-Boost.Filesystem Library
-http://www.boost.org/doc/libs/1_66_0/libs/filesystem/doc/index.htm
 */
 
 #include "stdafx.h"
@@ -53,3 +44,14 @@ void renameImageFiles() {
 
 
 }
+
+/*
+File Input/Output
+http://www.cplusplus.com/doc/tutorial/files/
+
+Changing file extensions:
+https://www.safaribooksonline.com/library/view/c-cookbook/0596007612/ch10s17.html
+https://stackoverflow.com/questions/757933/how-do-you-change-the-filename-extension-stored-in-a-string-in-c
+Boost.Filesystem Library
+http://www.boost.org/doc/libs/1_66_0/libs/filesystem/doc/index.htm
+*/

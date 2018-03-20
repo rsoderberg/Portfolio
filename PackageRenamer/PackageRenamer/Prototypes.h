@@ -1,7 +1,7 @@
 #pragma once
 // Definitions
-#define FILENAME "test.csv"
-//#define FILENAME "fusetestcsv.csv"
+//#define FILENAME "test.csv"
+#define FILENAME "fusetestcsv.csv"
 
 // Function Prototypes
 
