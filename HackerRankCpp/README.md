@@ -12,6 +12,7 @@ My solutions to HackerRank code problems:
 	- Birthday Cake Candles  
 	- Time Conversion  
 	- Grading Students  
+	- Kangaroo  
   
 ###### Data Structures  
 	- Arrays - Data Structure  
