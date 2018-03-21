@@ -47,6 +47,3 @@ My solutions to HackerRank code problems:
 	- Pointer  
 	- Arrays Introduction  
 	- Variable Sized Arrays  
-  
-###### Practice Problems  
-	- Conditionals PP  

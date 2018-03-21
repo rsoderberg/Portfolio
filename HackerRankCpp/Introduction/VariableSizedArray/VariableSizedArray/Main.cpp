@@ -1,8 +1,9 @@
 // Rachel Soderberg
-// Hacker Rank Introduction - Simple Array Sum
+// Hacker Rank Introduction - Variable Sized Array
 // March 3rd, 2018
 
-// Description: Given an array of integers, find the sum of its elements.
+// Description: Given a, answer q queries. For each query, find and print the
+//				value of element j in the array at location a[i] on a new line.
 
 #include "Header.h"
 

@@ -1,4 +1,4 @@
-# Simple Array Sum  
+# Variable Sized Array
 https://www.hackerrank.com/challenges/variable-sized-arrays/problem  
     
 ###### Problem:  
