@@ -1,5 +1,0 @@
-# HackerRankCpp  
-  
-###### Strings  
-	- Strings  
-	- StringStream  
