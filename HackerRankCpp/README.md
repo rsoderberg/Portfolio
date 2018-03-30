@@ -18,7 +18,8 @@ My solutions to HackerRank code problems:
 	- Arrays - Data Structure  
 	- 2D Array - Data Structure  
 	- Left Rotation  
-	- Array Manipulation (Crush)
+	- Array Manipulation (Crush)  
+	- Linked Lists  
   
 ###### Strings  
 	- Strings  
