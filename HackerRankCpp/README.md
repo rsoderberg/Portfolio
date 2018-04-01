@@ -32,6 +32,9 @@ My solutions to HackerRank code problems:
   
 ###### STL  
 	- Vector-Sort  
+	- Vector-Erase  
+	- Lower Bound-STL  
+	- Sets-STL  
     
 ###### 30 Days of Code 
 	1. Data Types  

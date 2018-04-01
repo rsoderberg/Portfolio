@@ -17,9 +17,9 @@ Included in this Portfolio:
 	- Data Structures  
 	- Strings  
 	- Classes  
+	- STL  
 	- 30 Days of Code  
 	- Introduction  
-	- Practice Problems  
   
 ###### C# Projects  
 	- Simple Calculator  
