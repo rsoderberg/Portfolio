@@ -12,6 +12,9 @@ Included in this Portfolio:
 	- Rock Paper Scissors   
 	
 	- Package Renamer  
+  
+###### C# Projects  
+	- BMI Calculator  
 	
 ###### HackerRank C++ Solutions  
 	- Algorithms  
