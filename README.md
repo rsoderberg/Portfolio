@@ -3,6 +3,7 @@ A collection of projects and practice problems
   
 Included in this Portfolio:  
 ###### C++ Projects  
+	- BMI Calculator 2
 	- Bulls and Cows  
 	- Coin Flip Simulator  
 	- Dice Roll Simulator 
