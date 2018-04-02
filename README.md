@@ -4,22 +4,20 @@ A collection of projects and practice problems
 Included in this Portfolio:  
 ###### C++ Projects  
 	- Bulls and Cows  
-	- Quadratic Equation Solver  
-	- Rock Paper Scissors  
-	- Prime Numbers Calculator  
-	- Class Practice  
+	- Coin Flip Simulator  
+	- Dice Roll Simulator 
 	- Multiplication Tables
+	- Prime Numbers Calculator  
+	- Quadratic Equation Solver  
+	- Rock Paper Scissors   
 	
-	- Package Renamer (Contracted)  
+	- Package Renamer  
 	
-###### HackerRank Solutions  
+###### HackerRank C++ Solutions  
 	- Algorithms  
-	- Data Structures  
-	- Strings  
 	- Classes  
-	- STL  
-	- 30 Days of Code  
+	- Data Structures  
 	- Introduction  
-  
-###### C# Projects  
-	- Simple Calculator  
+	- STL  
+	- Strings  
+	- 30 Days of Code  

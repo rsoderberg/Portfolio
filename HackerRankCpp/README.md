@@ -36,7 +36,7 @@ My solutions to HackerRank code problems:
 	- Lower Bound-STL  
 	- Sets-STL  
     
-###### 30 Days of Code 
+###### 30 Days of Code  
 	1. Data Types  
 	2. Operators  
 	3. Conditionals  
@@ -48,9 +48,10 @@ My solutions to HackerRank code problems:
 	9. Factorial (Recursion)  
 	10. Binary Numbers  
 	11. 2D Arrays  
-	16. Exceptions (String to Integer) 
+	12. Inheritance  
+	16. Exceptions (String to Integer)  
   
-###### Introduction
+###### Introduction  
 	- Conditional Statements  
 	- Max of Four  
 	- Pointer  

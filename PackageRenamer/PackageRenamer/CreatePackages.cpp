@@ -12,6 +12,8 @@ Required Files: (Currently contained in "Files" within PackageRenamer folder)
 - Fuse_VOD_Logo_320x240px.bmp
 */
 
+// Copying files from directory: https://stackoverflow.com/questions/9125122/how-to-copy-a-file-from-a-folder-to-another-folder
+
 #include "stdafx.h"
 #include "Prototypes.h"
 
@@ -31,7 +33,7 @@ void readFromCSV() {
 	int recordsPerRow = 0; // Number of records in a single row
 	int totalRecords = 0; // Total number of records in table
 
-	//std::vector<int> colB; // Column B for testing parsing
+	//std::vector<int> colB; // Column B for testing parsing with test file
 	//std::vector<int> colN;
 	//std::vector<int> colS;
 	//std::vector<int> colT;
