@@ -11,11 +11,13 @@ Included in this Portfolio:
 	- Prime Numbers Calculator  
 	- Quadratic Equation Solver  
 	- Rock Paper Scissors   
+	- String Comparison (No Standard Libraries)
 	
 	- Package Renamer  
   
 ###### C# Projects  
-	- BMI Calculator  
+	- BMI Calculator
+	- Temperature Converter  
 	
 ###### HackerRank C++ Solutions  
 	- Algorithms  
