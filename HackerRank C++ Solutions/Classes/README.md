@@ -1,6 +1,7 @@
 # HackerRankCpp  
   
 ###### Classes  
-	- Structs  
+	- Box It   
 	- Class  
 	- Classes and Objects  
+	- Structs  
