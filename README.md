@@ -16,7 +16,8 @@ Included in this Portfolio:
 	- Package Renamer  
   
 ###### C# Projects  
-	- BMI Calculator
+	- BMI Calculator  
+	- Shape Tool
 	- Temperature Converter  
 	
 ###### HackerRank C++ Solutions  
