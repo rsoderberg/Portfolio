@@ -1,14 +1,15 @@
 # HackerRankCpp  
   
 ###### Algorithms  
-	- Simple Array Sum  
-	- Compare the Triplets  
 	- A Very Big Sum  
-	- Plus Minus  
-	- Staircase  
-	- Mini-Max Sum  
-	- Diagonal Difference  
 	- Birthday Cake Candles  
-	- Time Conversion  
+	- Bon Appetit  
+	- Compare the Triplets  
+	- Diagonal Difference  
 	- Grading Students  
 	- Kangaroo  
+	- Mini-Max Sum  	
+	- Plus Minus  
+	- Simple Array Sum 
+	- Staircase  
+	- Time Conversion  
