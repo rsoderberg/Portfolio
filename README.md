@@ -20,6 +20,9 @@ Included in this Portfolio:
 	- Shape Tool
 	- Temperature Converter  
 	
+###### Arduino Projects  
+	- Guitar Tuner  
+	
 ###### HackerRank C++ Solutions  
 	- Algorithms  
 	- Classes  
