@@ -61,6 +61,3 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
-
-# Languages to be ignored
-*.rb linguist-language=Java
