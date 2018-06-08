@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MuayThaiAthletesGuide</string>
+    <string name="rank">Coach/Student</string>
+
+    <!--User Portal Activity-->
+    <string name="name">Name:</string>
+    <string name="description">Description:</string>
+</resources>

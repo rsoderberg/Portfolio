@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wrap_video">\nLearn to wrap your hands to protect them while you practice Muay Thai or Boxing:</string>
+    <string name="punch_video">\n\nLearn Muay Thai punching technique:</string>
+    <string name="kick_video">\n\nMaster the infamous Roundhouse Kick:</string>
+    <string name="lowkick_video">\n\nCatch your opponent off guard with a Low Kick:</string>
+    <string name="elbow_video">\n\nLearn to throw devastating Elbows:</string>
+    <string name="knee_video">\n\nOne good knee can end a fight, make them count:</string>
+    <string name="clinch_video">\n\nWhen your opponent enters Clinch range, make them regret it:</string>
+    <string name="teep_video">\n\nIf your opponent is rushing, Teep (Push Kick) them back:</string>
+</resources>
