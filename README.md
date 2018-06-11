@@ -33,6 +33,7 @@ Included in this Portfolio:
 	- Classes  
 	- Data Structures  
 	- Introduction  
+	- Inheritance  
 	- STL  
 	- Strings  
 	- 30 Days of Code  
