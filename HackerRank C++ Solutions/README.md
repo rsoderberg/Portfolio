@@ -2,17 +2,24 @@
 My solutions to HackerRank code problems:   
   
 ###### Algorithms  
-	- Simple Array Sum  
-	- Compare the Triplets  
 	- A Very Big Sum  
-	- Plus Minus  
-	- Staircase  
-	- Mini-Max Sum  
-	- Diagonal Difference  
 	- Birthday Cake Candles  
-	- Time Conversion  
+	- Bon Appetit  
+	- Compare the Triplets  
+	- Diagonal Difference  
 	- Grading Students  
 	- Kangaroo  
+	- Mini-Max Sum  	
+	- Plus Minus  
+	- Simple Array Sum  
+	- Sock Merchant  
+	- Staircase  
+	- Time Conversion  
+	
+###### Classes  
+	- Structs  
+	- Class  
+	- Classes and Objects  
   
 ###### Data Structures  
 	- Arrays - Data Structure  
@@ -20,21 +27,20 @@ My solutions to HackerRank code problems:
 	- Left Rotation  
 	- Array Manipulation (Crush)  
 	- Linked Lists  
-  
-###### Strings  
-	- Strings  
-	- StringStream  
-  
-###### Classes  
-	- Structs  
-	- Class  
-	- Classes and Objects  
+	
+###### Inheritance  
+	- Inheritance Introduction  
+	- Rectangle Area  
   
 ###### STL  
 	- Vector-Sort  
 	- Vector-Erase  
 	- Lower Bound-STL  
 	- Sets-STL  
+	
+###### Strings  
+	- Strings  
+	- StringStream  
     
 ###### 30 Days of Code  
 	1. Data Types  

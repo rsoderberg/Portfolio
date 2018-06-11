@@ -20,18 +20,19 @@ int main() {
 
 	std::cin.ignore(); // Ignore n input in comparison
 	while (std::cin >> n) { // While there are candle values to take in
-	for (int i = 0; i < n; i++) {
-		if (tallest < n) { // Tallest is greater than previous value, set tallest
-			tallest = n;
-			blowable = 1;
+		for (int i = 0; i < n; i++) {
+			if (tallest < n) { // Tallest is greater than previous value, set tallest
+				tallest = n;
+				blowable = 1;
+			}
+			else {
+				if (tallest == n) // Tallest is match, increment blowable
+					blowable++;
+			}
 		}
-		else {
-			if (tallest == n) // Tallest is match, increment blowable
-				blowable++;
-		}
-	}
-	std::cout << blowable << "\n";
+		std::cout << blowable << "\n";
 
-	system("pause");
-	return 0;
+		system("pause");
+		return 0;
+	}
 }

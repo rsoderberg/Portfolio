@@ -10,6 +10,7 @@
 	- Kangaroo  
 	- Mini-Max Sum  	
 	- Plus Minus  
-	- Simple Array Sum 
+	- Simple Array Sum  
+	- Sock Merchant  
 	- Staircase  
 	- Time Conversion  
