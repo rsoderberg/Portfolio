@@ -1,0 +1,115 @@
+﻿@model IEnumerable<RachelSoderberg_Lab2.Models.View.UserViewModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <h2>List</h2>
+    <div class="well">A list of all current users</div>
+</div>
+
+@{var count = 0;}
+
+@if (count > 2)
+{
+    <div class="alert alert-warning alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            <strong>Warning!</strong> There are more than two users in this list!
+        </a>
+    </div>
+}
+
+@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-lg" })
+<br /><br />
+
+<body>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearsInSchool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FavoritePizzaTopping)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearsInSchool)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FavoritePizzaTopping)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Jobs", "List", "Job", new { userId = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+
+<p>
+    <button type="button" class="btn btn-info" id="hide">Hide</button>
+    <button type="button" class="btn btn-info" id="show">Show</button>
+</p>
+
+@section scripts {
+    <script>
+        $("#hide").click(function () {
+            $("table").hide();
+        });
+        $("#show").click(function () {
+            $("table").show();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            //alert("Hello!");
+            $("p").click(function () {
+                $(this).hide();
+                //alert("Hidden!");
+            });
+            $("p").click(function () {
+                $(this).show();
+                //alert("Shown!");
+            });
+        });
+    </script>
+}
