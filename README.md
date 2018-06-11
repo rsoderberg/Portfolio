@@ -6,6 +6,10 @@ Included in this Portfolio:
 	- Muay Thai Athlete's Guide (Project MTAG)  
 		Created in partial fulfillment of the Bachelor of Software Engineering Technology program at Oregon Institute of Technology.  
 
+###### Junior Project 2016-2017  
+	- The White Elephant Project  
+		Team members: Matt Dougal, Patrick Carlson, Keyul Patel, Rachel Soderberg  
+		
 ###### C++ Projects  
 	- BMI Calculator 2
 	- Bulls and Cows  
