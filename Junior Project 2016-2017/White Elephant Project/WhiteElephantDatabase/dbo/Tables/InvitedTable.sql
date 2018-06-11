@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[InvitedTable]
+(
+	[InvitedId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Email] NVARCHAR(256) NOT NULL
+)

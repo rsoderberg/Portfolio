@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.dbmdl
+/WhiteElephantDatabase/WhiteElephantDatabase.jfm
+/.vs/
+/OITJP2016/bin/Debug/
+/OITJP2016/obj/Debug/
+/DBLayout/DBLayout/bin/Debug/

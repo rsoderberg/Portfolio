@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>WhiteElephantDatabase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{dbcf0c99-e977-48d7-a4f0-d62d7fb9ee9c}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>WhiteElephantDatabase</RootNamespace>
+    <AssemblyName>WhiteElephantDatabase</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="DatabaseComparison" />
+    <Folder Include="dbo\Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\UserTable.sql" />
+    <Build Include="dbo\Tables\FriendlyName.sql" />
+    <Build Include="dbo\Tables\PasswordTable.sql" />
+    <Build Include="dbo\Stored Procedures\usp_AddNewUser.sql" />
+    <Build Include="dbo\Stored Procedures\usp_DeleteUser.sql" />
+    <Build Include="dbo\Stored Procedures\usp_UpdateUser.sql" />
+    <Build Include="dbo\Tables\EventTable.sql" />
+    <Build Include="dbo\Tables\EventNameTable.sql" />
+    <Build Include="dbo\Tables\GroupTable.sql" />
+    <Build Include="dbo\Tables\UserGroupTable.sql" />
+    <Build Include="dbo\Stored Procedures\usp_AddEvent.sql" />
+    <Build Include="dbo\Stored Procedures\usp_AddNewGroup.sql" />
+    <Build Include="dbo\Tables\__MigrationHistory.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Stored Procedures\usp_DeleteGroup.sql" />
+    <Build Include="dbo\Stored Procedures\usp_AddUserToGroup.sql" />
+    <Build Include="dbo\Stored Procedures\usp_DeleteUserFromGroup.sql" />
+    <Build Include="dbo\Tables\GroupEventTable.sql" />
+    <Build Include="dbo\Tables\StatusTable.sql" />
+    <Build Include="dbo\Stored Procedures\usp_GetGroupUsers.sql" />
+    <Build Include="dbo\Tables\InvitedTable.sql" />
+    <Build Include="dbo\Stored Procedures\usp_UpdateInvited.sql" />
+    <Build Include="dbo\Stored Procedures\usp_IsGroupAdmin.sql" />
+    <Build Include="dbo\Tables\UserEventTable.sql" />
+    <Build Include="dbo\Stored Procedures\usp_AddUserToEvent.sql" />
+    <Build Include="dbo\Stored Procedures\usp_GetEvent.sql" />
+    <Build Include="dbo\Stored Procedures\usp_GetGroups.sql" />
+    <Build Include="dbo\Stored Procedures\usp_GetEvents.sql" />
+    <Build Include="dbo\Stored Procedures\usp_GetEventUsers.sql" />
+    <Build Include="dbo\Stored Procedures\usp_DeleteUserFromEvent.sql" />
+    <Build Include="dbo\Stored Procedures\usp_DeleteEvent.sql" />
+    <Build Include="dbo\Stored Procedures\usp_IsEventAdmin.sql" />
+    <Build Include="dbo\Tables\GiftTable.sql" />
+    <Build Include="dbo\Stored Procedures\usp_AddGiftToEvent.sql" />
+    <Build Include="dbo\Stored Procedures\usp_GetEventGifts.sql" />
+    <Build Include="dbo\Stored Procedures\usp_SetGiftClaimStatus.sql" />
+    <Build Include="dbo\Stored Procedures\usp_DeleteGiftFromEvent.sql" />
+    <Build Include="dbo\Stored Procedures\usp_EditEvent.sql" />
+    <Build Include="dbo\Stored Procedures\usp_EditGift.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="WhiteElephantDatabase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DatabaseComparison\Matt_DB.scmp" />
+    <None Include="DatabaseComparison\Pat_Compare.scmp" />
+    <None Include="DatabaseComparison\Keyul_Comparison.scmp" />
+    <None Include="DatabaseComparison\Rachel_DB.scmp" />
+    <None Include="dbo\Scripts\WhiteElephantEmailSetup.sql" />
+    <None Include="DatabaseComparison\Azure_DB.scmp" />
+  </ItemGroup>
+</Project>

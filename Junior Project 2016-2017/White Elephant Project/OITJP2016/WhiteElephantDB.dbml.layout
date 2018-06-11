@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WhiteElephantDB">
+  <DataContextMoniker Name="/WhiteElephantDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="42309e00-bde3-4241-8138-77fc4df98753" absoluteBounds="0.625, 0.625, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/WhiteElephantDBDataContext/FriendlyName" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4f9fc981-5fa1-4f2b-ab95-f91f0acb7afd" absoluteBounds="0.64000000000000012, 1.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="00785e70-5d2a-49b3-9e7b-a5146fc8fcf0" absoluteBounds="3.625, 1.625, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/WhiteElephantDBDataContext/PasswordTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8e794076-98fb-4e78-9bd7-7e7b01125bf4" absoluteBounds="3.6399999999999997, 2.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="423aa69f-5139-4554-8303-afc459378fcd" absoluteBounds="0.75, 2.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/WhiteElephantDBDataContext/UserTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb6cc65c-d556-4ff2-8843-5bad343a9638" absoluteBounds="0.76500000000000012, 3.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 3.31574675651042); (3.65625 : 3.31574675651042); (3.65625 : 2.81899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/WhiteElephantDBDataContext/UserTable/UserTable_PasswordTable" />
+      <nodes>
+        <classShapeMoniker Id="423aa69f-5139-4554-8303-afc459378fcd" />
+        <classShapeMoniker Id="00785e70-5d2a-49b3-9e7b-a5146fc8fcf0" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="6e736d21-1d4a-4131-95ae-e41e7c42772c" absoluteBounds="6.375, 2.75, 2, 3.1170068359375">
+      <DataClassMoniker Name="/WhiteElephantDBDataContext/AspNetUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="665fffe8-8ab0-42f8-a628-f7db99bd3ca4" absoluteBounds="6.39, 3.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c8ce2cca-4920-42ec-ad73-8787a13c5d3e" absoluteBounds="3.75, 3.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/WhiteElephantDBDataContext/UserGroupTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91e59087-c852-41cd-8d03-4c01ae0d74c9" absoluteBounds="3.7649999999999997, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.375 : 4.56814697265625); (5.75 : 4.56814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/WhiteElephantDBDataContext/AspNetUser/AspNetUser_UserGroupTable" />
+      <nodes>
+        <classShapeMoniker Id="6e736d21-1d4a-4131-95ae-e41e7c42772c" />
+        <classShapeMoniker Id="c8ce2cca-4920-42ec-ad73-8787a13c5d3e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8bbe2e27-f576-4cc3-b582-62fdda7bd7db" absoluteBounds="0.75, 4.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/WhiteElephantDBDataContext/EventTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b5de50a-9a0f-4eb3-a72f-71ff9d88cdc9" absoluteBounds="0.76500000000000012, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9e20566e-fe3b-4b68-ae7a-c32516e4baac" absoluteBounds="6.5, 1.375, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/WhiteElephantDBDataContext/GroupTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8a291928-130d-402f-bf03-96070fa39235" absoluteBounds="6.515, 1.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.5 : 1.46875); (5.71875 : 1.46875); (5.71875 : 3.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/WhiteElephantDBDataContext/GroupTable/GroupTable_UserGroupTable" />
+      <nodes>
+        <classShapeMoniker Id="9e20566e-fe3b-4b68-ae7a-c32516e4baac" />
+        <classShapeMoniker Id="c8ce2cca-4920-42ec-ad73-8787a13c5d3e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

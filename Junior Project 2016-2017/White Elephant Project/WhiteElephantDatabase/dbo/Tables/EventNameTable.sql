@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[EventNameTable]
+(
+	[EventNameId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [EventName] VARCHAR(128) NOT NULL UNIQUE
+)

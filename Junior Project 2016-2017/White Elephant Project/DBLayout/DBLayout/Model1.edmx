@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model1TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Groups" EntityType="Model1.Group" />
+          <EntitySet Name="Users" EntityType="Model1.User" />
+          <EntitySet Name="Passwords" EntityType="Model1.Password" />
+          <AssociationSet Name="PasswordUser" Association="Model1.PasswordUser">
+            <End Role="Password" EntitySet="Passwords" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="UserGroups" EntityType="Model1.UserGroup" />
+          <AssociationSet Name="UserUserGroup" Association="Model1.UserUserGroup">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserGroup" EntitySet="UserGroups" />
+          </AssociationSet>
+          <AssociationSet Name="GroupUserGroup" Association="Model1.GroupUserGroup">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="UserGroup" EntitySet="UserGroups" />
+          </AssociationSet>
+          <EntitySet Name="Gifts" EntityType="Model1.Gift" />
+          <EntitySet Name="GiftNames" EntityType="Model1.GiftName" />
+          <EntitySet Name="GiftNotes" EntityType="Model1.GiftNote" />
+          <AssociationSet Name="GiftNameGift" Association="Model1.GiftNameGift">
+            <End Role="GiftName" EntitySet="GiftNames" />
+            <End Role="Gift" EntitySet="Gifts" />
+          </AssociationSet>
+          <AssociationSet Name="GiftNoteGift" Association="Model1.GiftNoteGift">
+            <End Role="GiftNote" EntitySet="GiftNotes" />
+            <End Role="Gift" EntitySet="Gifts" />
+          </AssociationSet>
+          <EntitySet Name="GiftUserGroups" EntityType="Model1.GiftUserGroup" />
+          <AssociationSet Name="GiftGift" Association="Model1.GiftGift">
+            <End Role="Gift" EntitySet="Gifts" />
+            <End Role="Gift1" EntitySet="Gifts" />
+          </AssociationSet>
+          <AssociationSet Name="GiftGiftUserGroup" Association="Model1.GiftGiftUserGroup">
+            <End Role="Gift" EntitySet="Gifts" />
+            <End Role="GiftUserGroup" EntitySet="GiftUserGroups" />
+          </AssociationSet>
+          <EntitySet Name="Events" EntityType="Model1.Event" />
+          <EntitySet Name="EventNames" EntityType="Model1.EventName" />
+          <AssociationSet Name="EventEventName" Association="Model1.EventEventName">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="EventName" EntitySet="EventNames" />
+          </AssociationSet>
+          <EntitySet Name="GroupEvents" EntityType="Model1.GroupEvent" />
+          <AssociationSet Name="GroupGroupEvent" Association="Model1.GroupGroupEvent">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="GroupEvent" EntitySet="GroupEvents" />
+          </AssociationSet>
+          <AssociationSet Name="EventGroupEvent" Association="Model1.EventGroupEvent">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="GroupEvent" EntitySet="GroupEvents" />
+          </AssociationSet>
+          <AssociationSet Name="UserGroupGiftUserGroup" Association="Model1.UserGroupGiftUserGroup">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="GiftUserGroup" EntitySet="GiftUserGroups" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="MaxPrice" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="UserGroups" Relationship="Model1.GroupUserGroup" FromRole="Group" ToRole="UserGroup" />
+          <NavigationProperty Name="GroupEvents" Relationship="Model1.GroupGroupEvent" FromRole="Group" ToRole="GroupEvent" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PasswordId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Password" Relationship="Model1.PasswordUser" FromRole="User" ToRole="Password" />
+          <NavigationProperty Name="UserGroups" Relationship="Model1.UserUserGroup" FromRole="User" ToRole="UserGroup" />
+        </EntityType>
+        <EntityType Name="Password">
+          <Key>
+            <PropertyRef Name="PasswordId" />
+          </Key>
+          <Property Name="PasswordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Model1.PasswordUser" FromRole="Password" ToRole="User" />
+        </EntityType>
+        <Association Name="PasswordUser">
+          <End Type="Model1.Password" Role="Password" Multiplicity="1" />
+          <End Type="Model1.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="UserGroupId" />
+          </Key>
+          <Property Name="UserGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="GroupId" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserUserGroup" FromRole="UserGroup" ToRole="User" />
+          <NavigationProperty Name="Group" Relationship="Model1.GroupUserGroup" FromRole="UserGroup" ToRole="Group" />
+          <NavigationProperty Name="GiftUserGroups" Relationship="Model1.UserGroupGiftUserGroup" FromRole="UserGroup" ToRole="GiftUserGroup" />
+        </EntityType>
+        <Association Name="UserUserGroup">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.UserGroup" Role="UserGroup" Multiplicity="*" />
+        </Association>
+        <Association Name="GroupUserGroup">
+          <End Type="Model1.Group" Role="Group" Multiplicity="1" />
+          <End Type="Model1.UserGroup" Role="UserGroup" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Gift">
+          <Key>
+            <PropertyRef Name="GiftId" />
+          </Key>
+          <Property Name="GiftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="NoteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GiftName" Relationship="Model1.GiftNameGift" FromRole="Gift" ToRole="GiftName" />
+          <NavigationProperty Name="GiftNote" Relationship="Model1.GiftNoteGift" FromRole="Gift" ToRole="GiftNote" />
+          <NavigationProperty Name="Gifts" Relationship="Model1.GiftGift" FromRole="Gift" ToRole="Gift1" />
+          <NavigationProperty Name="Gift1" Relationship="Model1.GiftGift" FromRole="Gift1" ToRole="Gift" />
+          <NavigationProperty Name="GiftUserGroups" Relationship="Model1.GiftGiftUserGroup" FromRole="Gift" ToRole="GiftUserGroup" />
+        </EntityType>
+        <EntityType Name="GiftName">
+          <Key>
+            <PropertyRef Name="GiftNameId" />
+          </Key>
+          <Property Name="GiftNameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Gifts" Relationship="Model1.GiftNameGift" FromRole="GiftName" ToRole="Gift" />
+        </EntityType>
+        <EntityType Name="GiftNote">
+          <Key>
+            <PropertyRef Name="GiftNoteId" />
+          </Key>
+          <Property Name="GiftNoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Note" Type="String" Nullable="false" />
+          <NavigationProperty Name="Gifts" Relationship="Model1.GiftNoteGift" FromRole="GiftNote" ToRole="Gift" />
+        </EntityType>
+        <Association Name="GiftNameGift">
+          <End Type="Model1.GiftName" Role="GiftName" Multiplicity="1" />
+          <End Type="Model1.Gift" Role="Gift" Multiplicity="*" />
+        </Association>
+        <Association Name="GiftNoteGift">
+          <End Type="Model1.GiftNote" Role="GiftNote" Multiplicity="1" />
+          <End Type="Model1.Gift" Role="Gift" Multiplicity="*" />
+        </Association>
+        <EntityType Name="GiftUserGroup">
+          <Key>
+            <PropertyRef Name="GiftUserGroupId" />
+          </Key>
+          <Property Name="GiftUserGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GiftId" Type="Int32" Nullable="false" />
+          <Property Name="UserGroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gift" Relationship="Model1.GiftGiftUserGroup" FromRole="GiftUserGroup" ToRole="Gift" />
+          <NavigationProperty Name="UserGroup" Relationship="Model1.UserGroupGiftUserGroup" FromRole="GiftUserGroup" ToRole="UserGroup" />
+        </EntityType>
+        <Association Name="GiftGift">
+          <End Type="Model1.Gift" Role="Gift" Multiplicity="1" />
+          <End Type="Model1.Gift" Role="Gift1" Multiplicity="*" />
+        </Association>
+        <Association Name="GiftGiftUserGroup">
+          <End Type="Model1.Gift" Role="Gift" Multiplicity="1" />
+          <End Type="Model1.GiftUserGroup" Role="GiftUserGroup" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="EventNameId" Type="String" Nullable="false" />
+          <NavigationProperty Name="EventNames" Relationship="Model1.EventEventName" FromRole="Event" ToRole="EventName" />
+          <NavigationProperty Name="GroupEvents" Relationship="Model1.EventGroupEvent" FromRole="Event" ToRole="GroupEvent" />
+        </EntityType>
+        <EntityType Name="EventName">
+          <Key>
+            <PropertyRef Name="EventNameId" />
+          </Key>
+          <Property Name="EventNameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="Model1.EventEventName" FromRole="EventName" ToRole="Event" />
+        </EntityType>
+        <Association Name="EventEventName">
+          <End Type="Model1.Event" Role="Event" Multiplicity="*" />
+          <End Type="Model1.EventName" Role="EventName" Multiplicity="1" />
+        </Association>
+        <EntityType Name="GroupEvent">
+          <Key>
+            <PropertyRef Name="GroupEventId" />
+          </Key>
+          <Property Name="GroupEventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="String" Nullable="false" />
+          <Property Name="EventId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="Model1.GroupGroupEvent" FromRole="GroupEvent" ToRole="Group" />
+          <NavigationProperty Name="Event" Relationship="Model1.EventGroupEvent" FromRole="GroupEvent" ToRole="Event" />
+        </EntityType>
+        <Association Name="GroupGroupEvent">
+          <End Type="Model1.Group" Role="Group" Multiplicity="1" />
+          <End Type="Model1.GroupEvent" Role="GroupEvent" Multiplicity="*" />
+        </Association>
+        <Association Name="EventGroupEvent">
+          <End Type="Model1.Event" Role="Event" Multiplicity="1" />
+          <End Type="Model1.GroupEvent" Role="GroupEvent" Multiplicity="*" />
+        </Association>
+        <Association Name="UserGroupGiftUserGroup">
+          <End Type="Model1.UserGroup" Role="UserGroup" Multiplicity="1" />
+          <End Type="Model1.GiftUserGroup" Role="GiftUserGroup" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4f1e0aa8392049bdb90ed581c6a15185" Name="Diagram1" ZoomLevel="92" >
+        <EntityTypeShape EntityType="Model1.Group" Width="1.5" PointX="7.5" PointY="1.25" />
+        <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.Password" Width="1.5" PointX="0.625" PointY="1.25" />
+        <AssociationConnector Association="Model1.PasswordUser" />
+        <EntityTypeShape EntityType="Model1.UserGroup" Width="1.75" PointX="5.125" PointY="1.125" />
+        <AssociationConnector Association="Model1.UserUserGroup" />
+        <AssociationConnector Association="Model1.GroupUserGroup" />
+        <EntityTypeShape EntityType="Model1.Gift" Width="1.5" PointX="5.125" PointY="4.25" />
+        <EntityTypeShape EntityType="Model1.GiftName" Width="1.5" PointX="7.25" PointY="4" />
+        <EntityTypeShape EntityType="Model1.GiftNote" Width="1.5" PointX="7.25" PointY="5.75" />
+        <AssociationConnector Association="Model1.GiftNameGift" />
+        <AssociationConnector Association="Model1.GiftNoteGift" />
+        <EntityTypeShape EntityType="Model1.GiftUserGroup" Width="2.375" PointX="1.625" PointY="3.875" />
+        <AssociationConnector Association="Model1.GiftGift" />
+        <AssociationConnector Association="Model1.GiftGiftUserGroup" />
+        <EntityTypeShape EntityType="Model1.Event" Width="1.5" PointX="11.375" PointY="1.375" />
+        <EntityTypeShape EntityType="Model1.EventName" Width="1.5" PointX="11.375" PointY="3.75" />
+        <AssociationConnector Association="Model1.EventEventName" />
+        <EntityTypeShape EntityType="Model1.GroupEvent" Width="1.5" PointX="9.5" PointY="1.25" />
+        <AssociationConnector Association="Model1.GroupGroupEvent" />
+        <AssociationConnector Association="Model1.EventGroupEvent" />
+        <AssociationConnector Association="Model1.UserGroupGiftUserGroup" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

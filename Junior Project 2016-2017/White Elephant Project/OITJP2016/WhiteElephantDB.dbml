@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WhiteElephantDB" Class="WhiteElephantDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=tcp:whiteelephantdb.database.windows.net,1433;Initial Catalog=WhiteElephantDB;Persist Security Info=False;User ID=oitjp2016;MultipleActiveResultSets=False;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="WhiteElephantConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.FriendlyName" Member="FriendlyNames">
+    <Type Name="FriendlyName">
+      <Column Name="FriendlyNameId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FriendlyName" Member="FriendlyName1" Type="System.String" DbType="VarChar(128) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PasswordTable" Member="PasswordTables">
+    <Type Name="PasswordTable">
+      <Column Name="PasswordId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PasswordText" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Association Name="UserTable_PasswordTable" Member="UserTable" ThisKey="PasswordId" OtherKey="PasswordId" Type="UserTable" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserTable" Member="UserTables">
+    <Type Name="UserTable">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FriendlyNameId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PasswordId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="UserTable_PasswordTable" Member="PasswordTables" ThisKey="PasswordId" OtherKey="PasswordId" Type="PasswordTable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUsers" Member="AspNetUsers">
+    <Type Name="AspNetUser">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="EmailConfirmed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SecurityStamp" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PhoneNumberConfirmed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TwoFactorEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LockoutEndDateUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockoutEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AccessFailedCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="AspNetUser_UserGroupTable" Member="UserGroupTables" ThisKey="Id" OtherKey="UserId" Type="UserGroupTable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserGroupTable" Member="UserGroupTables">
+    <Type Name="UserGroupTable">
+      <Column Name="UserGroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="AspNetUser_UserGroupTable" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
+      <Association Name="GroupTable_UserGroupTable" Member="GroupTable" ThisKey="GroupId" OtherKey="GroupId" Type="GroupTable" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventTable" Member="EventTables">
+    <Type Name="EventTable">
+      <Column Name="EventId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="EventNameId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaxPrice" Type="System.Decimal" DbType="Decimal(13,3) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GroupTable" Member="GroupTables">
+    <Type Name="GroupTable">
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="GroupTable_UserGroupTable" Member="UserGroupTables" ThisKey="GroupId" OtherKey="GroupId" Type="UserGroupTable" />
+    </Type>
+  </Table>
+  <Function Name="dbo.usp_AddNewUser" Method="usp_AddNewUser">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(64)" />
+    <Parameter Name="FriendlyName" Parameter="friendlyName" Type="System.String" DbType="VarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_DeleteUser" Method="usp_DeleteUser">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_UpdateUser" Method="usp_UpdateUser">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="NewFriendlyName" Parameter="newFriendlyName" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="VarChar(64)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_AddUserToGroup" Method="usp_AddUserToGroup">
+    <Parameter Name="UserEmail" Parameter="userEmail" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StatusName" Parameter="statusName" Type="System.String" DbType="VarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_DeleteGroup" Method="usp_DeleteGroup">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_GetGroupUsers" Method="usp_GetGroupUsers">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_GetGroupUsersResult">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="InvitedEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_UpdateInvited" Method="usp_UpdateInvited">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_IsGroupAdmin" Method="usp_IsGroupAdmin">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserEmail" Parameter="userEmail" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="usp_IsGroupAdminResult">
+      <Column Name="Status" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_AddUserToEvent" Method="usp_AddUserToEvent">
+    <Parameter Name="UserEmail" Parameter="userEmail" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="EventId" Parameter="eventId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StatusName" Parameter="statusName" Type="System.String" DbType="VarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_GetEvent" Method="usp_GetEvent">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EventName" Parameter="eventName" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="MaxPrice" Parameter="maxPrice" Type="System.Decimal" DbType="Decimal(13,3)" />
+    <Parameter Name="EventDate" Parameter="eventDate" Type="System.DateTime" DbType="DateTime2" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(128)" />
+    <ElementType Name="usp_GetEventResult">
+      <Column Name="EventId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_AddEvent" Method="usp_AddEvent">
+    <Parameter Name="EventName" Parameter="eventName" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="EventDate" Parameter="eventDate" Type="System.DateTime" DbType="DateTime2" />
+    <Parameter Name="MaxPrice" Parameter="maxPrice" Type="System.Decimal" DbType="Decimal(13,3)" />
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_GetGroups" Method="usp_GetGroups">
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(128)" />
+    <ElementType Name="usp_GetGroupsResult">
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_DeleteEvent" Method="usp_DeleteEvent">
+    <Parameter Name="EventId" Parameter="eventId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_DeleteUserFromEvent" Method="usp_DeleteUserFromEvent">
+    <Parameter Name="UserEmail" Parameter="userEmail" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="EventId" Parameter="eventId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_IsEventAdmin" Method="usp_IsEventAdmin">
+    <Parameter Name="EventId" Parameter="eventId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserEmail" Parameter="userEmail" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="usp_IsEventAdminResult">
+      <Column Name="Status" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_AddNewGroup" Method="usp_AddNewGroup">
+    <Parameter Name="GroupName" Parameter="groupName" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_DeleteUserFromGroup" Method="usp_DeleteUserFromGroup">
+    <Parameter Name="UserEmail" Parameter="userEmail" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_AddGiftToEvent" Method="usp_AddGiftToEvent">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="EventID" Parameter="eventID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GiftTitle" Parameter="giftTitle" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="GiftDescription" Parameter="giftDescription" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="GiftPrice" Parameter="giftPrice" Type="System.Decimal" DbType="Decimal(13,3)" />
+    <Parameter Name="GiftURL" Parameter="giftURL" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_GetEventGifts" Method="usp_GetEventGifts">
+    <Parameter Name="EventID" Parameter="eventID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_GetEventGiftsResult">
+      <Column Name="GiftId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(13,3)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ClaimUserEventId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubmitUserEventId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_SetGiftClaimStatus" Method="usp_SetGiftClaimStatus">
+    <Parameter Name="GiftId" Parameter="giftId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_GetEventUsers" Method="usp_GetEventUsers">
+    <Parameter Name="EventId" Parameter="eventId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_GetEventUsersResult">
+      <Column Name="UserEventId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_DeleteGiftFromEvent" Method="usp_DeleteGiftFromEvent">
+    <Parameter Name="GiftID" Parameter="giftID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_EditEvent" Method="usp_EditEvent">
+    <Parameter Name="EventName" Parameter="eventName" Type="System.String" DbType="VarChar(128)" />
+    <Parameter Name="EventDate" Parameter="eventDate" Type="System.DateTime" DbType="DateTime2" />
+    <Parameter Name="MaxPrice" Parameter="maxPrice" Type="System.Decimal" DbType="Decimal(13,3)" />
+    <Parameter Name="EventID" Parameter="eventID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_EditGift" Method="usp_EditGift">
+    <Parameter Name="GiftID" Parameter="giftID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GiftTitle" Parameter="giftTitle" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="GiftDescription" Parameter="giftDescription" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="GiftPrice" Parameter="giftPrice" Type="System.Decimal" DbType="Decimal(13,3)" />
+    <Parameter Name="GiftURL" Parameter="giftURL" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_GetEvents" Method="usp_GetEvents">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(128)" />
+    <ElementType Name="usp_GetEventsResult">
+      <Column Name="EventId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventName" Type="System.String" DbType="VarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="MaxPrice" Type="System.Decimal" DbType="Decimal(13,3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
