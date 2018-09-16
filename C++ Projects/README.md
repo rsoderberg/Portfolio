@@ -7,3 +7,4 @@
 	- Prime Numbers Calculator  
 	- Quadratic Equation Solver  
 	- Rock Paper Scissors   
+	- Sums  
