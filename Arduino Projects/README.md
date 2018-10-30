@@ -1,4 +1,4 @@
-# Arduino Projects  
+# Circuit Playground Projects 
 	- Accelerometer Mouse  
 	- Guitar Tuner  
 	- LED Colors and Patterns  
