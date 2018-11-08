@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // Analog LED Clock using Circuit Playground
 // Integrated with a C# .NET Windows Form Application
 
 // Rachel Soderberg
-// October 2018
+// November 2018
 
 namespace Analog_LED_Clock
 {
