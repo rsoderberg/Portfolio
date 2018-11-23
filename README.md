@@ -7,6 +7,9 @@ Included in this Portfolio:
 	- Guitar Tuner  
 	- LED Colors and Patterns  
 	- Temperature and Light Meter  
+	
+###### AutoHotKey Scripts  
+	- KeystrokesMultipleWindowsScriptWOW  
 	  
 ###### C# Projects  
 	- BMI Calculator  
