@@ -38,28 +38,6 @@ Included in this Portfolio:
 	- Strings  
 	- 30 Days of Code  
 	
-###### Industry & Professional Samples  
-C#  
-	- Add Documents to Disposition  
-	- Add Properties to Treeview  
-	- Disallow Adding of Specific Document Types  
-	- Disposition Basics Property Detail  
-	- Update Dispose Link with PropertyStatus  
-
-SQL  
-	- Accepted File Types Release Script  
-	- Current WorkflowPhase  
-	- Disposition Approvals  
-	- Disposition Summary Views  
-	- Filter Draft Status Material Requests From Inventory  
-	- Properties Associated With Workflow Phases  
-	- Properties Without Related Acquisitions  
-	- Reproducing Types Bug  
-	- Requirement Overrides  
-	- Return List of Artifacts With CheckList Children  
-	- Return List of Documents  
-	- Testing PropertyStatus  
-	
 ###### Junior Project 2016-2017  
 	- The White Elephant Project  
 		Team members: Matt Dougal, Patrick Carlson, Keyul Patel, Rachel Soderberg  
