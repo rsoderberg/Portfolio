@@ -25,7 +25,8 @@ namespace NewsArticleWebScraper
                 startButton.Text = "Stop";
 
                 Scraper scraper = new Scraper();
-                scraper.ScrapeHackerRank();
+                //scraper.ScrapeHackerRank();
+                scraper.ScrapeOceanNetworks();
             }
             else
             {
@@ -53,7 +54,7 @@ namespace NewsArticleWebScraper
                     resultsTextbox.Text = resultsTextbox.Text.Substring(0, 100000);
 
                 Scraper scraper = new Scraper();
-                scraper.ScrapeHackerRank();
+                scraper.ScrapeHackerNews();
 
                 WeeklyEmail email = new WeeklyEmail();
                 //if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && DateTime.Now.Hour == 7 && DateTime.Now.Minute == 00)
