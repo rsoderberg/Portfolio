@@ -1,5 +1,5 @@
 # C# Projects  
 	- BMI Calculator  
-	- CST356 Web Design & Development (OIT)  
+	- News Article Web Scraper  
 	- Shape Tool
 	- Temperature Converter  
