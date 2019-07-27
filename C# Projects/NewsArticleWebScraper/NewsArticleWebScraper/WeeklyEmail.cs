@@ -20,7 +20,7 @@ namespace NewsArticleWebScraper
             {
                 foreach (var article in savedArticles)
                 {
-                    body += $"{article.Key} - {article.Value}{Environment.NewLine}";
+                    body += $"{article.Key} - {article.Value}{Environment.NewLine}{Environment.NewLine}";
                 }
             }
             else
