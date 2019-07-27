@@ -14,7 +14,6 @@ void setup() {
 void loop() {
   if (digitalRead(19) == HIGH) {
     delay(50);
-    Temperature:
     notepadLaunch();
     delay(1000);
     deviceTemp();
@@ -50,4 +49,3 @@ void deviceLight() {
   Keyboard.print(CircuitPlayground.lightSensor());
   Keyboard.print(" 1x");
 }
-
