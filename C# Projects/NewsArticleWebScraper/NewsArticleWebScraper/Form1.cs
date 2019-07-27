@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlTypes;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NewsArticleWebScraper
@@ -64,10 +56,10 @@ namespace NewsArticleWebScraper
                 scraper.ScrapeHackerRank();
 
                 WeeklyEmail email = new WeeklyEmail();
-                if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && DateTime.Now.Hour == 7 && DateTime.Now.Minute == 00)
-                    email.PrintEmailWithLastWeeksResults();
+                //if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && DateTime.Now.Hour == 7 && DateTime.Now.Minute == 00)
+                    email.CreateEmailWithLastWeeksResults();
 
-                _timeLeft = 5;
+                _timeLeft = 30;
                 timerLabel.Text = Convert.ToString(_timeLeft);
             }
         }
