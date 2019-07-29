@@ -18,15 +18,15 @@ namespace NewsArticleWebScraper
         {
             if (startButton.Text == "Start")
             {
-                _timeLeft = 30;
+                _timeLeft = 120;
                 timerLabel.Text = Convert.ToString(_timeLeft);
 
                 timer1.Start();
                 startButton.Text = "Stop";
 
                 Scraper scraper = new Scraper();
-                //scraper.ScrapeHackerRank();
-                scraper.ScrapeOceanNetworks();
+                scraper.ScrapeHackerNews();
+                //scraper.ScrapeOceanNetworks();
             }
             else
             {
@@ -41,6 +41,8 @@ namespace NewsArticleWebScraper
             resultsTextbox.Update();
         }
 
+
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (_timeLeft > 1)
@@ -53,15 +55,32 @@ namespace NewsArticleWebScraper
                 if (resultsTextbox.Text.Length >= 100000)
                     resultsTextbox.Text = resultsTextbox.Text.Substring(0, 100000);
 
+                ClearTextBoxWhenFull();
+
                 Scraper scraper = new Scraper();
                 scraper.ScrapeHackerNews();
 
-                WeeklyEmail email = new WeeklyEmail();
-                //if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && DateTime.Now.Hour == 7 && DateTime.Now.Minute == 00)
-                    email.CreateEmailWithLastWeeksResults();
+                bool emailSent = false;
+                while (!emailSent)
+                {
+                    WeeklyEmail email = new WeeklyEmail();
+                    if (!emailSent && DateTime.Now.DayOfWeek == DayOfWeek.Monday && DateTime.Now.Hour == 7 && DateTime.Now.Minute == 00)
+                        email.CreateEmailWithLastWeeksResults();
 
-                _timeLeft = 30;
+                    emailSent = true;
+                }
+
+                _timeLeft = 120;
                 timerLabel.Text = Convert.ToString(_timeLeft);
+            }
+        }
+
+        private void ClearTextBoxWhenFull()
+        {
+            if (resultsTextbox.Text.Length >= resultsTextbox.MaxLength - 1)
+            {
+                resultsTextbox.Clear();
+                UpdateTextBox(DateTime.Now + ": Cleared textbox!");
             }
         }
     }
