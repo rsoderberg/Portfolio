@@ -57,17 +57,32 @@ namespace NewsArticleWebScraper
 
                 ClearTextBoxWhenFull();
 
-                Scraper scraper = new Scraper();
-                scraper.ScrapeHackerNews();
-
-                bool emailSent = false;
-                while (!emailSent)
+                try
                 {
-                    WeeklyEmail email = new WeeklyEmail();
-                    if (!emailSent && DateTime.Now.DayOfWeek == DayOfWeek.Monday && DateTime.Now.Hour == 7 && DateTime.Now.Minute == 00)
-                        email.CreateEmailWithLastWeeksResults();
+                    Scraper scraper = new Scraper();
+                    scraper.ScrapeHackerNews();
+                    //scraper.ScrapeOceanNetworks();
+                }
+                catch (Exception ex)
+                {
+                    UpdateTextBox($"Scraping Error:{Environment.NewLine}{ex}");
+                }
 
-                    emailSent = true;
+                try
+                {
+                    bool emailSent = false;
+                    while (!emailSent)
+                    {
+                        DailyEmail email = new DailyEmail();
+                        if (!emailSent && DateTime.Now.Hour == 7 && DateTime.Now.Minute == 00)
+                            email.CreateEmailWithLastWeeksResults();
+
+                        emailSent = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    UpdateTextBox($"Daily Email Error:{Environment.NewLine}{ex}");
                 }
 
                 _timeLeft = 120;

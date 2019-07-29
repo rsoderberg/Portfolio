@@ -7,7 +7,7 @@ using NLog;
 
 namespace NewsArticleWebScraper
 {
-    class WeeklyEmail : Scraper
+    class DailyEmail : Scraper
     {
         internal static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
