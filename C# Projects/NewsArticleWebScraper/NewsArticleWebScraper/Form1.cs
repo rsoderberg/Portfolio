@@ -18,7 +18,7 @@ namespace NewsArticleWebScraper
         {
             if (startButton.Text == "Start")
             {
-                _timeLeft = 120;
+                _timeLeft = 59;
                 timerLabel.Text = Convert.ToString(_timeLeft);
 
                 timer1.Start();
@@ -85,14 +85,14 @@ namespace NewsArticleWebScraper
                     UpdateTextBox($"Daily Email Error:{Environment.NewLine}{ex}");
                 }
 
-                _timeLeft = 120;
+                _timeLeft = 59;
                 timerLabel.Text = Convert.ToString(_timeLeft);
             }
         }
 
         private void ClearTextBoxWhenFull()
         {
-            if (resultsTextbox.Text.Length >= resultsTextbox.MaxLength - 1)
+            if (resultsTextbox.Text.Length >= resultsTextbox.MaxLength - 20)
             {
                 resultsTextbox.Clear();
                 UpdateTextBox(DateTime.Now + ": Cleared textbox!");

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using NLog;
 
 namespace NewsArticleWebScraper
@@ -13,7 +14,9 @@ namespace NewsArticleWebScraper
 
         internal void CreateEmailWithLastWeeksResults()
         {
-            string subject = "Last Week's Scrape Results";
+            var yesterdaysDate = DateTime.Today.AddDays(-1);
+
+            string subject = $"{yesterdaysDate} Scrape Results";
             string body = "";
 
             if (savedArticles.Any())

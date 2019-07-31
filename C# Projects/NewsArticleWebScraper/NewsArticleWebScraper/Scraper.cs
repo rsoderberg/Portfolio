@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using AngleSharp.Dom;
@@ -13,17 +14,18 @@ using NLog;
 
 namespace NewsArticleWebScraper
 {
-    // TODO: Next steps - Create database to store Query, Title, and URL in case of program crash.
+    // TODO: Next steps - Create database to store Query, Title, and URL
+    // Write all unique articles to table, then send daily email. Clear table after successful send.
 
 
     class Scraper
     {
         public string[] QueryTerms { get; } = {
-            "Intro", "Tutorial", "Education", "Learn",
-            "C#", "CSharp", "Software", "Developer",
-            "Neural", "IoT", "Simulation", "Robot",
+            "Intro", "Tutorial", "Education", "Learn", "Book Review",
+            "C#", "CSharp", "Software", "Developer", "Code",
+            "Neural", "IoT", "Simulation", "Robot", "Hack",
             "Communication", "Language", "Translation", "French", "Français",
-            "Green", "Animal", "Nature", "Climate", "Pollution"
+            "Green", "Animal", "Nature", "Climate", "Pollution", "Sea", "Population"
         };
 
         public static Dictionary<string, string> savedArticles = new Dictionary<string, string> { };
@@ -37,7 +39,8 @@ namespace NewsArticleWebScraper
 
             CancellationTokenSource cancellationToken = new CancellationTokenSource();
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage request = await httpClient.GetAsync(_appSettings["HackerNewsUrl"]);
+            HttpResponseMessage request = await httpClient.GetAsync(_appSettings["HackerNewsUrl"], cancellationToken.Token);
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
             _logger.Log(LogLevel.Trace, $"Request: {request}");
 
             cancellationToken.Token.ThrowIfCancellationRequested();
