@@ -55,7 +55,7 @@ namespace NewsArticleWebScraper
                 if (resultsTextbox.Text.Length >= 100000)
                     resultsTextbox.Text = resultsTextbox.Text.Substring(0, 100000);
 
-                ClearTextBoxWhenFull();
+                HandleTextBoxFull();
 
                 try
                 {
@@ -90,13 +90,17 @@ namespace NewsArticleWebScraper
             }
         }
 
-        private void ClearTextBoxWhenFull()
+        private void HandleTextBoxFull()
         {
             if (resultsTextbox.Text.Length >= resultsTextbox.MaxLength - 20)
             {
-                resultsTextbox.Clear();
-                UpdateTextBox(DateTime.Now + ": Cleared textbox!");
+                ClearTextBox();
             }
+        }
+
+        public void ClearTextBox()
+        {
+            resultsTextbox.Clear();
         }
     }
 }

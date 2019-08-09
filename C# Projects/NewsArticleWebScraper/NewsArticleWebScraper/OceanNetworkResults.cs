@@ -48,8 +48,8 @@ namespace NewsArticleWebScraper
 
         public void SaveResultsForWeeklyEmail(string term)
         {
-            if (!savedArticles.ContainsKey(Title) && !savedArticles.ContainsValue(Url))
-                savedArticles.Add(Title, Url);
+            if (!SavedArticles.ContainsKey(Title) && !SavedArticles.ContainsValue(Url))
+                SavedArticles.Add(Title, Url);
         }
     }
 }

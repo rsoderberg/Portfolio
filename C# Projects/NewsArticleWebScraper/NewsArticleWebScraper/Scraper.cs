@@ -21,14 +21,15 @@ namespace NewsArticleWebScraper
     class Scraper
     {
         public string[] QueryTerms { get; } = {
-            "Intro", "Tutorial", "Education", "Learn", "Book Review",
+            "Intro", "Tutorial", "Education", "Learn", "Book",
             "C#", "CSharp", "Software", "Developer", "Code",
             "Neural", "IoT", "Simulation", "Robot", "Hack",
             "Communication", "Language", "Translation", "French", "Français",
-            "Green", "Animal", "Nature", "Climate", "Pollution", "Sea", "Population"
+            "Green", "Animal", "Nature", "Climate", "Pollution", "Sea", "Population",
+            "Martial Arts", "Muay Thai", "Kickboxing", "Kali", "Escrima"
         };
 
-        public static Dictionary<string, string> savedArticles = new Dictionary<string, string> { };
+        public static Dictionary<string, string> SavedArticles = new Dictionary<string, string> { };
 
         internal readonly NameValueCollection _appSettings = ConfigurationManager.AppSettings;
         internal static readonly Logger _logger = LogManager.GetCurrentClassLogger();
@@ -37,24 +38,32 @@ namespace NewsArticleWebScraper
         {
             _logger.Log(LogLevel.Trace, $"URL: {_appSettings["HackerNewsUrl"]}");
 
-            CancellationTokenSource cancellationToken = new CancellationTokenSource();
-            HttpClient httpClient = new HttpClient();
-            HttpResponseMessage request = await httpClient.GetAsync(_appSettings["HackerNewsUrl"], cancellationToken.Token);
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-            _logger.Log(LogLevel.Trace, $"Request: {request}");
+            try
+            {
+                CancellationTokenSource cancellationToken = new CancellationTokenSource();
+                HttpClient httpClient = new HttpClient();
+                HttpResponseMessage request =
+                    await httpClient.GetAsync(_appSettings["HackerNewsUrl"], cancellationToken.Token);
+                ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                _logger.Log(LogLevel.Trace, $"Request: {request}");
 
-            cancellationToken.Token.ThrowIfCancellationRequested();
+                cancellationToken.Token.ThrowIfCancellationRequested();
 
-            Stream response = await request.Content.ReadAsStreamAsync();
-            _logger.Log(LogLevel.Trace, $"Response: {response}");
+                Stream response = await request.Content.ReadAsStreamAsync();
+                _logger.Log(LogLevel.Trace, $"Response: {response}");
 
-            cancellationToken.Token.ThrowIfCancellationRequested();
-            
-            HtmlParser parser = new HtmlParser();
-            IHtmlDocument document = parser.ParseDocument(response);
-            _logger.Log(LogLevel.Trace, $"Document: {document}");
+                cancellationToken.Token.ThrowIfCancellationRequested();
 
-            GetHackerNewsScrapeResults(document);
+                HtmlParser parser = new HtmlParser();
+                IHtmlDocument document = parser.ParseDocument(response);
+                _logger.Log(LogLevel.Trace, $"Document: {document}");
+
+                GetHackerNewsScrapeResults(document);
+            }
+            catch (Exception e)
+            {
+                WebScraperForm.ProcessMonitor.UpdateTextBox($"There was an error getting scrape results:{Environment.NewLine}{e}{Environment.NewLine}");
+            }
         }
 
         internal async void ScrapeOceanNetworks()

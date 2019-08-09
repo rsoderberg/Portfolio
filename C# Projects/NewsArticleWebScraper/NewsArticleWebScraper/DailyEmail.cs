@@ -19,9 +19,9 @@ namespace NewsArticleWebScraper
             string subject = $"{yesterdaysDate} Scrape Results";
             string body = "";
 
-            if (savedArticles.Any())
+            if (SavedArticles.Any())
             {
-                foreach (var article in savedArticles)
+                foreach (var article in SavedArticles)
                 {
                     body += $"{article.Key} - {article.Value}{Environment.NewLine}{Environment.NewLine}";
                 }
@@ -35,6 +35,14 @@ namespace NewsArticleWebScraper
 
             Email email = new Email();
             email.BuildEmail(subject, body);
+
+            ClearSavedArticles();
+            WebScraperForm.ProcessMonitor.ClearTextBox();
+        }
+
+        private void ClearSavedArticles()
+        {
+            SavedArticles.Clear();
         }
     }
 }
