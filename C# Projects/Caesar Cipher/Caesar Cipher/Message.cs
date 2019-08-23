@@ -35,6 +35,9 @@ namespace Caesar_Cipher
 
                 Console.Write(shiftedLetter);
             }
+
+            Console.WriteLine();
+            Console.WriteLine();
         }
     }
 }
