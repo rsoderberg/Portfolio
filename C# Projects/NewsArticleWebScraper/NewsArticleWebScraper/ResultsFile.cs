@@ -28,7 +28,7 @@ namespace NewsArticleWebScraper
 
                 using (StreamWriter file = File.AppendText(FileLocation))
                 {
-                    file.WriteLine($"{_form.Title} - {_form.Url}");
+                    file.WriteLine($"{_form.Title} - {_form.Url}{Environment.NewLine}");
                     file.Close();
                 }
             }
