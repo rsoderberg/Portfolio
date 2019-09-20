@@ -11,6 +11,7 @@ namespace NewsArticleWebScraper
         private string Url { get; set; }
         private string Title { get; set; }
 
+        private static WebScraperForm _form = WebScraperForm.ProcessMonitor;
         internal static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public void PrintResultsToResultsTextbox(string term, IEnumerable<IElement> articleLink)
@@ -19,10 +20,10 @@ namespace NewsArticleWebScraper
             {
                 CleanUpResultsAndSplitIntoTitleAndUrl(result);
 
-                WebScraperForm.ProcessMonitor.UpdateTextBox($"{Title} - {Url}{Environment.NewLine}");
+                _form.UpdateTextBox($"{Title} - {Url}{Environment.NewLine}");
             }
 
-            WebScraperForm.ProcessMonitor.UpdateTextBox($"-----{term}-----");
+            _form.UpdateTextBox($"-----{term}-----");
         }
 
         private void CleanUpResultsAndSplitIntoTitleAndUrl(IElement result)
@@ -46,7 +47,7 @@ namespace NewsArticleWebScraper
             Title = splitResults[1];
         }
 
-        public void SaveResultsForWeeklyEmail(string term)
+        public void SaveResultsForDailyEmail(string term)
         {
             if (!SavedArticles.ContainsKey(Title) && !SavedArticles.ContainsValue(Url))
                 SavedArticles.Add(Title, Url);

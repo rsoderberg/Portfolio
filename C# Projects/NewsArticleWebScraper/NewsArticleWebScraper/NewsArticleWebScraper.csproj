@@ -78,6 +78,7 @@
     <Compile Include="OceanNetworkResults.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultsFile.cs" />
     <Compile Include="Scraper.cs" />
     <Compile Include="DailyEmail.cs" />
     <EmbeddedResource Include="Form1.resx">

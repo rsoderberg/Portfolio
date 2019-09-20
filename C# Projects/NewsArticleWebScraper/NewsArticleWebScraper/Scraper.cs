@@ -14,10 +14,6 @@ using NLog;
 
 namespace NewsArticleWebScraper
 {
-    // TODO: Next steps - Create database to store Query, Title, and URL
-    // Write all unique articles to table, then send daily email. Clear table after successful send.
-
-
     class Scraper
     {
         public string[] QueryTerms { get; } = {
@@ -33,6 +29,7 @@ namespace NewsArticleWebScraper
 
         public static Dictionary<string, string> SavedArticles = new Dictionary<string, string> { };
 
+        private static WebScraperForm _form = WebScraperForm.ProcessMonitor;
         internal readonly NameValueCollection _appSettings = ConfigurationManager.AppSettings;
         internal static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
@@ -64,7 +61,32 @@ namespace NewsArticleWebScraper
             }
             catch (Exception e)
             {
-                WebScraperForm.ProcessMonitor.UpdateTextBox($"There was an error getting scrape results:{Environment.NewLine}{e}{Environment.NewLine}");
+                _form.UpdateTextBox($"There was an error getting scrape results:{Environment.NewLine}{e}{Environment.NewLine}");
+            }
+        }
+
+        private void GetHackerNewsScrapeResults(IHtmlDocument document)
+        {
+            IEnumerable<IElement> articleLink;
+            foreach (var term in QueryTerms)
+            {
+                articleLink = document.All.Where(x => x.ClassName == "storylink" && (x.InnerHtml.Contains(term) || x.InnerHtml.Contains(term.ToLower())));
+                _logger.Log(LogLevel.Trace, $"Number of links found: {articleLink.Count()}");
+
+                if (articleLink.Any())
+                {
+                    HackerNewsResults hackerNews = new HackerNewsResults();
+                    hackerNews.PrintToResultsTextbox(term, articleLink);
+
+                    ResultsFile results = new ResultsFile();
+
+                    if (!results.FileExists())
+                    {
+                        results.CreateFile();
+                    }
+
+                    results.WriteToFile();
+                }
             }
         }
 
@@ -91,23 +113,6 @@ namespace NewsArticleWebScraper
             GetOceanNetworksScrapeResults(document);
         }
 
-        private void GetHackerNewsScrapeResults(IHtmlDocument document)
-        {
-            IEnumerable<IElement> articleLink;
-            foreach (var term in QueryTerms)
-            {
-                articleLink = document.All.Where(x => x.ClassName == "storylink" && (x.InnerHtml.Contains(term) || x.InnerHtml.Contains(term.ToLower())));
-                _logger.Log(LogLevel.Trace, $"Number of links found: {articleLink.Count()}");
-
-                if (articleLink.Any())
-                {
-                    HackerNewsResults results = new HackerNewsResults();
-                    results.PrintResultsToResultsTextbox(term, articleLink);
-                    results.SaveResultsForWeeklyEmail(term);
-                }
-            }
-        }
-
         private void GetOceanNetworksScrapeResults(IHtmlDocument document)
         {
             IEnumerable<IElement> articleLink;
@@ -120,7 +125,7 @@ namespace NewsArticleWebScraper
                 {
                     OceanNetworkResults results = new OceanNetworkResults();
                     results.PrintResultsToResultsTextbox(term, articleLink);
-                    results.SaveResultsForWeeklyEmail(term);
+                    results.SaveResultsForDailyEmail(term);
                 }
             }
         }

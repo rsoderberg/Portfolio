@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using NLog;
+﻿using NLog;
+using System;
 
 namespace NewsArticleWebScraper
 {
@@ -12,25 +7,29 @@ namespace NewsArticleWebScraper
     {
         internal static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        internal void CreateEmailWithLastWeeksResults()
+        internal void CreateEmailWithPreviousDaysResults()
         {
-            var yesterdaysDate = DateTime.Today.AddDays(-1);
+            var yesterdaysDate = DateTime.Today.AddDays(-1).Date;
 
             string subject = $"{yesterdaysDate} Scrape Results";
             string body = "";
 
-            if (SavedArticles.Any())
+            ResultsFile results = new ResultsFile();
+
+            if (results.FileExists())
             {
-                foreach (var article in SavedArticles)
+                string[] lines = results.ReadLinesFromFile();
+
+                foreach (var line in lines)
                 {
-                    body += $"{article.Key} - {article.Value}{Environment.NewLine}{Environment.NewLine}";
+                    body += $"{line}{Environment.NewLine}{Environment.NewLine}";
                 }
             }
             else
             {
                 body = $"No results found for queries:{Environment.NewLine}";
                 foreach (var query in QueryTerms)
-                    body += $"{query}";
+                    body += $"{query} ";
             }
 
             Email email = new Email();

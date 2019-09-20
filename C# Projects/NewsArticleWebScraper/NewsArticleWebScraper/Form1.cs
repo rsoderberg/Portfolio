@@ -6,6 +6,10 @@ namespace NewsArticleWebScraper
     public partial class WebScraperForm : Form
     {
         public static WebScraperForm ProcessMonitor;
+
+        internal string Title { get; set; }
+        internal string Url { get; set; }
+
         private int _timeLeft;
 
         public WebScraperForm()
@@ -18,7 +22,7 @@ namespace NewsArticleWebScraper
         {
             if (startButton.Text == "Start")
             {
-                _timeLeft = 59;
+                _timeLeft = 40;
                 timerLabel.Text = Convert.ToString(_timeLeft);
 
                 timer1.Start();
@@ -74,8 +78,8 @@ namespace NewsArticleWebScraper
                     while (!emailSent)
                     {
                         DailyEmail email = new DailyEmail();
-                        if (!emailSent && DateTime.Now.Hour == 7 && DateTime.Now.Minute == 00)
-                            email.CreateEmailWithLastWeeksResults();
+                        if (!emailSent && DateTime.Now.Hour == 00 && DateTime.Now.Minute == 00)
+                            email.CreateEmailWithPreviousDaysResults();
 
                         emailSent = true;
                     }
@@ -85,7 +89,7 @@ namespace NewsArticleWebScraper
                     UpdateTextBox($"Daily Email Error:{Environment.NewLine}{ex}");
                 }
 
-                _timeLeft = 59;
+                _timeLeft = 40;
                 timerLabel.Text = Convert.ToString(_timeLeft);
             }
         }

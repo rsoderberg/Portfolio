@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using AngleSharp.Dom;
+﻿using AngleSharp.Dom;
 using AngleSharp.Text;
 using NLog;
+using System;
+using System.Collections.Generic;
 
 namespace NewsArticleWebScraper
 {
     class HackerNewsResults : Scraper
     {
-        private string Url { get; set; }
-        private string Title { get; set; }
-
+        private static WebScraperForm _form  = WebScraperForm.ProcessMonitor;
         internal static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public void PrintResultsToResultsTextbox(string term, IEnumerable<IElement> articleLink)
+        public void PrintToResultsTextbox(string term, IEnumerable<IElement> articleLink)
         {
             foreach (var result in articleLink)
             {
                 CleanUpResultsAndSplitIntoTitleAndUrl(result);
 
-                WebScraperForm.ProcessMonitor.UpdateTextBox($"{Title} - {Url}{Environment.NewLine}");
+                _form.UpdateTextBox($"{_form.Title} - {_form.Url}{Environment.NewLine}");
             }
 
-            WebScraperForm.ProcessMonitor.UpdateTextBox($"-----{term}-----");
+            _form.UpdateTextBox($"-----{term}-----");
         }
 
         private void CleanUpResultsAndSplitIntoTitleAndUrl(IElement result)
@@ -35,17 +33,10 @@ namespace NewsArticleWebScraper
             htmlResult = htmlResult.ReplaceFirst("</a>", "");
 
             string[] splitResults = htmlResult.Split('*');
-            Url = splitResults[0];
-            Title = splitResults[1];
+            _form.Url = splitResults[0];
+            _form.Title = splitResults[1];
 
-            _logger.Log(LogLevel.Trace, $"Title: {Title}, URL: {Url}");
+            _logger.Log(LogLevel.Trace, $"Title: {_form.Title}, URL: {_form.Url}");
         }
-
-        public void SaveResultsForWeeklyEmail(string term)
-        {
-            if (!SavedArticles.ContainsKey(Title) && !SavedArticles.ContainsValue(Url))
-                SavedArticles.Add(Title, Url);
-        }
-
     }
 }
