@@ -23,10 +23,12 @@ namespace NewsArticleWebScraper
         public string[] QueryTerms { get; } = {
             "Intro", "Tutorial", "Education", "Learn", "Book",
             "C#", "CSharp", "Software", "Developer", "Code",
-            "Neural", "IoT", "Simulation", "Robot", "Hack",
+            "Neural", "IoT", "Simulation", "Robot",
+            "Hack", "Cyber", "Security",
             "Communication", "Language", "Translation", "French", "Français",
             "Green", "Animal", "Nature", "Climate", "Pollution", "Sea", "Population",
-            "Martial Arts", "Muay Thai", "Kickboxing", "Kali", "Escrima"
+            "Martial Arts", "Muay Thai", "Kickboxing", "Kali", "Escrima",
+            "Austin", "Texas"
         };
 
         public static Dictionary<string, string> SavedArticles = new Dictionary<string, string> { };
