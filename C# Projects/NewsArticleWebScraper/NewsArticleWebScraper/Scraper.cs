@@ -80,7 +80,9 @@ namespace NewsArticleWebScraper
 
                     ResultsFile results = new ResultsFile();
 
-                    if (!results.FileExists())
+                    var currentDate = $"{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Year}";
+
+                    if (!results.FileExists(currentDate))
                     {
                         results.CreateFile();
                     }

@@ -6,23 +6,24 @@ namespace NewsArticleWebScraper
     class DailyEmail : Scraper
     {
         internal static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private static WebScraperForm _form = WebScraperForm.ProcessMonitor;
 
         internal void CreateEmailWithPreviousDaysResults()
         {
-            var yesterdaysDate = DateTime.Today.AddDays(-1).Date;
+            string yesterdaysDate = $"{DateTime.Now.Month}{DateTime.Now.Day - 1}{DateTime.Now.Year}";
 
             string subject = $"{yesterdaysDate} Scrape Results";
             string body = "";
 
             ResultsFile results = new ResultsFile();
 
-            if (results.FileExists())
+            if (results.FileExists(yesterdaysDate))
             {
                 string[] lines = results.ReadLinesFromFile();
 
                 foreach (var line in lines)
                 {
-                    body += $"{line}{Environment.NewLine}{Environment.NewLine}";
+                    body += $"{line}{Environment.NewLine}";
                 }
             }
             else
@@ -36,7 +37,7 @@ namespace NewsArticleWebScraper
             email.BuildEmail(subject, body);
 
             ClearSavedArticles();
-            WebScraperForm.ProcessMonitor.ClearTextBox();
+            _form.ClearTextBox();
         }
 
         private void ClearSavedArticles()

@@ -22,7 +22,7 @@ namespace NewsArticleWebScraper
         {
             if (startButton.Text == "Start")
             {
-                _timeLeft = 40;
+                _timeLeft = 50;
                 timerLabel.Text = Convert.ToString(_timeLeft);
 
                 timer1.Start();
@@ -89,7 +89,7 @@ namespace NewsArticleWebScraper
                     UpdateTextBox($"Daily Email Error:{Environment.NewLine}{ex}");
                 }
 
-                _timeLeft = 40;
+                _timeLeft = 50;
                 timerLabel.Text = Convert.ToString(_timeLeft);
             }
         }
