@@ -11,6 +11,8 @@ namespace NewsArticleWebScraper
         internal string Url { get; set; }
 
         private int _timeLeft;
+        private bool _emailSent;
+        private int _timerMax = 40;
 
         public WebScraperForm()
         {
@@ -22,7 +24,7 @@ namespace NewsArticleWebScraper
         {
             if (startButton.Text == "Start")
             {
-                _timeLeft = 50;
+                _timeLeft = _timerMax;
                 timerLabel.Text = Convert.ToString(_timeLeft);
 
                 timer1.Start();
@@ -74,14 +76,19 @@ namespace NewsArticleWebScraper
 
                 try
                 {
-                    bool emailSent = false;
-                    while (!emailSent)
+                    if (!_emailSent)
                     {
                         DailyEmail email = new DailyEmail();
-                        if (!emailSent && DateTime.Now.Hour == 00 && DateTime.Now.Minute == 00)
+                        if (!_emailSent && DateTime.Now.Hour == 00 && DateTime.Now.Minute == 00)
+                        {
                             email.CreateEmailWithPreviousDaysResults();
-
-                        emailSent = true;
+                            _emailSent = true;
+                        }
+                        if (_emailSent && DateTime.Now.Hour == 00 && DateTime.Now.Minute == 01) // Reset email check for next day
+                        {
+                            email.CreateEmailWithPreviousDaysResults();
+                            _emailSent = true;
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -89,7 +96,7 @@ namespace NewsArticleWebScraper
                     UpdateTextBox($"Daily Email Error:{Environment.NewLine}{ex}");
                 }
 
-                _timeLeft = 50;
+                _timeLeft = _timerMax;
                 timerLabel.Text = Convert.ToString(_timeLeft);
             }
         }
