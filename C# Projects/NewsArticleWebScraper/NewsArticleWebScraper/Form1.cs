@@ -79,7 +79,7 @@ namespace NewsArticleWebScraper
                     if (!_emailSent)
                     {
                         DailyEmail email = new DailyEmail();
-                        if (!_emailSent && DateTime.Now.Hour == 07 && DateTime.Now.Minute == 54)
+                        if (!_emailSent && DateTime.Now.Hour == 00 && DateTime.Now.Minute == 00)
                         {
                             email.CreateEmailWithPreviousDaysResults();
                             _emailSent = true;
