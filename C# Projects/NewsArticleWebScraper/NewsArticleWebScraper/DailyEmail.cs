@@ -19,7 +19,7 @@ namespace NewsArticleWebScraper
 
             if (results.FileExists(yesterdaysDate))
             {
-                string[] lines = results.ReadLinesFromFile();
+                string[] lines = results.ReadLinesFromFile(yesterdaysDate);
 
                 foreach (var line in lines)
                 {

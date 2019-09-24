@@ -37,9 +37,9 @@ namespace NewsArticleWebScraper
             }
         }
 
-        internal string[] ReadLinesFromFile()
+        internal string[] ReadLinesFromFile(string date)
         {
-            string[] lines = File.ReadAllLines($"{FileLocation}{CurrentDate}{FileNameAppend}");
+            string[] lines = File.ReadAllLines($"{FileLocation}{date}{FileNameAppend}");
             return lines;
         }
     }
