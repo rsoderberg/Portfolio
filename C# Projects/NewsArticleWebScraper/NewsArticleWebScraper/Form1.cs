@@ -84,10 +84,9 @@ namespace NewsArticleWebScraper
                             email.CreateEmailWithPreviousDaysResults();
                             _emailSent = true;
                         }
-                        if (_emailSent && DateTime.Now.Hour == 00 && DateTime.Now.Minute == 01) // Reset email check for next day
+                        else // Reset email check for next day
                         {
-                            email.CreateEmailWithPreviousDaysResults();
-                            _emailSent = true;
+                            _emailSent = false;
                         }
                     }
                 }
