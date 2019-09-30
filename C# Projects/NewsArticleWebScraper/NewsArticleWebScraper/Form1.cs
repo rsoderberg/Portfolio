@@ -12,7 +12,7 @@ namespace NewsArticleWebScraper
 
         private int _timeLeft;
         private bool _emailSent;
-        private int _timerMax = 40;
+        private int _timerMax = 30;
 
         public WebScraperForm()
         {
