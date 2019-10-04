@@ -76,18 +76,19 @@ namespace NewsArticleWebScraper
 
                 try
                 {
-                    if (!_emailSent)
+                    if (DateTime.Now.Hour == 00 && DateTime.Now.Minute == 00)
                     {
-                        DailyEmail email = new DailyEmail();
-                        if (!_emailSent && DateTime.Now.Hour == 00 && DateTime.Now.Minute == 00)
+                        if (!_emailSent)
                         {
+                            DailyEmail email = new DailyEmail();
+
                             email.CreateEmailWithPreviousDaysResults();
                             _emailSent = true;
                         }
-                        else // Reset email check for next day
-                        {
-                            _emailSent = false;
-                        }
+                    }
+                    else // Reset email for next day
+                    {
+                        _emailSent = false;
                     }
                 }
                 catch (Exception ex)
