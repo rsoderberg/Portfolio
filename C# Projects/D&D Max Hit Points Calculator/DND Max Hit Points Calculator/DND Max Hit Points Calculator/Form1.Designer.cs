@@ -37,12 +37,13 @@
             this.calculateButton = new System.Windows.Forms.Button();
             this.maxHPTextBox = new System.Windows.Forms.TextBox();
             this.constModTextBox = new System.Windows.Forms.TextBox();
+            this.rollTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 335);
+            this.label1.Location = new System.Drawing.Point(40, 335);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 0;
@@ -52,15 +53,15 @@
             // 
             this.resultsTextBox.Location = new System.Drawing.Point(12, 12);
             this.resultsTextBox.Name = "resultsTextBox";
-            this.resultsTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.resultsTextBox.Size = new System.Drawing.Size(236, 299);
+            this.resultsTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.resultsTextBox.Size = new System.Drawing.Size(252, 299);
             this.resultsTextBox.TabIndex = 1;
             this.resultsTextBox.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 359);
+            this.label2.Location = new System.Drawing.Point(40, 359);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 2;
@@ -69,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 385);
+            this.label3.Location = new System.Drawing.Point(40, 385);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 3;
@@ -78,48 +79,67 @@
             // dieComboBox
             // 
             this.dieComboBox.FormattingEnabled = true;
-            this.dieComboBox.Location = new System.Drawing.Point(68, 382);
+            this.dieComboBox.Items.AddRange(new object[] {
+            "d2",
+            "d3",
+            "d4",
+            "d6",
+            "d8",
+            "d10",
+            "d12",
+            "d20"});
+            this.dieComboBox.Location = new System.Drawing.Point(54, 416);
             this.dieComboBox.Name = "dieComboBox";
             this.dieComboBox.Size = new System.Drawing.Size(121, 21);
             this.dieComboBox.TabIndex = 4;
             // 
             // rollButton
             // 
-            this.rollButton.Location = new System.Drawing.Point(195, 381);
+            this.rollButton.Location = new System.Drawing.Point(181, 415);
             this.rollButton.Name = "rollButton";
             this.rollButton.Size = new System.Drawing.Size(34, 23);
             this.rollButton.TabIndex = 5;
             this.rollButton.Text = "Roll";
             this.rollButton.UseVisualStyleBackColor = true;
+            this.rollButton.Click += new System.EventHandler(this.rollButton_Click);
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(54, 432);
+            this.calculateButton.Location = new System.Drawing.Point(60, 450);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(141, 23);
             this.calculateButton.TabIndex = 6;
             this.calculateButton.Text = "Calculate Max Hit Points";
             this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
             // maxHPTextBox
             // 
-            this.maxHPTextBox.Location = new System.Drawing.Point(106, 332);
+            this.maxHPTextBox.Location = new System.Drawing.Point(134, 332);
             this.maxHPTextBox.Name = "maxHPTextBox";
             this.maxHPTextBox.Size = new System.Drawing.Size(100, 20);
             this.maxHPTextBox.TabIndex = 7;
             // 
             // constModTextBox
             // 
-            this.constModTextBox.Location = new System.Drawing.Point(106, 356);
+            this.constModTextBox.Location = new System.Drawing.Point(134, 356);
             this.constModTextBox.Name = "constModTextBox";
             this.constModTextBox.Size = new System.Drawing.Size(100, 20);
             this.constModTextBox.TabIndex = 8;
+            // 
+            // rollTextBox
+            // 
+            this.rollTextBox.Location = new System.Drawing.Point(134, 382);
+            this.rollTextBox.Name = "rollTextBox";
+            this.rollTextBox.Size = new System.Drawing.Size(100, 20);
+            this.rollTextBox.TabIndex = 9;
             // 
             // calculateMaxHPForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 482);
+            this.ClientSize = new System.Drawing.Size(276, 482);
+            this.Controls.Add(this.rollTextBox);
             this.Controls.Add(this.constModTextBox);
             this.Controls.Add(this.maxHPTextBox);
             this.Controls.Add(this.calculateButton);
@@ -130,7 +150,7 @@
             this.Controls.Add(this.resultsTextBox);
             this.Controls.Add(this.label1);
             this.Name = "calculateMaxHPForm";
-            this.Text = "Calculate Max HP";
+            this.Text = "Max HP Calculator";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +167,7 @@
         private System.Windows.Forms.Button calculateButton;
         private System.Windows.Forms.TextBox maxHPTextBox;
         private System.Windows.Forms.TextBox constModTextBox;
+        private System.Windows.Forms.TextBox rollTextBox;
     }
 }
 
