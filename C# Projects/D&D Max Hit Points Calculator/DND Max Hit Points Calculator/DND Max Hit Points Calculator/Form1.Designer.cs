@@ -54,7 +54,7 @@
             // 
             this.resultsTextBox.Location = new System.Drawing.Point(12, 12);
             this.resultsTextBox.Name = "resultsTextBox";
-            this.resultsTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.resultsTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.resultsTextBox.Size = new System.Drawing.Size(252, 299);
             this.resultsTextBox.TabIndex = 1;
             this.resultsTextBox.Text = "";
@@ -89,14 +89,14 @@
             "d10",
             "d12",
             "d20"});
-            this.dieComboBox.Location = new System.Drawing.Point(54, 418);
+            this.dieComboBox.Location = new System.Drawing.Point(56, 418);
             this.dieComboBox.Name = "dieComboBox";
             this.dieComboBox.Size = new System.Drawing.Size(121, 21);
             this.dieComboBox.TabIndex = 4;
             // 
             // rollButton
             // 
-            this.rollButton.Location = new System.Drawing.Point(181, 417);
+            this.rollButton.Location = new System.Drawing.Point(183, 417);
             this.rollButton.Name = "rollButton";
             this.rollButton.Size = new System.Drawing.Size(34, 23);
             this.rollButton.TabIndex = 5;
@@ -106,7 +106,7 @@
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(60, 450);
+            this.calculateButton.Location = new System.Drawing.Point(62, 450);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(141, 23);
             this.calculateButton.TabIndex = 6;

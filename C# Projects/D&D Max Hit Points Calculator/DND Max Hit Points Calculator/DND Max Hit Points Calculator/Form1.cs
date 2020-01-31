@@ -70,7 +70,9 @@ namespace DND_Max_Hit_Points_Calculator
 
             var newMaxHP = Convert.ToInt32(rollTextBox.Text) + Convert.ToInt32(constModTextBox.Text) + Convert.ToInt32(maxHPTextBox.Text);
 
-            OutputHandler.PrintResult($"({rollTextBox.Text} + {constModTextBox.Text}) + {maxHPTextBox.Text} = {newMaxHP}");
+            OutputHandler.PrintResult($"({rollTextBox.Text} + {constModTextBox.Text}) + {maxHPTextBox.Text} = {newMaxHP}{Environment.NewLine}");
+
+            maxHPTextBox.Text = Convert.ToString(newMaxHP);
         }
     }
 }

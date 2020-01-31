@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DND_Max_Hit_Points_Calculator
 {
     class Dice
     {
+        private static Random rolledSide = new Random();
+
         public string Roll(int die, string currentLevel)
         {
-            calculateMaxHPForm.OutputHandler.PrintResult($"Rolling a d{die}.....{Environment.NewLine}");
+            calculateMaxHPForm.OutputHandler.PrintResult($"Rolling a d{die}.....");
 
             int roll = 0;
 
@@ -20,8 +18,7 @@ namespace DND_Max_Hit_Points_Calculator
             }
             else
             {
-                // TODO: Randomization! Need to "roll" the die
-                roll = die - 1;
+                roll = rolledSide.Next(1, die);
             }
 
             calculateMaxHPForm.OutputHandler.PrintResult($"You rolled: {roll}{Environment.NewLine}");
