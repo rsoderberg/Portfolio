@@ -25,40 +25,52 @@ namespace DND_Max_Hit_Points_Calculator
 
             string rollValue = "";
 
-            switch (Convert.ToString(dieComboBox.SelectedItem))
+            if (Convert.ToString(dieComboBox.SelectedItem) == "")
+                OutputHandler.PrintResult("Select your hit die before rolling");
+            else
             {
-                case "d2":
-                    rollValue = die.Roll(2);
-                    break;
-                case "d3":
-                    rollValue = die.Roll(3);
-                    break;
-                case "d4":
-                    rollValue = die.Roll(4);
-                    break;
-                case "d6":
-                    rollValue = die.Roll(6);
-                    break;
-                case "d8":
-                    rollValue = die.Roll(8);
-                    break;
-                case "d10":
-                    rollValue = die.Roll(10);
-                    break;
-                case "d12":
-                    rollValue = die.Roll(12);
-                    break;
-                case "d20":
-                    rollValue = die.Roll(20);
-                    break;
-            }
+                switch (Convert.ToString(dieComboBox.SelectedItem))
+                {
+                    case "d2":
+                        rollValue = die.Roll(2, maxHPTextBox.Text);
+                        break;
+                    case "d3":
+                        rollValue = die.Roll(3, maxHPTextBox.Text);
+                        break;
+                    case "d4":
+                        rollValue = die.Roll(4, maxHPTextBox.Text);
+                        break;
+                    case "d6":
+                        rollValue = die.Roll(6, maxHPTextBox.Text);
+                        break;
+                    case "d8":
+                        rollValue = die.Roll(8, maxHPTextBox.Text);
+                        break;
+                    case "d10":
+                        rollValue = die.Roll(10, maxHPTextBox.Text);
+                        break;
+                    case "d12":
+                        rollValue = die.Roll(12, maxHPTextBox.Text);
+                        break;
+                    case "d20":
+                        rollValue = die.Roll(20, maxHPTextBox.Text);
+                        break;
+                }
 
-            rollTextBox.Text = rollValue;
+                rollTextBox.Text = rollValue;
+            }
         }
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
+            if (Convert.ToString(dieComboBox.SelectedItem) == "")
+                OutputHandler.PrintResult("Select your hit die and roll before calculating HP");
+            if (rollTextBox.Text == "")
+                OutputHandler.PrintResult("Select your hit die and roll before calculating HP");
 
+            var newMaxHP = Convert.ToInt32(rollTextBox.Text) + Convert.ToInt32(constModTextBox.Text) + Convert.ToInt32(maxHPTextBox.Text);
+
+            OutputHandler.PrintResult($"({rollTextBox.Text} + {constModTextBox.Text}) + {maxHPTextBox.Text} = {newMaxHP}");
         }
     }
 }

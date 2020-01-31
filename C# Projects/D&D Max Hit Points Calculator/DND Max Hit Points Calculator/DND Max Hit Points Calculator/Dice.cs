@@ -8,13 +8,21 @@ namespace DND_Max_Hit_Points_Calculator
 {
     class Dice
     {
-        public string Roll(int die)
+        public string Roll(int die, string currentLevel)
         {
             calculateMaxHPForm.OutputHandler.PrintResult($"Rolling a d{die}.....{Environment.NewLine}");
 
-            int roll = die;
+            int roll = 0;
 
-            // TODO: Randomization! Need to "roll" the die
+            if (currentLevel == "0")
+            {
+                roll = die;
+            }
+            else
+            {
+                // TODO: Randomization! Need to "roll" the die
+                roll = die - 1;
+            }
 
             calculateMaxHPForm.OutputHandler.PrintResult($"You rolled: {roll}{Environment.NewLine}");
 

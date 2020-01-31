@@ -38,12 +38,13 @@
             this.maxHPTextBox = new System.Windows.Forms.TextBox();
             this.constModTextBox = new System.Windows.Forms.TextBox();
             this.rollTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 335);
+            this.label1.Location = new System.Drawing.Point(40, 323);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 0;
@@ -61,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 359);
+            this.label2.Location = new System.Drawing.Point(48, 364);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 2;
@@ -70,11 +71,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 385);
+            this.label3.Location = new System.Drawing.Point(62, 390);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Die Roll: ";
+            this.label3.Text = "Hit Die Roll: ";
             // 
             // dieComboBox
             // 
@@ -88,14 +89,14 @@
             "d10",
             "d12",
             "d20"});
-            this.dieComboBox.Location = new System.Drawing.Point(54, 416);
+            this.dieComboBox.Location = new System.Drawing.Point(54, 418);
             this.dieComboBox.Name = "dieComboBox";
             this.dieComboBox.Size = new System.Drawing.Size(121, 21);
             this.dieComboBox.TabIndex = 4;
             // 
             // rollButton
             // 
-            this.rollButton.Location = new System.Drawing.Point(181, 415);
+            this.rollButton.Location = new System.Drawing.Point(181, 417);
             this.rollButton.Name = "rollButton";
             this.rollButton.Size = new System.Drawing.Size(34, 23);
             this.rollButton.TabIndex = 5;
@@ -115,30 +116,42 @@
             // 
             // maxHPTextBox
             // 
-            this.maxHPTextBox.Location = new System.Drawing.Point(134, 332);
+            this.maxHPTextBox.Location = new System.Drawing.Point(134, 320);
             this.maxHPTextBox.Name = "maxHPTextBox";
             this.maxHPTextBox.Size = new System.Drawing.Size(100, 20);
             this.maxHPTextBox.TabIndex = 7;
             // 
             // constModTextBox
             // 
-            this.constModTextBox.Location = new System.Drawing.Point(134, 356);
+            this.constModTextBox.Location = new System.Drawing.Point(134, 361);
             this.constModTextBox.Name = "constModTextBox";
             this.constModTextBox.Size = new System.Drawing.Size(100, 20);
             this.constModTextBox.TabIndex = 8;
             // 
             // rollTextBox
             // 
-            this.rollTextBox.Location = new System.Drawing.Point(134, 382);
+            this.rollTextBox.Location = new System.Drawing.Point(134, 387);
             this.rollTextBox.Name = "rollTextBox";
             this.rollTextBox.Size = new System.Drawing.Size(100, 20);
             this.rollTextBox.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(122, 340);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "(Enter 0 if rolling 1st level)";
             // 
             // calculateMaxHPForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(276, 482);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.rollTextBox);
             this.Controls.Add(this.constModTextBox);
             this.Controls.Add(this.maxHPTextBox);
@@ -168,6 +181,7 @@
         private System.Windows.Forms.TextBox maxHPTextBox;
         private System.Windows.Forms.TextBox constModTextBox;
         private System.Windows.Forms.TextBox rollTextBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 
