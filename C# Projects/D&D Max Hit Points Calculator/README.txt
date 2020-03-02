@@ -1,1 +1,0 @@
-This project is being maintained in a different repo: https://github.com/rsoderberg/D-D-Max-Hit-Points-Calculator
