@@ -1,2 +1,2 @@
-# Keystrokes Passed to Multiple Windows WOW
+# Keystrokes Passed to Multiple Windows (World of Warcraft)
 ###### Send specific key presses to up to five windows of the popular game World of Warcraft to allow a single player to control multiple characters at one time.  
