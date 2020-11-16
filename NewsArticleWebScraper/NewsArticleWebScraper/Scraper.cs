@@ -18,13 +18,11 @@ namespace NewsArticleWebScraper
     {
         public string[] QueryTerms { get; } = {
             "Intro", "Tutorial", "Education", "Learn", "Book",
-            "C#", "CSharp", "Software", "Developer", "Code",
+            "C#", "CSharp", "Software", "Developer", "Code", "Salesforce",
             "Neural", "IoT", "Simulation", "Robot",
             "Hack", "Cyber", "Security",
-            "Communication", "Language", "Translation", "French", "Français",
-            "Green", "Animal", "Nature", "Climate", "Pollution", "Sea", "Population",
-            "Martial Arts", "Muay Thai", "Kickboxing", "Kali", "Escrima",
-            "Austin", "Texas"
+            "Communication", "Translation", "French", "Français", "Mongolian",
+            "Green", "Animal", "Nature", "Climate", "Pollution", "Sea"
         };
 
         public static Dictionary<string, string> SavedArticles = new Dictionary<string, string> { };
