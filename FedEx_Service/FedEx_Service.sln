@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FedEx_Service", "FedEx_Service\FedEx_Service.csproj", "{9698BB72-9495-4D13-AF1D-9888836B1AB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9698BB72-9495-4D13-AF1D-9888836B1AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9698BB72-9495-4D13-AF1D-9888836B1AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9698BB72-9495-4D13-AF1D-9888836B1AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9698BB72-9495-4D13-AF1D-9888836B1AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C33C9702-CC72-4C65-B44F-74ACE84F7DEA}
+	EndGlobalSection
+EndGlobal
