@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDOAliasSwitcher", "DDOAliasSwitcher.csproj", "{F4F4FD19-C8A7-4619-9928-A10B9941ADBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4F4FD19-C8A7-4619-9928-A10B9941ADBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4F4FD19-C8A7-4619-9928-A10B9941ADBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4F4FD19-C8A7-4619-9928-A10B9941ADBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4F4FD19-C8A7-4619-9928-A10B9941ADBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE5F900A-F90E-4720-AD43-F194DC17C1BB}
+	EndGlobalSection
+EndGlobal
