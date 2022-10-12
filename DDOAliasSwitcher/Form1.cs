@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace DDOAliasSwitcher
 {
     public partial class Form1 : Form
@@ -67,6 +69,12 @@ namespace DDOAliasSwitcher
 
             Layout layout = new Layout();
             layout.EditXMLForRaidDay(raidDay, fileName);
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.ShowDialog();
         }
     }
 }
