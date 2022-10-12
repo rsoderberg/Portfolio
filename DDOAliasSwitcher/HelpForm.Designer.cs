@@ -28,19 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.helpTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // helpTextBox
+            // 
+            this.helpTextBox.Location = new System.Drawing.Point(12, 12);
+            this.helpTextBox.Multiline = true;
+            this.helpTextBox.Name = "helpTextBox";
+            this.helpTextBox.ReadOnly = true;
+            this.helpTextBox.Size = new System.Drawing.Size(491, 708);
+            this.helpTextBox.TabIndex = 0;
+            this.helpTextBox.Text = "- This is how you use the application:\r\n- EZPZ Lemon Squeezy\r\n- Don\'t be bad\r\n";
             // 
             // HelpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(515, 732);
+            this.Controls.Add(this.helpTextBox);
             this.Name = "HelpForm";
             this.Text = "Need Help?";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private TextBox helpTextBox;
     }
 }

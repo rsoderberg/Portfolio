@@ -1,19 +1,23 @@
-﻿using System.Xml.Linq;
+﻿using System.Xml;
+using System.Xml.Linq;
 
 namespace DDOAliasSwitcher
 {
     internal class Layout
     {
-        internal void EditXMLForRaidDay(string raidDay, string fileName)
+        internal void EditXMLForRaidDay(string raidDay, string fileLoc)
         {
-            XDocument layoutFile = XDocument.Load(fileName);
+            fileLoc = "C:\\Users\\r_sod\\Documents\\Dungeons and Dragons Online\\ui\\layouts\\test.layout";
 
-            var query = from c in layoutFile.Elements("Aliases") select c;
-            foreach (XElement alias in query)
-            {
-                alias.Attribute("attr").Value = "NewValue";
-            }
-            layoutFile.Save(fileName);
+            XDocument layoutFile = XDocument.Load(fileLoc);
+
+            var query = from node in layoutFile.Descendants("Alias")
+                        select node;
+            query.ToList().ForEach(x => x.Remove());
+
+            // now figure out how to add the below XML to it!
+
+            layoutFile.Save(fileLoc);
 
         }
     }
@@ -24,11 +28,11 @@ namespace DDOAliasSwitcher
 
 /*
   <Aliases>
-    <Alias String=";b" Value="/p ;green AFK bio"/>
-    <Alias String=";gm" Value="/g ;babyblue SUN 8pm KT x2. TUE 8pm PN x2. FRI 8 pm RL/Lshroud or DOJ/LTS/LShroud. SAT 1 PM LHOX, PN, LShroud, TH. All Times ET (US) :)"/>
-    <Alias String=";pw" Value="/g ;gold Please wait for Fal to make raid announcements. Asking will not make it go faster :)"/>
-    <Alias String=";t" Value="/p ;red TRAP!"/>
-    <Alias String=";w" Value="/g ;green Welcome! Buffs on airship, scheduled stuff in guild message :)"/>
+    <Alias String=";b" Value="/p ;green This is my test"/>
+    <Alias String=";gm" Value="/g ;babyblue It's a really great test!"/>
+    <Alias String=";pw" Value="/g ;gold Nobody tests as well as I test"/>
+    <Alias String=";t" Value="/p ;red That's probably a lie"/>
+    <Alias String=";w" Value="/g ;green BUT WHO'S GOING TO STOP ME! :)"/>
 
     <Alias String=";babyblue" Value="&lt;rgb=#66CCFF>"/>
     <Alias String=";black" Value="&lt;rgb=#000000>"/>
