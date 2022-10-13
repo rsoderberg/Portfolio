@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.ComponentModel.Design.Serialization;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace DDOAliasSwitcher
@@ -9,16 +10,32 @@ namespace DDOAliasSwitcher
         {
             fileLoc = "C:\\Users\\r_sod\\Documents\\Dungeons and Dragons Online\\ui\\layouts\\test.layout";
 
-            XDocument layoutFile = XDocument.Load(fileLoc);
+            //XDocument layoutFile = XDocument.Load(fileLoc);
 
-            var query = from node in layoutFile.Descendants("Alias")
-                        select node;
-            query.ToList().ForEach(x => x.Remove());
+            //var query = from node in layoutFile.Descendants("Alias")
+            //            select node;
+            //query.ToList().ForEach(x => x.Remove());
 
-            // now figure out how to add the below XML to it!
+            //layoutFile.Save(fileLoc);
 
-            layoutFile.Save(fileLoc);
+            ////////////
 
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(fileLoc);
+
+            XmlNode node = xmlDoc.CreateNode(XmlNodeType.Element, "Alias", null);
+            XmlAttribute String = xmlDoc.CreateAttribute("String");
+            String.Value = ";b";
+
+            XmlAttribute Value = xmlDoc.CreateAttribute("Value");
+            Value.Value = "/p ;green This is my test";
+
+            node.Attributes.Append(String);
+            node.Attributes.Append(Value);
+
+            xmlDoc.DocumentElement.AppendChild(node);
+
+            xmlDoc.Save(fileLoc);
         }
     }
 }
