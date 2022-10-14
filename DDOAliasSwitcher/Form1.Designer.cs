@@ -41,7 +41,7 @@
             // 
             // locTextBox
             // 
-            this.locTextBox.Location = new System.Drawing.Point(135, 38);
+            this.locTextBox.Location = new System.Drawing.Point(133, 91);
             this.locTextBox.Name = "locTextBox";
             this.locTextBox.Size = new System.Drawing.Size(199, 23);
             this.locTextBox.TabIndex = 0;
@@ -49,7 +49,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 41);
+            this.label1.Location = new System.Drawing.Point(11, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 15);
             this.label1.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // locButton
             // 
-            this.locButton.Location = new System.Drawing.Point(340, 37);
+            this.locButton.Location = new System.Drawing.Point(338, 90);
             this.locButton.Name = "locButton";
             this.locButton.Size = new System.Drawing.Size(33, 23);
             this.locButton.TabIndex = 13;
@@ -67,12 +67,13 @@
             // 
             // helpButton
             // 
-            this.helpButton.Location = new System.Drawing.Point(298, 243);
+            this.helpButton.BackColor = System.Drawing.SystemColors.Menu;
+            this.helpButton.Location = new System.Drawing.Point(299, 12);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(75, 23);
             this.helpButton.TabIndex = 14;
             this.helpButton.Text = "Help";
-            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.UseVisualStyleBackColor = false;
             this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // raidDayComboBox
@@ -90,7 +91,7 @@
             "Sunday",
             "-----",
             "MyDefaultFile"});
-            this.raidDayComboBox.Location = new System.Drawing.Point(103, 104);
+            this.raidDayComboBox.Location = new System.Drawing.Point(102, 145);
             this.raidDayComboBox.Name = "raidDayComboBox";
             this.raidDayComboBox.Size = new System.Drawing.Size(128, 23);
             this.raidDayComboBox.TabIndex = 16;
@@ -98,7 +99,7 @@
             // 
             // GoButton
             // 
-            this.GoButton.Location = new System.Drawing.Point(237, 104);
+            this.GoButton.Location = new System.Drawing.Point(236, 145);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(43, 23);
             this.GoButton.TabIndex = 17;
@@ -108,7 +109,7 @@
             // 
             // defaultFileLocButton
             // 
-            this.defaultFileLocButton.Location = new System.Drawing.Point(339, 146);
+            this.defaultFileLocButton.Location = new System.Drawing.Point(337, 199);
             this.defaultFileLocButton.Name = "defaultFileLocButton";
             this.defaultFileLocButton.Size = new System.Drawing.Size(33, 23);
             this.defaultFileLocButton.TabIndex = 20;
@@ -118,7 +119,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 150);
+            this.label2.Location = new System.Drawing.Point(10, 203);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 15);
             this.label2.TabIndex = 19;
@@ -126,7 +127,7 @@
             // 
             // defaultFileTextBox
             // 
-            this.defaultFileTextBox.Location = new System.Drawing.Point(134, 147);
+            this.defaultFileTextBox.Location = new System.Drawing.Point(132, 200);
             this.defaultFileTextBox.Name = "defaultFileTextBox";
             this.defaultFileTextBox.Size = new System.Drawing.Size(199, 23);
             this.defaultFileTextBox.TabIndex = 18;

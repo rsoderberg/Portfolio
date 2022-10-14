@@ -20,7 +20,7 @@ namespace DDOAliasSwitcher
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            if (raidDayComboBox.Text != "")
+            if (raidDayComboBox.SelectedIndex >= 0 && raidDayComboBox.Text != "-----")
             {
                 string raidDay = raidDayComboBox.Text;
 
@@ -34,11 +34,21 @@ namespace DDOAliasSwitcher
 
         private void ProvideFileInfo(string raidDay, string fileLoc)
         {
+            LayoutBuilder layout = new LayoutBuilder();
             Aliases alias = new Aliases();
-            Dictionary<string, string> aliases = alias.CompileForRaidDay(raidDay);
 
-            Layout layout = new Layout();
-            layout.EditXMLForRaidDay(aliases, fileLoc);
+            Dictionary<string, string> aliasLines = new Dictionary<string, string>();
+
+            if (raidDay == "MyDefaultFile" && !string.IsNullOrEmpty(defaultFileTextBox.Text))
+            {
+                aliasLines = alias.CompileFromDefaultFile(defaultFileTextBox.Text);
+            }
+            else
+            {
+                aliasLines = alias.CompileForRaidDay(raidDay);
+            }
+
+            layout.EditXMLForRaidDay(aliasLines, fileLoc);
         }
 
         private void helpButton_Click(object sender, EventArgs e)

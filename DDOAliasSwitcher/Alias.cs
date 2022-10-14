@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Xml;
+using System.Xml.Linq;
 
 namespace DDOAliasSwitcher
 {
@@ -21,7 +22,58 @@ namespace DDOAliasSwitcher
             layoutFile.Save(fileLoc);
         }
 
+        internal void WriteNewNodes(Dictionary<string, string> aliasLines, string fileLoc)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(fileLoc);
+
+            XmlNode aliasesNode = xmlDoc.CreateNode(XmlNodeType.Element, "Aliases", null);
+
+            foreach (var alias in aliasLines)
+            {
+                XmlNode aliasNode = xmlDoc.CreateNode(XmlNodeType.Element, "Alias", null);
+
+                XmlAttribute String = xmlDoc.CreateAttribute("String");
+                XmlAttribute Value = xmlDoc.CreateAttribute("Value");
+
+                String.Value = alias.Key;
+                Value.Value = alias.Value;
+
+                aliasNode.Attributes.Append(String);
+                aliasNode.Attributes.Append(Value);
+
+                XmlElement aliasesElement = (XmlElement)xmlDoc.DocumentElement.AppendChild(aliasesNode);
+                aliasesElement.AppendChild(aliasNode);
+            }
+
+            xmlDoc.Save(fileLoc);
+        }
+
         #region Alias Text
+        internal Dictionary<string, string> CompileFromDefaultFile(string defaultFileLoc)
+        {
+            defaultFileLoc = "C:\\Users\\r_sod\\Documents\\Dungeons and Dragons Online\\ui\\layouts\\savedUI.layout";
+
+            // Get Aliases from default file
+            XDocument layoutFile = XDocument.Load(defaultFileLoc);
+
+            var query = from node in layoutFile.Descendants("Alias")
+                        select node;
+
+            foreach (var alias in query.ToList())
+            {
+                string first = (string)alias.Attribute("String");
+                string second = (string)alias.Attribute("Value");
+
+                AliasLines.Add(first, second);
+            }
+
+            // Save Aliases into AliasLines Dictionary
+
+
+            return AliasLines;
+        }
+
         internal Dictionary<string, string> CompileForRaidDay(string raidDay)
         {
             AliasColors();
@@ -178,11 +230,6 @@ namespace DDOAliasSwitcher
 
 
                     break;
-                case "MyDefaultFile":
-                    // TODO: Get Aliases from provided file and add them back as AliasLines
-                    //string defaultFileLoc = form.DefaultFileLoc;
-
-                    break;
             }
 
             return AliasLines;
@@ -190,22 +237,21 @@ namespace DDOAliasSwitcher
 
         private void AliasColors()
         {
-            AliasLines.Add(";babyblue", "&lt;rgb=#66CCFF>");
-            // &amp;lt;rgb=#66CCFF&gt;
-            AliasLines.Add(";black", "&lt;rgb=#000000>");
-            AliasLines.Add(";blue", "&lt;rgb=#0000FF>");
-            AliasLines.Add(";darkgrey", "&lt;rgb=#666666>");
-            AliasLines.Add(";gold", "&lt;rgb=#FFD700>");
-            AliasLines.Add(";green", "&lt;rgb=#00FF00>");
-            AliasLines.Add(";grey", "&lt;rgb=#999999>");
-            AliasLines.Add(";lblue", "&lt;rgb=#66CCFF>");
-            AliasLines.Add(";lgreen", "&lt;rgb=#99FF99>");
-            AliasLines.Add(";pink", "&lt;rgb=#FF99CC>");
-            AliasLines.Add(";purple", "&lt;rgb=#800080>");
-            AliasLines.Add(";red", "&lt;rgb=#FF0000>");
-            AliasLines.Add(";sgreen", "&lt;rgb=#339999>");
-            AliasLines.Add(";white", "&lt;rgb=#FFFFFF>");
-            AliasLines.Add(";yellow", "&lt;rgb=#FFFF00>");
+            AliasLines.Add(";babyblue", "<rgb=#66CCFF>");
+            AliasLines.Add(";black", "<rgb=#000000>");
+            AliasLines.Add(";blue", "<rgb=#0000FF>");
+            AliasLines.Add(";darkgrey", "<rgb=#666666>");
+            AliasLines.Add(";gold", "<rgb=#FFD700>");
+            AliasLines.Add(";green", "<rgb=#00FF00>");
+            AliasLines.Add(";grey", "<rgb=#999999>");
+            AliasLines.Add(";lblue", "<rgb=#66CCFF>");
+            AliasLines.Add(";lgreen", "<rgb=#99FF99>");
+            AliasLines.Add(";pink", "<rgb=#FF99CC>");
+            AliasLines.Add(";purple", "<rgb=#800080>");
+            AliasLines.Add(";red", "<rgb=#FF0000>");
+            AliasLines.Add(";sgreen", "<rgb=#339999>");
+            AliasLines.Add(";white", "<rgb=#FFFFFF>");
+            AliasLines.Add(";yellow", "<rgb=#FFFF00>");
         }
         #endregion
     }
