@@ -52,8 +52,6 @@ namespace DDOAliasSwitcher
         #region Alias Text
         internal Dictionary<string, string> CompileFromDefaultFile(string defaultFileLoc)
         {
-            defaultFileLoc = "C:\\Users\\r_sod\\Documents\\Dungeons and Dragons Online\\ui\\layouts\\savedUI.layout";
-
             // Get Aliases from default file
             XDocument layoutFile = XDocument.Load(defaultFileLoc);
 

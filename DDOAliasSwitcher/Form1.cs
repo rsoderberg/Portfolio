@@ -1,4 +1,4 @@
-using static DDOAliasSwitcher.Aliases;
+using System.Diagnostics;
 
 namespace DDOAliasSwitcher
 {
@@ -9,14 +9,7 @@ namespace DDOAliasSwitcher
             InitializeComponent();
         }
 
-        // C:\Users\r_sod\Documents\Dungeons and Dragons Online\ui\layouts\test.Layout
-
-        private void locButton_Click(object sender, EventArgs e)
-        {
-            // How to allow the user to search for their file(s) automatically?
-
-
-        }
+        // C:\Users\r_sod\Documents\Dungeons and Dragons Online\ui\layouts
 
         private void GoButton_Click(object sender, EventArgs e)
         {
@@ -32,6 +25,32 @@ namespace DDOAliasSwitcher
             }
         }
 
+        private void locButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "All Files (*.*)|*.*";
+            dlg.FilterIndex = 1;
+            dlg.InitialDirectory = "C:\\";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                locTextBox.Text = dlg.FileName;
+            }
+        }
+
+        private void defaultFileLocButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "All Files (*.*)|*.*";
+            dlg.FilterIndex = 1;
+            dlg.InitialDirectory = "C:\\";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                defaultLocTextBox.Text = dlg.FileName;
+            }
+        }
+
         private void ProvideFileInfo(string raidDay, string fileLoc)
         {
             LayoutBuilder layout = new LayoutBuilder();
@@ -39,9 +58,9 @@ namespace DDOAliasSwitcher
 
             Dictionary<string, string> aliasLines = new Dictionary<string, string>();
 
-            if (raidDay == "MyDefaultFile" && !string.IsNullOrEmpty(defaultFileTextBox.Text))
+            if (raidDay == "MyDefaultFile" && !string.IsNullOrEmpty(defaultLocTextBox.Text))
             {
-                aliasLines = alias.CompileFromDefaultFile(defaultFileTextBox.Text);
+                aliasLines = alias.CompileFromDefaultFile(defaultLocTextBox.Text);
             }
             else
             {

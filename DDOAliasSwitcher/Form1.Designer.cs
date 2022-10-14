@@ -36,7 +36,7 @@
             this.GoButton = new System.Windows.Forms.Button();
             this.defaultFileLocButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.defaultFileTextBox = new System.Windows.Forms.TextBox();
+            this.defaultLocTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // locTextBox
@@ -115,6 +115,7 @@
             this.defaultFileLocButton.TabIndex = 20;
             this.defaultFileLocButton.Text = "...";
             this.defaultFileLocButton.UseVisualStyleBackColor = true;
+            this.defaultFileLocButton.Click += new System.EventHandler(this.defaultFileLocButton_Click);
             // 
             // label2
             // 
@@ -127,10 +128,10 @@
             // 
             // defaultFileTextBox
             // 
-            this.defaultFileTextBox.Location = new System.Drawing.Point(132, 200);
-            this.defaultFileTextBox.Name = "defaultFileTextBox";
-            this.defaultFileTextBox.Size = new System.Drawing.Size(199, 23);
-            this.defaultFileTextBox.TabIndex = 18;
+            this.defaultLocTextBox.Location = new System.Drawing.Point(132, 200);
+            this.defaultLocTextBox.Name = "defaultFileTextBox";
+            this.defaultLocTextBox.Size = new System.Drawing.Size(199, 23);
+            this.defaultLocTextBox.TabIndex = 18;
             // 
             // Form1
             // 
@@ -139,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(385, 278);
             this.Controls.Add(this.defaultFileLocButton);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.defaultFileTextBox);
+            this.Controls.Add(this.defaultLocTextBox);
             this.Controls.Add(this.GoButton);
             this.Controls.Add(this.raidDayComboBox);
             this.Controls.Add(this.helpButton);
@@ -163,6 +164,6 @@
         private Button GoButton;
         private Button defaultFileLocButton;
         private Label label2;
-        private TextBox defaultFileTextBox;
+        private TextBox defaultLocTextBox;
     }
 }
