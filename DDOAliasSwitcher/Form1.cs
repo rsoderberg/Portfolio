@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using static DDOAliasSwitcher.Aliases;
 
 namespace DDOAliasSwitcher
 {
@@ -20,15 +20,25 @@ namespace DDOAliasSwitcher
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            string raidDay = raidDayComboBox.Text;
+            if (raidDayComboBox.Text != "")
+            {
+                string raidDay = raidDayComboBox.Text;
 
-            ProvideFileInfo(raidDay, locTextBox.Text);
+                ProvideFileInfo(raidDay, locTextBox.Text);
+            }
+            else
+            {
+                // Do nothing!
+            }
         }
 
         private void ProvideFileInfo(string raidDay, string fileLoc)
         {
+            Aliases alias = new Aliases();
+            Dictionary<string, string> aliases = alias.CompileForRaidDay(raidDay);
+
             Layout layout = new Layout();
-            layout.EditXMLForRaidDay(raidDay, fileLoc);
+            layout.EditXMLForRaidDay(aliases, fileLoc);
         }
 
         private void helpButton_Click(object sender, EventArgs e)

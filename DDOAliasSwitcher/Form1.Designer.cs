@@ -34,6 +34,9 @@
             this.helpButton = new System.Windows.Forms.Button();
             this.raidDayComboBox = new System.Windows.Forms.ComboBox();
             this.GoButton = new System.Windows.Forms.Button();
+            this.defaultFileLocButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.defaultFileTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // locTextBox
@@ -84,7 +87,9 @@
             "SaturdayAM1",
             "SaturdayAM2",
             "SaturdayPM",
-            "Sunday"});
+            "Sunday",
+            "-----",
+            "MyDefaultFile"});
             this.raidDayComboBox.Location = new System.Drawing.Point(103, 104);
             this.raidDayComboBox.Name = "raidDayComboBox";
             this.raidDayComboBox.Size = new System.Drawing.Size(128, 23);
@@ -101,11 +106,39 @@
             this.GoButton.UseVisualStyleBackColor = true;
             this.GoButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
+            // defaultFileLocButton
+            // 
+            this.defaultFileLocButton.Location = new System.Drawing.Point(339, 146);
+            this.defaultFileLocButton.Name = "defaultFileLocButton";
+            this.defaultFileLocButton.Size = new System.Drawing.Size(33, 23);
+            this.defaultFileLocButton.TabIndex = 20;
+            this.defaultFileLocButton.Text = "...";
+            this.defaultFileLocButton.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 150);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 15);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Default File Location:";
+            // 
+            // defaultFileTextBox
+            // 
+            this.defaultFileTextBox.Location = new System.Drawing.Point(134, 147);
+            this.defaultFileTextBox.Name = "defaultFileTextBox";
+            this.defaultFileTextBox.Size = new System.Drawing.Size(199, 23);
+            this.defaultFileTextBox.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 278);
+            this.Controls.Add(this.defaultFileLocButton);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.defaultFileTextBox);
             this.Controls.Add(this.GoButton);
             this.Controls.Add(this.raidDayComboBox);
             this.Controls.Add(this.helpButton);
@@ -127,5 +160,8 @@
         private Button helpButton;
         private ComboBox raidDayComboBox;
         private Button GoButton;
+        private Button defaultFileLocButton;
+        private Label label2;
+        private TextBox defaultFileTextBox;
     }
 }
