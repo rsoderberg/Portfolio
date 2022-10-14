@@ -52,7 +52,6 @@ namespace DDOAliasSwitcher
         #region Alias Text
         internal Dictionary<string, string> CompileFromDefaultFile(string defaultFileLoc)
         {
-            // Get Aliases from default file
             XDocument layoutFile = XDocument.Load(defaultFileLoc);
 
             var query = from node in layoutFile.Descendants("Alias")
@@ -65,9 +64,6 @@ namespace DDOAliasSwitcher
 
                 AliasLines.Add(first, second);
             }
-
-            // Save Aliases into AliasLines Dictionary
-
 
             return AliasLines;
         }

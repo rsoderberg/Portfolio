@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpForm));
             this.helpTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -39,7 +40,7 @@
             this.helpTextBox.ReadOnly = true;
             this.helpTextBox.Size = new System.Drawing.Size(491, 708);
             this.helpTextBox.TabIndex = 0;
-            this.helpTextBox.Text = "- This is how you use the application:\r\n- EZPZ Lemon Squeezy\r\n- Don\'t be bad\r\n";
+            this.helpTextBox.Text = resources.GetString("helpTextBox.Text");
             // 
             // HelpForm
             // 

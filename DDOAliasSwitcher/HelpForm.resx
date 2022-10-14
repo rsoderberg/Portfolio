@@ -60,6 +60,20 @@
   <metadata name="helpTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="helpTextBox.Text" xml:space="preserve">
+    <value>Note: I recommend storing a copy of your original layout file in case of errors, and for restoring defaults.
+
+1. Search or enter the layout file you'd like to edit in the Layout File Location textbox.
+2. Select the raid day setting from the dropdown.
+3. Click "Go!"
+
+
+If you want to modify your aliases back to those in your default file:
+1. Search or enter the layout file you'd like to edit in the Layout File Location textbox.
+2. Select "MyDefaultFile" from the dropdown.
+3. Search or enter your stored default layout file in the Default File Location textbox.
+4. Click "Go!"</value>
+  </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
