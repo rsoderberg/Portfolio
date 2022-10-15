@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace DDOAliasSwitcher
 {
     public partial class Form1 : Form
@@ -10,6 +8,8 @@ namespace DDOAliasSwitcher
         }
 
         // C:\Users\r_sod\Documents\Dungeons and Dragons Online\ui\layouts
+
+        //https://stackoverflow.com/questions/12769373/how-to-read-values-from-multiple-configuration-file-in-c-sharp-within-a-single-p
 
         private void GoButton_Click(object sender, EventArgs e)
         {

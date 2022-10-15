@@ -126,10 +126,10 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Default File Location:";
             // 
-            // defaultFileTextBox
+            // defaultLocTextBox
             // 
             this.defaultLocTextBox.Location = new System.Drawing.Point(132, 200);
-            this.defaultLocTextBox.Name = "defaultFileTextBox";
+            this.defaultLocTextBox.Name = "defaultLocTextBox";
             this.defaultLocTextBox.Size = new System.Drawing.Size(199, 23);
             this.defaultLocTextBox.TabIndex = 18;
             // 
