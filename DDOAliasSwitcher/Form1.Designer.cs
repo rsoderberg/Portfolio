@@ -37,6 +37,7 @@
             this.defaultFileLocButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.defaultLocTextBox = new System.Windows.Forms.TextBox();
+            this.ahkButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // locTextBox
@@ -133,11 +134,21 @@
             this.defaultLocTextBox.Size = new System.Drawing.Size(199, 23);
             this.defaultLocTextBox.TabIndex = 18;
             // 
+            // ahkButton
+            // 
+            this.ahkButton.Location = new System.Drawing.Point(142, 243);
+            this.ahkButton.Name = "ahkButton";
+            this.ahkButton.Size = new System.Drawing.Size(75, 23);
+            this.ahkButton.TabIndex = 21;
+            this.ahkButton.Text = "Run Script!";
+            this.ahkButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 278);
+            this.Controls.Add(this.ahkButton);
             this.Controls.Add(this.defaultFileLocButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.defaultLocTextBox);
@@ -165,5 +176,6 @@
         private Button defaultFileLocButton;
         private Label label2;
         private TextBox defaultLocTextBox;
+        private Button ahkButton;
     }
 }
