@@ -1,5 +1,0 @@
-﻿CREATE TABLE [dbo].[StatusTable]
-(
-	[StatusId] INT NOT NULL PRIMARY KEY IDENTITY,
-	StatusName NVARCHAR(128) NOT NULL
-)
