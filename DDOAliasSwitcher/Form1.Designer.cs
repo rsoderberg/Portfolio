@@ -90,6 +90,7 @@
             "SaturdayAM2",
             "SaturdayPM",
             "Sunday",
+            "SkeletonsTalkies",
             "-----",
             "MyDefaultFile"});
             this.raidDayComboBox.Location = new System.Drawing.Point(102, 145);
