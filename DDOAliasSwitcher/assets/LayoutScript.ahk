@@ -20,7 +20,7 @@ else							; if DDO is open
 	Send ^v						; paste clipboard
 	Sleep 50					; wait a lil 					
 	Send {enter}					; hit Enter to send command in DDO
-	clipboard = /UI layout load savedUI     ; put the UI update string into your clipboard
+	clipboard = /UI layout load DASLayout     ; put the UI update string into your clipboard
 	Sleep 50					; wait a lil 				
 	Send {enter}                              	; hit Enter to open chat
 	Send ^v						; paste clipboard

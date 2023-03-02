@@ -8,14 +8,15 @@ namespace DDOAliasSwitcher
     {
         internal void ReloadLayoutInDDO()  
         {
-            NameValueCollection UserSettings = (NameValueCollection)ConfigurationManager.GetSection("UserSettings");
+            // https://www.nuget.org/packages/AutoHotkey.Interop/1.0.0.1#show-readme-container
 
             try
             {
-                string AHKScriptName = UserSettings[3];
+                string AHKScriptName = Path.Combine(Environment.CurrentDirectory, @"assets\", "LayoutScript.ahk");
 
-                AutoHotkeyEngine.Instance.LoadFile(AHKScriptName);
-                AutoHotkeyEngine.Instance.LoadScript(AHKScriptName);
+                var autoHotKey = AutoHotkeyEngine.Instance;
+                autoHotKey.LoadFile(AHKScriptName);
+                autoHotKey.LoadScript(AHKScriptName);
             }
             catch (Exception ex)
             {

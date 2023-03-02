@@ -42,28 +42,35 @@ namespace DDOAliasSwitcher
             }
         }
 
-        // C:\Users\r_sod\Documents\Dungeons and Dragons Online\ui\layouts
-
-        //https://stackoverflow.com/questions/12769373/how-to-read-values-from-multiple-configuration-file-in-c-sharp-within-a-single-p
-
-        // Longer-term scope
-        // TODO: Copy user's layout file, rename LayoutSwitcher.layout to use for this program & AHK script
-
         private void GoButton_Click(object sender, EventArgs e)
         {
-            if (ahkCheckbox.Checked)
-            {
-                AHK ahk = new AHK();
-                ahk.ReloadLayoutInDDO();
-            }
-
             if (raidDayComboBox.SelectedIndex >= 0 && raidDayComboBox.Text != "-----")
             {
                 string raidDay = raidDayComboBox.Text;
 
-                ProvideFileInfo(raidDay, locTextBox.Text);
+                try
+                {
+                    // TODO: Save the addresses in App.config
+                    // https://stackoverflow.com/questions/4758598/write-values-in-app-config-file
 
-                // TODO: Move AHK script here
+                    // Generate/copy the DASLayout.layout file for use by script
+                    var dir = Path.GetDirectoryName(locTextBox.Text);
+
+                    string DASLayoutLoc = $"{dir}\\DASLayout.layout";
+                    File.Copy(locTextBox.Text, DASLayoutLoc, true);
+
+                    ProvideFileInfo(raidDay, DASLayoutLoc);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                if (ahkCheckbox.Checked)
+                {
+                    AHK ahk = new AHK();
+                    ahk.ReloadLayoutInDDO();
+                }
             }
             else
             {
