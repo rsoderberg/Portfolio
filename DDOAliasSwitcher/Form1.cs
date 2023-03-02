@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Windows.Forms;
+using AutoHotkey.Interop;
 
 namespace DDOAliasSwitcher
 {
@@ -52,16 +51,19 @@ namespace DDOAliasSwitcher
 
         private void GoButton_Click(object sender, EventArgs e)
         {
+            if (ahkCheckbox.Checked)
+            {
+                AHK ahk = new AHK();
+                ahk.ReloadLayoutInDDO();
+            }
+
             if (raidDayComboBox.SelectedIndex >= 0 && raidDayComboBox.Text != "-----")
             {
                 string raidDay = raidDayComboBox.Text;
 
                 ProvideFileInfo(raidDay, locTextBox.Text);
 
-                if (ahkCheckbox.Checked)
-                {
-                    // Run AHK Script
-                }
+                // TODO: Move AHK script here
             }
             else
             {
