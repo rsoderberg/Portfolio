@@ -38,8 +38,8 @@
             this.defaultFileLocButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.defaultLocTextBox = new System.Windows.Forms.TextBox();
-            this.ahkButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ahkCheckbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,15 +96,15 @@
             "SkeletonsTalkies",
             "-----",
             "MyDefaultFile"});
-            this.raidDayComboBox.Location = new System.Drawing.Point(102, 145);
+            this.raidDayComboBox.Location = new System.Drawing.Point(81, 145);
             this.raidDayComboBox.Name = "raidDayComboBox";
-            this.raidDayComboBox.Size = new System.Drawing.Size(128, 23);
+            this.raidDayComboBox.Size = new System.Drawing.Size(159, 23);
             this.raidDayComboBox.TabIndex = 16;
-            this.raidDayComboBox.Text = "-- Select Raid Day --";
+            this.raidDayComboBox.Text = "-- Select Layout Setting --";
             // 
             // GoButton
             // 
-            this.GoButton.Location = new System.Drawing.Point(236, 145);
+            this.GoButton.Location = new System.Drawing.Point(246, 145);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(43, 23);
             this.GoButton.TabIndex = 17;
@@ -138,15 +138,6 @@
             this.defaultLocTextBox.Size = new System.Drawing.Size(199, 23);
             this.defaultLocTextBox.TabIndex = 18;
             // 
-            // ahkButton
-            // 
-            this.ahkButton.Location = new System.Drawing.Point(142, 243);
-            this.ahkButton.Name = "ahkButton";
-            this.ahkButton.Size = new System.Drawing.Size(75, 23);
-            this.ahkButton.TabIndex = 21;
-            this.ahkButton.Text = "Run Script!";
-            this.ahkButton.UseVisualStyleBackColor = true;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -157,13 +148,25 @@
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
+            // ahkCheckbox
+            // 
+            this.ahkCheckbox.AutoSize = true;
+            this.ahkCheckbox.Checked = true;
+            this.ahkCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ahkCheckbox.Location = new System.Drawing.Point(266, 247);
+            this.ahkCheckbox.Name = "ahkCheckbox";
+            this.ahkCheckbox.Size = new System.Drawing.Size(107, 19);
+            this.ahkCheckbox.TabIndex = 23;
+            this.ahkCheckbox.Text = "Run AHK Script";
+            this.ahkCheckbox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 278);
+            this.Controls.Add(this.ahkCheckbox);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.ahkButton);
             this.Controls.Add(this.defaultFileLocButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.defaultLocTextBox);
@@ -193,7 +196,7 @@
         private Button defaultFileLocButton;
         private Label label2;
         private TextBox defaultLocTextBox;
-        private Button ahkButton;
         private PictureBox pictureBox1;
+        private CheckBox ahkCheckbox;
     }
 }

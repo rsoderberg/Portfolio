@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Specialized;
+using System.Configuration;
+using System.Windows.Forms;
+
 namespace DDOAliasSwitcher
 {
     public partial class Form1 : Form
@@ -5,20 +10,45 @@ namespace DDOAliasSwitcher
         public Form1()
         {
             InitializeComponent();
+
+            NameValueCollection UserSettings = (NameValueCollection)ConfigurationManager.GetSection("UserSettings");
+            // Normally this isn't a best practice, but in this case we're going to assume
+            // the user will just edit the app.config settings and hopefully not delete them
+            try
+            {
+                string layoutFileLoc = UserSettings[0];
+                string defaultFileLoc = UserSettings[1];
+                string defaultRaidDay = UserSettings[2];
+
+                if (!string.IsNullOrEmpty(layoutFileLoc))
+                {
+                    locTextBox.Enabled = false;
+                    locTextBox.Text = layoutFileLoc;
+                }
+                if (!string.IsNullOrEmpty(defaultFileLoc))
+                {
+                    defaultLocTextBox.Enabled = false;
+                    defaultLocTextBox.Text = defaultFileLoc;
+                }
+                if (!string.IsNullOrEmpty(defaultRaidDay))
+                {
+                    raidDayComboBox.Text = defaultRaidDay;
+                    raidDayComboBox.SelectedValue = defaultRaidDay;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Do nothing. This is simply to handle the user doing things they shouldn't have,
+                // and allow the application to gracefully move on to processing as expected.
+            }
         }
 
         // C:\Users\r_sod\Documents\Dungeons and Dragons Online\ui\layouts
 
         //https://stackoverflow.com/questions/12769373/how-to-read-values-from-multiple-configuration-file-in-c-sharp-within-a-single-p
 
-
-        // TODO: Add file loc and default loc paths to App.config, use the explorer if not blank
-        //       Also, hide the file explorer field(s) when App.config has loc paths
-        // TODO: Add default raid day option for users to set if desired
-
         // Longer-term scope
         // TODO: Copy user's layout file, rename LayoutSwitcher.layout to use for this program & AHK script
-        // TODO: Install .NET Desktop Runtime dependency before running?
 
         private void GoButton_Click(object sender, EventArgs e)
         {
@@ -27,11 +57,35 @@ namespace DDOAliasSwitcher
                 string raidDay = raidDayComboBox.Text;
 
                 ProvideFileInfo(raidDay, locTextBox.Text);
+
+                if (ahkCheckbox.Checked)
+                {
+                    // Run AHK Script
+                }
             }
             else
             {
                 // Do nothing!
             }
+        }
+
+        private void ProvideFileInfo(string raidDay, string fileLoc)
+        {
+            LayoutBuilder layout = new LayoutBuilder();
+            Aliases alias = new Aliases();
+
+            Dictionary<string, string> aliasLines = new Dictionary<string, string>();
+
+            if (raidDay == "MyDefaultFile" && !string.IsNullOrEmpty(defaultLocTextBox.Text))
+            {
+                aliasLines = alias.CompileFromDefaultFile(defaultLocTextBox.Text);
+            }
+            else
+            {
+                aliasLines = alias.CompileForRaidDay(raidDay);
+            }
+
+            layout.EditXMLForRaidDay(aliasLines, fileLoc);
         }
 
         private void locButton_Click(object sender, EventArgs e)
@@ -58,25 +112,6 @@ namespace DDOAliasSwitcher
             {
                 defaultLocTextBox.Text = dlg.FileName;
             }
-        }
-
-        private void ProvideFileInfo(string raidDay, string fileLoc)
-        {
-            LayoutBuilder layout = new LayoutBuilder();
-            Aliases alias = new Aliases();
-
-            Dictionary<string, string> aliasLines = new Dictionary<string, string>();
-
-            if (raidDay == "MyDefaultFile" && !string.IsNullOrEmpty(defaultLocTextBox.Text))
-            {
-                aliasLines = alias.CompileFromDefaultFile(defaultLocTextBox.Text);
-            }
-            else
-            {
-                aliasLines = alias.CompileForRaidDay(raidDay);
-            }
-
-            layout.EditXMLForRaidDay(aliasLines, fileLoc);
         }
 
         private void helpButton_Click(object sender, EventArgs e)
