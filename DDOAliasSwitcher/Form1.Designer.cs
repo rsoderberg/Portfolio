@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.locTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.locButton = new System.Windows.Forms.Button();
@@ -38,6 +39,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.defaultLocTextBox = new System.Windows.Forms.TextBox();
             this.ahkButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // locTextBox
@@ -144,11 +147,22 @@
             this.ahkButton.Text = "Run Script!";
             this.ahkButton.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(71, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 278);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ahkButton);
             this.Controls.Add(this.defaultFileLocButton);
             this.Controls.Add(this.label2);
@@ -159,8 +173,10 @@
             this.Controls.Add(this.locButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.locTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "DDO Layout File Switcher";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +194,6 @@
         private Label label2;
         private TextBox defaultLocTextBox;
         private Button ahkButton;
+        private PictureBox pictureBox1;
     }
 }
