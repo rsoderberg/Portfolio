@@ -1,7 +1,3 @@
-using System.Collections.Specialized;
-using System.Configuration;
-using AutoHotkey.Interop;
-
 namespace DDOAliasSwitcher
 {
     public partial class Form1 : Form
@@ -10,35 +6,25 @@ namespace DDOAliasSwitcher
         {
             InitializeComponent();
 
-            NameValueCollection UserSettings = (NameValueCollection)ConfigurationManager.GetSection("UserSettings");
-            // Normally this isn't a best practice, but in this case we're going to assume
-            // the user will just edit the app.config settings and hopefully not delete them
             try
             {
-                string layoutFileLoc = UserSettings[0];
-                string defaultFileLoc = UserSettings[1];
-                string defaultRaidDay = UserSettings[2];
-
-                if (!string.IsNullOrEmpty(layoutFileLoc))
+                if (!string.IsNullOrEmpty(UserSettings.Default.LayoutFileLocation))
                 {
-                    locTextBox.Enabled = false;
-                    locTextBox.Text = layoutFileLoc;
+                    locTextBox.Text = UserSettings.Default.LayoutFileLocation;
                 }
-                if (!string.IsNullOrEmpty(defaultFileLoc))
+                if (!string.IsNullOrEmpty(UserSettings.Default.DefaultFileLocation))
                 {
-                    defaultLocTextBox.Enabled = false;
-                    defaultLocTextBox.Text = defaultFileLoc;
+                    defaultLocTextBox.Text = UserSettings.Default.DefaultFileLocation;
                 }
-                if (!string.IsNullOrEmpty(defaultRaidDay))
+                if (!string.IsNullOrEmpty(UserSettings.Default.DefaultRaidDay))
                 {
-                    raidDayComboBox.Text = defaultRaidDay;
-                    raidDayComboBox.SelectedValue = defaultRaidDay;
+                    raidDayComboBox.Text = UserSettings.Default.DefaultRaidDay;
+                    raidDayComboBox.SelectedValue = UserSettings.Default.DefaultRaidDay;
                 }
             }
             catch (Exception ex)
             {
-                // Do nothing. This is simply to handle the user doing things they shouldn't have,
-                // and allow the application to gracefully move on to processing as expected.
+                // Do nothing!
             }
         }
 
@@ -48,10 +34,24 @@ namespace DDOAliasSwitcher
             {
                 string raidDay = raidDayComboBox.Text;
 
+                // TODO: Figure out which layout fields we no longer need, with the DASLayout file
+
                 try
                 {
-                    // TODO: Save the addresses in App.config
-                    // https://stackoverflow.com/questions/4758598/write-values-in-app-config-file
+                    // Save user's most recent layout file locations
+                    if (locTextBox.Text != UserSettings.Default.LayoutFileLocation)
+                    {
+                        UserSettings.Default.LayoutFileLocation = locTextBox.Text;
+                    }
+                    if (defaultLocTextBox.Text != UserSettings.Default.DefaultFileLocation)
+                    {
+                        UserSettings.Default.DefaultFileLocation = defaultLocTextBox.Text;
+                    }
+                    if (raidDayComboBox.Text != UserSettings.Default.DefaultRaidDay)
+                    {
+                        UserSettings.Default.DefaultRaidDay = raidDayComboBox.Text;
+                    }
+                    UserSettings.Default.Save();
 
                     // Generate/copy the DASLayout.layout file for use by script
                     var dir = Path.GetDirectoryName(locTextBox.Text);
@@ -60,17 +60,19 @@ namespace DDOAliasSwitcher
                     File.Copy(locTextBox.Text, DASLayoutLoc, true);
 
                     ProvideFileInfo(raidDay, DASLayoutLoc);
+
+                    if (ahkCheckbox.Checked)
+                    {
+                        AHK ahk = new AHK();
+                        ahk.ReloadLayoutInDDO();
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
 
-                if (ahkCheckbox.Checked)
-                {
-                    AHK ahk = new AHK();
-                    ahk.ReloadLayoutInDDO();
-                }
+
             }
             else
             {

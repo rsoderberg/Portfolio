@@ -26,7 +26,6 @@ else							; if DDO is open
 	Send ^v						; paste clipboard
 	Sleep 50					; wait a lil 
 	Send {enter}					; hit Enter to send command in DDO
-	clipboard := oldclip  				; reset the clipboard to what you had before
 	ExitApp						; kills this program
 }
 ExitApp							; dieeeee

@@ -7,7 +7,10 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>assets\Bear Icon.ico</ApplicationIcon>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Title></Title>
+    <Version>$(VersionPrefix)</Version>
+    <BaseOutputPath>C:\Users\r_sod\Documents\GitHub\Portfolio\DDOAliasSwitcher\bin\</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,14 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoHotkey.Interop" Version="1.0.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="UserSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserSettings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -35,6 +39,14 @@
 
   <ItemGroup>
     <None Update="assets\LayoutScript.ahk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\LayoutScript.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="UserSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UserSettings.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
