@@ -101,6 +101,9 @@ namespace DDOAliasSwitcher
 
         private void locButton_Click(object sender, EventArgs e)
         {
+            // https://stackoverflow.com/questions/11624298/how-do-i-use-openfiledialog-to-select-a-folder
+
+            // FolderBrowserDialog
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "Layout Files (*.layout)|*.layout";
             dlg.FilterIndex = 1;
