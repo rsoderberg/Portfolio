@@ -8,6 +8,7 @@ namespace DDOAliasSwitcher
 
             try
             {
+                // Update the form with any settings the user previously used
                 if (!string.IsNullOrEmpty(UserSettings.Default.LayoutFileLocation))
                 {
                     locTextBox.Text = UserSettings.Default.LayoutFileLocation;
@@ -21,62 +22,72 @@ namespace DDOAliasSwitcher
                     raidDayComboBox.Text = UserSettings.Default.DefaultRaidDay;
                     raidDayComboBox.SelectedValue = UserSettings.Default.DefaultRaidDay;
                 }
+                ahkCheckbox.Checked = UserSettings.Default.RunAHK;
             }
             catch (Exception ex)
             {
-                // Do nothing!
+                // Do nothing, failure here will simply not save a user's settings
+                // for their next session. No biggie, just a little annoying.
             }
         }
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            if (raidDayComboBox.SelectedIndex >= 0 && raidDayComboBox.Text != "-----")
+            if (!string.IsNullOrEmpty(locTextBox.Text))
             {
-                string raidDay = raidDayComboBox.Text;
-
-                // TODO: Figure out which layout fields we no longer need, with the DASLayout file
-
-                try
+                if (raidDayComboBox.SelectedIndex >= 0 && raidDayComboBox.Text != "-----")
                 {
-                    // Save user's most recent layout file locations
-                    if (locTextBox.Text != UserSettings.Default.LayoutFileLocation)
+                    string raidDay = raidDayComboBox.Text;
+
+                    try
                     {
-                        UserSettings.Default.LayoutFileLocation = locTextBox.Text;
+                        // Save user's most recent layout file settings
+                        if (locTextBox.Text != UserSettings.Default.LayoutFileLocation)
+                        {
+                            UserSettings.Default.LayoutFileLocation = locTextBox.Text;
+                        }
+                        if (defaultLocTextBox.Text != UserSettings.Default.DefaultFileLocation)
+                        {
+                            UserSettings.Default.DefaultFileLocation = defaultLocTextBox.Text;
+                        }
+                        if (raidDayComboBox.Text != UserSettings.Default.DefaultRaidDay)
+                        {
+                            UserSettings.Default.DefaultRaidDay = raidDayComboBox.Text;
+                        }
+                        UserSettings.Default.RunAHK = ahkCheckbox.Checked;
+
+                        UserSettings.Default.Save();
+
+                        // Generate/copy the DASLayout.layout file for use by application and script
+                        var dir = locTextBox.Text;
+
+                        string DASLayoutLoc = $"{dir}\\DASLayout.layout";
+                        var DASFile = File.Create(DASLayoutLoc);
+                        DASFile.Close();
+
+                        ProvideFileInfo(raidDay, DASLayoutLoc);
+
+                        if (ahkCheckbox.Checked)
+                        {
+                            AHK ahk = new AHK();
+                            ahk.ReloadLayoutInDDO();
+                        }
                     }
-                    if (defaultLocTextBox.Text != UserSettings.Default.DefaultFileLocation)
+                    catch (Exception ex)
                     {
-                        UserSettings.Default.DefaultFileLocation = defaultLocTextBox.Text;
-                    }
-                    if (raidDayComboBox.Text != UserSettings.Default.DefaultRaidDay)
-                    {
-                        UserSettings.Default.DefaultRaidDay = raidDayComboBox.Text;
-                    }
-                    UserSettings.Default.Save();
-
-                    // Generate/copy the DASLayout.layout file for use by script
-                    var dir = Path.GetDirectoryName(locTextBox.Text);
-
-                    string DASLayoutLoc = $"{dir}\\DASLayout.layout";
-                    File.Copy(locTextBox.Text, DASLayoutLoc, true);
-
-                    ProvideFileInfo(raidDay, DASLayoutLoc);
-
-                    if (ahkCheckbox.Checked)
-                    {
-                        AHK ahk = new AHK();
-                        ahk.ReloadLayoutInDDO();
+                        MessageBox.Show(ex.Message);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Please use the dropdown to choose your alias settings.", 
+                        "Missing values", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-
-
             }
             else
             {
-                // Do nothing!
+                MessageBox.Show("Please select your layout folder location in the \"Layouts Folder\" field.", 
+                    "Missing values", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -101,17 +112,12 @@ namespace DDOAliasSwitcher
 
         private void locButton_Click(object sender, EventArgs e)
         {
-            // https://stackoverflow.com/questions/11624298/how-do-i-use-openfiledialog-to-select-a-folder
-
-            // FolderBrowserDialog
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "Layout Files (*.layout)|*.layout";
-            dlg.FilterIndex = 1;
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
             dlg.InitialDirectory = "C:\\..\\Dungeons and Dragons Online\\ui\\layouts";
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                locTextBox.Text = dlg.FileName;
+                locTextBox.Text = dlg.SelectedPath;
             }
         }
 

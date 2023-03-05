@@ -58,5 +58,17 @@ namespace DDOAliasSwitcher {
                 this["DefaultRaidDay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RunAHK {
+            get {
+                return ((bool)(this["RunAHK"]));
+            }
+            set {
+                this["RunAHK"] = value;
+            }
+        }
     }
 }

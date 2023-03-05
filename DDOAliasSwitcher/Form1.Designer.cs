@@ -45,23 +45,24 @@
             // 
             // locTextBox
             // 
-            this.locTextBox.Location = new System.Drawing.Point(133, 91);
+            this.locTextBox.Location = new System.Drawing.Point(101, 96);
             this.locTextBox.Name = "locTextBox";
-            this.locTextBox.Size = new System.Drawing.Size(199, 23);
+            this.locTextBox.Size = new System.Drawing.Size(231, 23);
             this.locTextBox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 94);
+            this.label1.Location = new System.Drawing.Point(11, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 15);
+            this.label1.Size = new System.Drawing.Size(84, 30);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Layout File Location:";
+            this.label1.Text = "Layouts Folder\r\nLocation:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // locButton
             // 
-            this.locButton.Location = new System.Drawing.Point(338, 90);
+            this.locButton.Location = new System.Drawing.Point(336, 96);
             this.locButton.Name = "locButton";
             this.locButton.Size = new System.Drawing.Size(33, 23);
             this.locButton.TabIndex = 13;
@@ -96,7 +97,7 @@
             "SkeletonsTalkies",
             "-----",
             "MyDefaultFile"});
-            this.raidDayComboBox.Location = new System.Drawing.Point(81, 145);
+            this.raidDayComboBox.Location = new System.Drawing.Point(101, 146);
             this.raidDayComboBox.Name = "raidDayComboBox";
             this.raidDayComboBox.Size = new System.Drawing.Size(159, 23);
             this.raidDayComboBox.TabIndex = 16;
@@ -104,7 +105,7 @@
             // 
             // GoButton
             // 
-            this.GoButton.Location = new System.Drawing.Point(246, 145);
+            this.GoButton.Location = new System.Drawing.Point(264, 146);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(43, 23);
             this.GoButton.TabIndex = 17;
@@ -114,7 +115,7 @@
             // 
             // defaultFileLocButton
             // 
-            this.defaultFileLocButton.Location = new System.Drawing.Point(337, 199);
+            this.defaultFileLocButton.Location = new System.Drawing.Point(335, 196);
             this.defaultFileLocButton.Name = "defaultFileLocButton";
             this.defaultFileLocButton.Size = new System.Drawing.Size(33, 23);
             this.defaultFileLocButton.TabIndex = 20;
@@ -125,17 +126,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 203);
+            this.label2.Location = new System.Drawing.Point(29, 189);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 15);
+            this.label2.Size = new System.Drawing.Size(66, 30);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Default File Location:";
+            this.label2.Text = "Default File\r\nLocation:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // defaultLocTextBox
             // 
-            this.defaultLocTextBox.Location = new System.Drawing.Point(132, 200);
+            this.defaultLocTextBox.Location = new System.Drawing.Point(101, 196);
             this.defaultLocTextBox.Name = "defaultLocTextBox";
-            this.defaultLocTextBox.Size = new System.Drawing.Size(199, 23);
+            this.defaultLocTextBox.Size = new System.Drawing.Size(230, 23);
             this.defaultLocTextBox.TabIndex = 18;
             // 
             // pictureBox1
@@ -153,7 +155,7 @@
             this.ahkCheckbox.AutoSize = true;
             this.ahkCheckbox.Checked = true;
             this.ahkCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ahkCheckbox.Location = new System.Drawing.Point(266, 247);
+            this.ahkCheckbox.Location = new System.Drawing.Point(266, 245);
             this.ahkCheckbox.Name = "ahkCheckbox";
             this.ahkCheckbox.Size = new System.Drawing.Size(107, 19);
             this.ahkCheckbox.TabIndex = 23;
