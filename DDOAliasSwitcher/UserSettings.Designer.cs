@@ -38,18 +38,6 @@ namespace DDOAliasSwitcher {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DefaultFileLocation {
-            get {
-                return ((string)(this["DefaultFileLocation"]));
-            }
-            set {
-                this["DefaultFileLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DefaultRaidDay {
             get {
                 return ((string)(this["DefaultRaidDay"]));
@@ -61,7 +49,7 @@ namespace DDOAliasSwitcher {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool RunAHK {
             get {
                 return ((bool)(this["RunAHK"]));

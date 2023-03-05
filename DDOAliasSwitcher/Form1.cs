@@ -13,10 +13,6 @@ namespace DDOAliasSwitcher
                 {
                     locTextBox.Text = UserSettings.Default.LayoutFileLocation;
                 }
-                if (!string.IsNullOrEmpty(UserSettings.Default.DefaultFileLocation))
-                {
-                    defaultLocTextBox.Text = UserSettings.Default.DefaultFileLocation;
-                }
                 if (!string.IsNullOrEmpty(UserSettings.Default.DefaultRaidDay))
                 {
                     raidDayComboBox.Text = UserSettings.Default.DefaultRaidDay;
@@ -24,7 +20,7 @@ namespace DDOAliasSwitcher
                 }
                 ahkCheckbox.Checked = UserSettings.Default.RunAHK;
             }
-            catch (Exception ex)
+            catch
             {
                 // Do nothing, failure here will simply not save a user's settings
                 // for their next session. No biggie, just a little annoying.
@@ -46,10 +42,6 @@ namespace DDOAliasSwitcher
                         {
                             UserSettings.Default.LayoutFileLocation = locTextBox.Text;
                         }
-                        if (defaultLocTextBox.Text != UserSettings.Default.DefaultFileLocation)
-                        {
-                            UserSettings.Default.DefaultFileLocation = defaultLocTextBox.Text;
-                        }
                         if (raidDayComboBox.Text != UserSettings.Default.DefaultRaidDay)
                         {
                             UserSettings.Default.DefaultRaidDay = raidDayComboBox.Text;
@@ -58,12 +50,11 @@ namespace DDOAliasSwitcher
 
                         UserSettings.Default.Save();
 
-                        // Generate/copy the DASLayout.layout file for use by application and script
-                        var dir = locTextBox.Text;
+                        // Generate the DASLayout.layout file for use by application and script
+                        string dir = Path.GetDirectoryName(locTextBox.Text);
 
                         string DASLayoutLoc = $"{dir}\\DASLayout.layout";
-                        var DASFile = File.Create(DASLayoutLoc);
-                        DASFile.Close();
+                        File.Copy(locTextBox.Text, DASLayoutLoc, true);
 
                         ProvideFileInfo(raidDay, DASLayoutLoc);
 
@@ -86,7 +77,7 @@ namespace DDOAliasSwitcher
             }
             else
             {
-                MessageBox.Show("Please select your layout folder location in the \"Layouts Folder\" field.", 
+                MessageBox.Show("Please search or enter your layout file location in the \"Where is your Layout File?\" field.", 
                     "Missing values", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
@@ -98,30 +89,15 @@ namespace DDOAliasSwitcher
 
             Dictionary<string, string> aliasLines = new Dictionary<string, string>();
 
-            if (raidDay == "MyDefaultFile" && !string.IsNullOrEmpty(defaultLocTextBox.Text))
-            {
-                aliasLines = alias.CompileFromDefaultFile(defaultLocTextBox.Text);
-            }
+            if (raidDay == "MyDefaultFile")
+                aliasLines = alias.CompileFromDefaultFile(locTextBox.Text);
             else
-            {
                 aliasLines = alias.CompileForRaidDay(raidDay);
-            }
 
             layout.EditXMLForRaidDay(aliasLines, fileLoc);
         }
 
         private void locButton_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
-            dlg.InitialDirectory = "C:\\..\\Dungeons and Dragons Online\\ui\\layouts";
-
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                locTextBox.Text = dlg.SelectedPath;
-            }
-        }
-
-        private void defaultFileLocButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "Layout Files (*.layout)|*.layout";
@@ -130,7 +106,7 @@ namespace DDOAliasSwitcher
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                defaultLocTextBox.Text = dlg.FileName;
+                locTextBox.Text = dlg.FileName;
             }
         }
 

@@ -35,9 +35,6 @@
             this.helpButton = new System.Windows.Forms.Button();
             this.raidDayComboBox = new System.Windows.Forms.ComboBox();
             this.GoButton = new System.Windows.Forms.Button();
-            this.defaultFileLocButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.defaultLocTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ahkCheckbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -45,9 +42,9 @@
             // 
             // locTextBox
             // 
-            this.locTextBox.Location = new System.Drawing.Point(101, 96);
+            this.locTextBox.Location = new System.Drawing.Point(96, 96);
             this.locTextBox.Name = "locTextBox";
-            this.locTextBox.Size = new System.Drawing.Size(231, 23);
+            this.locTextBox.Size = new System.Drawing.Size(236, 23);
             this.locTextBox.TabIndex = 0;
             // 
             // label1
@@ -55,9 +52,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(11, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 30);
+            this.label1.Size = new System.Drawing.Size(79, 30);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Layouts Folder\r\nLocation:";
+            this.label1.Text = "Where is your\r\nLayout file?";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // locButton
@@ -113,33 +110,6 @@
             this.GoButton.UseVisualStyleBackColor = true;
             this.GoButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
-            // defaultFileLocButton
-            // 
-            this.defaultFileLocButton.Location = new System.Drawing.Point(335, 196);
-            this.defaultFileLocButton.Name = "defaultFileLocButton";
-            this.defaultFileLocButton.Size = new System.Drawing.Size(33, 23);
-            this.defaultFileLocButton.TabIndex = 20;
-            this.defaultFileLocButton.Text = "...";
-            this.defaultFileLocButton.UseVisualStyleBackColor = true;
-            this.defaultFileLocButton.Click += new System.EventHandler(this.defaultFileLocButton_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 189);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 30);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Default File\r\nLocation:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // defaultLocTextBox
-            // 
-            this.defaultLocTextBox.Location = new System.Drawing.Point(101, 196);
-            this.defaultLocTextBox.Name = "defaultLocTextBox";
-            this.defaultLocTextBox.Size = new System.Drawing.Size(230, 23);
-            this.defaultLocTextBox.TabIndex = 18;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -155,7 +125,7 @@
             this.ahkCheckbox.AutoSize = true;
             this.ahkCheckbox.Checked = true;
             this.ahkCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ahkCheckbox.Location = new System.Drawing.Point(266, 245);
+            this.ahkCheckbox.Location = new System.Drawing.Point(264, 199);
             this.ahkCheckbox.Name = "ahkCheckbox";
             this.ahkCheckbox.Size = new System.Drawing.Size(107, 19);
             this.ahkCheckbox.TabIndex = 23;
@@ -166,12 +136,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 278);
+            this.ClientSize = new System.Drawing.Size(385, 238);
             this.Controls.Add(this.ahkCheckbox);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.defaultFileLocButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.defaultLocTextBox);
             this.Controls.Add(this.GoButton);
             this.Controls.Add(this.raidDayComboBox);
             this.Controls.Add(this.helpButton);
@@ -195,9 +162,6 @@
         private Button helpButton;
         private ComboBox raidDayComboBox;
         private Button GoButton;
-        private Button defaultFileLocButton;
-        private Label label2;
-        private TextBox defaultLocTextBox;
         private PictureBox pictureBox1;
         private CheckBox ahkCheckbox;
     }

@@ -6,11 +6,7 @@
         {
             Aliases aliases = new Aliases();
 
-            // if file is not empty
-            // Need to add XML node stuffs
-            if (new FileInfo(fileLoc).Length > 0)
-                aliases.ScrubFile(fileLoc);
-
+            aliases.ScrubFile(fileLoc);
             aliases.WriteNewNodes(aliasLines, fileLoc);
         }
     }
