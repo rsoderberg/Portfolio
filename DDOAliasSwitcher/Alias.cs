@@ -9,8 +9,6 @@ namespace DDOAliasSwitcher
     {
         Dictionary<string, string> AliasLines = new Dictionary<string, string>();
 
-        // C:\Users\r_sod\Documents\Dungeons and Dragons Online\ui\layouts\test.layout
-
         internal void ScrubFile(string fileLoc)
         {
             XDocument layoutFile = XDocument.Load(fileLoc);
@@ -103,6 +101,20 @@ namespace DDOAliasSwitcher
                     AliasLines.Add(colorKey, colorValue);
                 }
             }
+        }
+
+        internal int GetSectionCount(string sectionName)
+        {
+            NameValueCollection section = (NameValueCollection)ConfigurationManager.GetSection(sectionName);
+
+            int sectionCount = 0;
+
+            if (section.Count > 0)
+            {
+                sectionCount = section.Count;
+            }
+
+            return sectionCount;
         }
         #endregion
     }

@@ -63,16 +63,14 @@
   <data name="helpTextBox.Text" xml:space="preserve">
     <value>How to use DDO Alias Switcher:
 
-1. Search or enter the location of your layouts folder in the "Layouts Folder" textbox.
+1. Search or enter the location of your layout file in the "Where is your Layout File?" textbox.
 2. Select the raid day/alias setting on the dropdown.
 3. Click "Go!"
 
 
-If you want to revert your aliases back to those in your default file:
-1. Search or enter the the location of your layouts folder in the "Layouts Folder" textbox.
-2. Select "MyDefaultFile" on the settings dropdown.
-3. Search or enter your stored default layout file in the Default File Location textbox. Note: This file is the one you normally use for your alias &amp; layout settings.
-4. Click "Go!"
+If you want to revert your current aliases back to those in your default file:
+1. Select "MyDefaultFile" on the settings dropdown.
+2. Click "Go!"
 
 
 If you do not want the AutoHotKey script to run when you've modified your aliases, simply uncheck "Run Script?" before you hit "Go!".</value>
