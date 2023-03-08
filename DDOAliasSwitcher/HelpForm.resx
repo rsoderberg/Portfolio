@@ -73,7 +73,12 @@ If you want to revert your current aliases back to those in your default file:
 2. Click "Go!"
 
 
-If you do not want the AutoHotKey script to run when you've modified your aliases, simply uncheck "Run Script?" before you hit "Go!".</value>
+If you do not want the AutoHotKey script to run when you've modified your aliases, simply uncheck "Run Script?" before you hit "Go!".
+
+
+Q&amp;A:
+Q: Why am I getting an error message when I have more than 50 aliases?
+A: answer</value>
   </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

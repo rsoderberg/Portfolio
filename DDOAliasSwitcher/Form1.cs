@@ -1,3 +1,6 @@
+using System.Collections.Specialized;
+using System.Configuration;
+
 namespace DDOAliasSwitcher
 {
     public partial class Form1 : Form
@@ -10,29 +13,53 @@ namespace DDOAliasSwitcher
 
             try
             {
-                Aliases aliases = new Aliases();
-                AliasCount = aliases.GetSectionCount("Colors");
+                GetColorSectionCount();
                 counterLabel.Text = Convert.ToString(AliasCount);
 
-                // Update the form with any settings the user previously used
-                if (!string.IsNullOrEmpty(UserSettings.Default.LayoutFileLocation))
-                {
-                    locTextBox.Text = UserSettings.Default.LayoutFileLocation;
-                }
-                if (!string.IsNullOrEmpty(UserSettings.Default.DefaultRaidDay))
-                {
-                    raidDayComboBox.Text = UserSettings.Default.DefaultRaidDay;
-                    raidDayComboBox.SelectedValue = UserSettings.Default.DefaultRaidDay;
-                }
-                ahkCheckbox.Checked = UserSettings.Default.RunAHK;
+                ApplyUserSettings();
             }
             catch
             {
-                AliasCount = 0; // Something happened to the colors section? Set to 0 and move on.
+                if (string.IsNullOrEmpty(Convert.ToString(AliasCount))) // Something happened to the colors section? Set to 0 and move on.
+                    AliasCount = 0;
 
                 // Do nothing, failure here will simply not save a user's settings
                 // for their next session. No biggie, just a little annoying.
             }
+        }
+
+        /// <summary>
+        /// Update the form with settings from UserSettings.settings file
+        /// </summary>
+        private void ApplyUserSettings()
+        {
+            if (!string.IsNullOrEmpty(UserSettings.Default.LayoutFileLocation))
+            {
+                locTextBox.Text = UserSettings.Default.LayoutFileLocation;
+            }
+            ahkCheckbox.Checked = UserSettings.Default.RunAHK;
+            ChronoscopeCheckBox.Checked = UserSettings.Default.Chronoscope;
+            CodexAndTheShroudCheckBox.Checked = UserSettings.Default.CodexAndTheShroud;
+            CurseOfStrahdCheckBox.Checked = UserSettings.Default.CodexAndTheShroud;
+            DefilerOfTheJustCheckBox.Checked = UserSettings.Default.DefilerOfTheJust;
+            DryadAndTheDemigodCheckBox.Checked = UserSettings.Default.DryadAndTheDemigod;
+            FallOfTruthCheckBox.Checked = UserSettings.Default.FallOfTruth;
+            FireOnThunderPeakCheckBox.Checked = UserSettings.Default.FireOnThunderPeak;
+            HoundOfXoriatCheckBox.Checked = UserSettings.Default.HoundOfXoriat;
+            KillingTimeCheckBox.Checked = UserSettings.Default.KillingTime;
+            LordOfBladesCheckBox.Checked = UserSettings.Default.LordOfBlades;
+            MarkOfDeathCheckBox.Checked = UserSettings.Default.MarkOfDeath;
+            MasterArtificerCheckBox.Checked = UserSettings.Default.MasterArtificer;
+            OldBabasHutCheckBox.Checked = UserSettings.Default.OldBabasHut;
+            PlaneOfNightCheckBox.Checked = UserSettings.Default.PlaneOfNight;
+            ProjectNemesisCheckBox.Checked = UserSettings.Default.ProjectNemesis;
+            RidingTheStormOutCheckBox.Checked = UserSettings.Default.RidingTheStormOut;
+            SkeletonsInTheClosetCheckBox.Checked = UserSettings.Default.SkeletonsInTheCloset;
+            TempleOfDeathwyrmCheckBox.Checked = UserSettings.Default.TempleOfDeathwyrm;
+            TooHotToHandleCheckBox.Checked = UserSettings.Default.TooHotToHandle;
+            VaultOfNightCheckBox.Checked = UserSettings.Default.VaultOfNight;
+            VisionOfDestructionCheckBox.Checked = UserSettings.Default.VisionOfDestruction;
+            ZawabisRevengeCheckBox.Checked = UserSettings.Default.ZawabisRevenge;
         }
 
         private void GoButton_Click(object sender, EventArgs e)
@@ -46,10 +73,8 @@ namespace DDOAliasSwitcher
             {
                 if (!string.IsNullOrEmpty(locTextBox.Text))
                 {
-                    if (raidDayComboBox.SelectedIndex >= 0 && raidDayComboBox.Text != "-----")
+                    if (AnyRaidChecked())
                     {
-                        string raidDay = raidDayComboBox.Text;
-
                         try
                         {
                             // Save user's most recent layout file settings
@@ -57,12 +82,7 @@ namespace DDOAliasSwitcher
                             {
                                 UserSettings.Default.LayoutFileLocation = locTextBox.Text;
                             }
-                            if (raidDayComboBox.Text != UserSettings.Default.DefaultRaidDay)
-                            {
-                                UserSettings.Default.DefaultRaidDay = raidDayComboBox.Text;
-                            }
                             UserSettings.Default.RunAHK = ahkCheckbox.Checked;
-
                             UserSettings.Default.Save();
 
                             // Generate the DASLayout.layout file for use by application and script
@@ -71,7 +91,7 @@ namespace DDOAliasSwitcher
                             string DASLayoutLoc = $"{dir}\\DASLayout.layout";
                             File.Copy(locTextBox.Text, DASLayoutLoc, true);
 
-                            ProvideFileInfo(raidDay, DASLayoutLoc);
+                            ProvideFileInfo(RaidSelections(), DASLayoutLoc);
 
                             if (ahkCheckbox.Checked)
                             {
@@ -86,8 +106,8 @@ namespace DDOAliasSwitcher
                     }
                     else
                     {
-                        MessageBox.Show("Please use the dropdown to choose your alias settings.",
-                            "Missing values", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Please check one of the raids to choose your alias settings.",
+                            "Missing Raid Selection", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 else
@@ -98,17 +118,47 @@ namespace DDOAliasSwitcher
             }
         }
 
-        private void ProvideFileInfo(string raidDay, string fileLoc)
+        private List<string> RaidSelections()
+        {
+            List<string> raidList = new List<string>();
+
+            foreach (Control c in raidsGroupBox.Controls)
+            {
+                CheckBox ? checkbox = c as CheckBox;
+                if (checkbox != null && checkbox.Checked)
+                {
+                    raidList.Add(checkbox.Name);
+                }
+            }
+
+            return raidList;
+        }
+
+        private bool AnyRaidChecked()
+        {
+            foreach (Control c in raidsGroupBox.Controls)
+            {
+                CheckBox? checkbox = c as CheckBox;
+                if (checkbox != null && checkbox.Checked)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void ProvideFileInfo(List<string> raidSelection, string fileLoc)
         {
             LayoutBuilder layout = new LayoutBuilder();
             Aliases alias = new Aliases();
 
             Dictionary<string, string> aliasLines = new Dictionary<string, string>();
 
-            if (raidDay == "MyDefaultFile")
+            if (raidSelection[0] == "DefaultCheckBox")
                 aliasLines = alias.CompileFromDefaultFile(locTextBox.Text);
             else
-                aliasLines = alias.CompileForRaidDay(raidDay);
+                aliasLines = alias.CompileRaids(raidSelection);
 
             layout.EditXMLForRaidDay(aliasLines, fileLoc);
         }
@@ -133,372 +183,173 @@ namespace DDOAliasSwitcher
         }
 
         #region Raid Checkboxes
-        private void chronoCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void ChronoscopeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("Chronoscope");
-
-            if (chronoCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!chronoCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("Chronoscope", ChronoscopeCheckBox.Checked);
         }
 
-        private void shroudCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void CodexAndTheShroudCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("CodexAndTheShroud");
-
-            if (shroudCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!shroudCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("CodexAndTheShroud", CodexAndTheShroudCheckBox.Checked);
         }
 
-        private void strahdCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void CurseOfStrahdCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("CurseOfStrahd");
-
-            if (strahdCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!strahdCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("CurseOfStrahd", CurseOfStrahdCheckBox.Checked);
         }
 
-        private void dojCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void DefilerOfTheJustCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("DefilerOfTheJust");
-
-            if (dojCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!dojCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("DefilerOfTheJust", DefilerOfTheJustCheckBox.Checked);
         }
 
-        private void dryadCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void DryadAndTheDemigodCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("DryadAndTheDemigod");
-
-            if (dryadCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!dryadCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("DryadAndTheDemigod", DryadAndTheDemigodCheckBox.Checked);
         }
 
-        private void fotCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void FallOfTruthCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("FallOfTruth");
-
-            if (fotCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!fotCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("FallOfTruth", FallOfTruthCheckBox.Checked);
         }
 
-        private void fotpCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void FireOnThunderPeakCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("FireOnThunderPeak");
-
-            if (fotpCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!fotpCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("FireOnThunderPeak", FireOnThunderPeakCheckBox.Checked);
         }
 
-        private void hoxCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void HoundOfXoriatCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("HoundOfXoriat");
-
-            if (hoxCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!hoxCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("HoundOfXoriat", HoundOfXoriatCheckBox.Checked);
         }
 
-        private void huntCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void HuntOrBeHuntedCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("HuntOrBeHunted");
-
-            if (huntCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!huntCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("HuntOrBeHunted", HuntOrBeHuntedCheckBox.Checked);
         }
 
-        private void ktCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void KillingTimeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("KillingTime");
-
-            if (ktCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!ktCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("KillingTime", KillingTimeCheckBox.Checked);
         }
 
-        private void lobCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void LordOfBladesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("LordOfBlades");
-
-            if (lobCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!lobCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("LordOfBlades", LordOfBladesCheckBox.Checked);
         }
 
-        private void modCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void MarkOfDeathCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("MarkOfDeath");
-
-            if (modCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!modCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("MarkOfDeath", MarkOfDeathCheckBox.Checked);
         }
 
-        private void maCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void MasterArtificerCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("MasterArtificer");
-
-            if (maCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!maCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("MasterArtificer", MasterArtificerCheckBox.Checked);
         }
 
-        private void babaCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void OldBabasHutCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("OldBabasHut");
-
-            if (babaCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!babaCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("OldBabasHut", OldBabasHutCheckBox.Checked);
         }
 
-        private void ponCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void PlaneOfNightCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("PlaneOfNight");
-
-            if (ponCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!ponCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("PlaneOfNight", PlaneOfNightCheckBox.Checked);
         }
 
-        private void pnCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void ProjectNemesisCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("ProjectNemesis");
-
-            if (pnCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!pnCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("ProjectNemesis", ProjectNemesisCheckBox.Checked);
         }
 
-        private void rtsoCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void RidingTheStormOutCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("RidingTheStormOut");
-
-            if (rtsoCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!rtsoCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("RidingTheStormOut", RidingTheStormOutCheckBox.Checked);
         }
 
-        private void skelesCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void SkeletonsInTheClosetCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("SkeletonsInTheCloset");
-
-            if (skelesCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!skelesCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("SkeletonsInTheCloset", SkeletonsInTheClosetCheckBox.Checked);
         }
 
-        private void skelesTalkCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void SkeletonsTalkingOptCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("SkeletonsTalkingOpt");
-
-            if (skelesTalkCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!skelesTalkCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("SkeletonsTalkingOpt", SkeletonsTalkingOptCheckBox.Checked);
         }
 
-        private void deathwyrmCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void TempleOfDeathwyrmCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("TempleOfDeathwyrm");
-
-            if (deathwyrmCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!deathwyrmCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("TempleOfDeathwyrm", TempleOfDeathwyrmCheckBox.Checked);
         }
 
-        private void ththCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void TooHotToHandleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("TooHotToHandle");
-
-            if (ththCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!ththCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("TooHotToHandle", TooHotToHandleCheckBox.Checked);
         }
 
-        private void vodCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void VisionOfDestructionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("VisionOfDestruction");
-
-            if (vodCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!vodCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("VisionOfDestruction", VisionOfDestructionCheckBox.Checked);
         }
 
-        private void vonCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void VaultOfNightCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("VaultOfNight");
-
-            if (vonCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!vonCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("VaultOfNight", VaultOfNightCheckBox.Checked);
         }
 
-        private void zrCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void ZawabisRevengeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Aliases aliases = new Aliases();
-            int counter = aliases.GetSectionCount("ZawabisRevenge");
-
-            if (zrCheckBox.Checked)
-            {
-                IncreaseCounter(counter);
-            }
-            if (!zrCheckBox.Checked)
-            {
-                DecreaseCounter(counter);
-            }
+            GetSectionCount("ZawabisRevenge", ZawabisRevengeCheckBox.Checked);
         }
 
-        private void defaultCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void DefaultCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            // Handle this so none of the others can be checked at the same time
-            // (Uncheck others?)
+            foreach (Control c in raidsGroupBox.Controls)
+            {
+                CheckBox? checkbox = c as CheckBox;
+                if (checkbox.Name != "DefaultCheckBox" && checkbox != null && checkbox.Checked)
+                {
+                    checkbox.Checked = false;
+                }
+            }
         }
         #endregion
+
+        private void GetColorSectionCount()
+        {
+            NameValueCollection section = (NameValueCollection)ConfigurationManager.GetSection("Colors");
+
+            int sectionCount = 0;
+
+            if (section.Count > 0)
+            {
+                sectionCount = section.Count;
+            }
+
+            AliasCount = sectionCount;
+        }
+
+        private void GetSectionCount(string sectionName, bool boxChecked)
+        {
+            NameValueCollection section = (NameValueCollection)ConfigurationManager.GetSection(sectionName);
+
+            int sectionCount = 0;
+
+            if (section.Count > 0)
+            {
+                sectionCount = section.Count;
+            }
+
+            if (boxChecked)
+            {
+                IncreaseCounter(sectionCount);
+            }
+            if (!boxChecked)
+            {
+                DecreaseCounter(sectionCount);
+            }
+        }
 
         private void IncreaseCounter(int counter)
         {

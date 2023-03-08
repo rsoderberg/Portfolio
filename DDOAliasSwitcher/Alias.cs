@@ -1,5 +1,6 @@
 ﻿using System.Collections.Specialized;
 using System.Configuration;
+using System.Diagnostics.Metrics;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -70,18 +71,23 @@ namespace DDOAliasSwitcher
             return AliasLines;
         }
 
-        internal Dictionary<string, string> CompileForRaidDay(string raidDay)
+        internal Dictionary<string, string> CompileRaids(List<string> raidSelection)
         {
             AliasColors();
 
-            NameValueCollection RaidAliases = (NameValueCollection)ConfigurationManager.GetSection(raidDay);
-            if (RaidAliases.Count > 0)
+            foreach (string raid in raidSelection)
             {
-                foreach (var alias in RaidAliases)
+                string raidName = raid.Replace("CheckBox", "");
+                NameValueCollection RaidAliases = (NameValueCollection)ConfigurationManager.GetSection(raidName);
+
+                if (RaidAliases.Count > 0)
                 {
-                    var key = Convert.ToString(alias);
-                    var value = RaidAliases[key];
-                    AliasLines.Add(key, value);
+                    foreach (var alias in RaidAliases)
+                    {
+                        var key = Convert.ToString(alias);
+                        var value = RaidAliases[key];
+                        AliasLines.Add(key, value);
+                    }
                 }
             }
 
@@ -101,20 +107,6 @@ namespace DDOAliasSwitcher
                     AliasLines.Add(colorKey, colorValue);
                 }
             }
-        }
-
-        internal int GetSectionCount(string sectionName)
-        {
-            NameValueCollection section = (NameValueCollection)ConfigurationManager.GetSection(sectionName);
-
-            int sectionCount = 0;
-
-            if (section.Count > 0)
-            {
-                sectionCount = section.Count;
-            }
-
-            return sectionCount;
         }
         #endregion
     }
