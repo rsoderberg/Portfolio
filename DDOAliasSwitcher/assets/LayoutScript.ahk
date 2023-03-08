@@ -9,11 +9,11 @@ if not WinExist("ahk_class Turbine Device Class")	; if DDO not open don't do the
 else							; if DDO is open
 {
 	WinActivate ahk_class Turbine Device Class 	; activates DDO
-	Sleep 100					; wait a lil 
+	Sleep 250					; wait a lil 
 	Send !{enter}					; enter windowed to fix graphics errors
-	Sleep 100					; wait a lil 
+	Sleep 250					; wait a lil 
 	Send !{enter}					; exit windowed to return to where you were
-	Sleep 100					; wait a lil 
+	Sleep 250					; wait a lil 
 	oldClip := clipboard                            ; save your current clipboard data to a variable to set it back later
 	clipboard = /alias clearlist                    ; clears existing aliases
 	Send {enter}                              	; hit Enter to open chat
