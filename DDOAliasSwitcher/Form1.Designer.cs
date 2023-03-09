@@ -275,17 +275,6 @@
             this.ZawabisRevengeCheckBox.UseVisualStyleBackColor = true;
             this.ZawabisRevengeCheckBox.CheckedChanged += new System.EventHandler(this.ZawabisRevengeCheckBox_CheckedChanged);
             // 
-            // VisionOfDestructionCheckBox
-            // 
-            this.VisionOfDestructionCheckBox.AutoSize = true;
-            this.VisionOfDestructionCheckBox.Location = new System.Drawing.Point(357, 72);
-            this.VisionOfDestructionCheckBox.Name = "VisionOfDestructionCheckBox";
-            this.VisionOfDestructionCheckBox.Size = new System.Drawing.Size(136, 19);
-            this.VisionOfDestructionCheckBox.TabIndex = 20;
-            this.VisionOfDestructionCheckBox.Text = "Vision of Destruction";
-            this.VisionOfDestructionCheckBox.UseVisualStyleBackColor = true;
-            this.VisionOfDestructionCheckBox.CheckedChanged += new System.EventHandler(this.VisionOfDestructionCheckBox_CheckedChanged);
-            // 
             // VaultOfNightCheckBox
             // 
             this.VaultOfNightCheckBox.AutoSize = true;
@@ -296,6 +285,17 @@
             this.VaultOfNightCheckBox.Text = "Vault of Night";
             this.VaultOfNightCheckBox.UseVisualStyleBackColor = true;
             this.VaultOfNightCheckBox.CheckedChanged += new System.EventHandler(this.VaultOfNightCheckBox_CheckedChanged);
+            // 
+            // VisionOfDestructionCheckBox
+            // 
+            this.VisionOfDestructionCheckBox.AutoSize = true;
+            this.VisionOfDestructionCheckBox.Location = new System.Drawing.Point(357, 72);
+            this.VisionOfDestructionCheckBox.Name = "VisionOfDestructionCheckBox";
+            this.VisionOfDestructionCheckBox.Size = new System.Drawing.Size(136, 19);
+            this.VisionOfDestructionCheckBox.TabIndex = 20;
+            this.VisionOfDestructionCheckBox.Text = "Vision of Destruction";
+            this.VisionOfDestructionCheckBox.UseVisualStyleBackColor = true;
+            this.VisionOfDestructionCheckBox.CheckedChanged += new System.EventHandler(this.VisionOfDestructionCheckBox_CheckedChanged);
             // 
             // TooHotToHandleCheckBox
             // 

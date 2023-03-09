@@ -1,6 +1,5 @@
 ﻿using System.Collections.Specialized;
 using System.Configuration;
-using System.Diagnostics.Metrics;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -75,6 +74,7 @@ namespace DDOAliasSwitcher
         {
             AliasColors();
 
+            string keyLines = "";
             foreach (string raid in raidSelection)
             {
                 string raidName = raid.Replace("CheckBox", "");
@@ -87,9 +87,13 @@ namespace DDOAliasSwitcher
                         var key = Convert.ToString(alias);
                         var value = RaidAliases[key];
                         AliasLines.Add(key, value);
+
+                        keyLines += $"{key}, ";
                     }
                 }
             }
+
+            AliasLines.Add(";list", $"/p {keyLines}");
 
             return AliasLines;
         }
