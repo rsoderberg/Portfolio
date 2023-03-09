@@ -88,7 +88,7 @@ namespace DDOAliasSwitcher
                         var value = RaidAliases[key];
                         AliasLines.Add(key, value);
 
-                        keyLines += $"{key}, ";
+                        keyLines += $"{key.Replace(";", "")}, ";
                     }
                 }
             }
