@@ -320,7 +320,7 @@ namespace DDOAliasSwitcher
         {
             NameValueCollection section = (NameValueCollection)ConfigurationManager.GetSection("Colors");
 
-            int sectionCount = 0;
+            int sectionCount = 1; // Account for ;list alias
 
             if (section.Count > 0)
             {
