@@ -51,7 +51,6 @@ namespace DDOAliasSwitcher
             MarkOfDeathCheckBox.Checked = UserSettings.Default.MarkOfDeath;
             MasterArtificerCheckBox.Checked = UserSettings.Default.MasterArtificer;
             OldBabasHutCheckBox.Checked = UserSettings.Default.OldBabasHut;
-            PlaneOfNightCheckBox.Checked = UserSettings.Default.PlaneOfNight;
             ProjectNemesisCheckBox.Checked = UserSettings.Default.ProjectNemesis;
             RidingTheStormOutCheckBox.Checked = UserSettings.Default.RidingTheStormOut;
             SkeletonsInTheClosetCheckBox.Checked = UserSettings.Default.SkeletonsInTheCloset;
@@ -251,11 +250,6 @@ namespace DDOAliasSwitcher
         private void OldBabasHutCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GetSectionCount("OldBabasHut", OldBabasHutCheckBox.Checked);
-        }
-
-        private void PlaneOfNightCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            GetSectionCount("PlaneOfNight", PlaneOfNightCheckBox.Checked);
         }
 
         private void ProjectNemesisCheckBox_CheckedChanged(object sender, EventArgs e)

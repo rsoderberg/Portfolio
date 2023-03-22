@@ -218,18 +218,6 @@ namespace DDOAliasSwitcher {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PlaneOfNight {
-            get {
-                return ((bool)(this["PlaneOfNight"]));
-            }
-            set {
-                this["PlaneOfNight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ProjectNemesis {
             get {
                 return ((bool)(this["ProjectNemesis"]));
