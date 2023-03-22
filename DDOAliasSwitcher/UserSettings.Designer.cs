@@ -322,5 +322,17 @@ namespace DDOAliasSwitcher {
                 this["ZawabisRevenge"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CaughtInTheWeb {
+            get {
+                return ((bool)(this["CaughtInTheWeb"]));
+            }
+            set {
+                this["CaughtInTheWeb"] = value;
+            }
+        }
     }
 }

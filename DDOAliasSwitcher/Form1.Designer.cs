@@ -39,7 +39,7 @@
             this.raidsGroupBox = new System.Windows.Forms.GroupBox();
             this.OldBabasHutCheckBox = new System.Windows.Forms.CheckBox();
             this.DefaultCheckBox = new System.Windows.Forms.CheckBox();
-            this.stubCheckBox5 = new System.Windows.Forms.CheckBox();
+            this.CaughtInTheWebCheckBox = new System.Windows.Forms.CheckBox();
             this.stubCheckBox4 = new System.Windows.Forms.CheckBox();
             this.stubCheckBox3 = new System.Windows.Forms.CheckBox();
             this.stubCheckBox2 = new System.Windows.Forms.CheckBox();
@@ -146,7 +146,7 @@
             // 
             this.raidsGroupBox.Controls.Add(this.OldBabasHutCheckBox);
             this.raidsGroupBox.Controls.Add(this.DefaultCheckBox);
-            this.raidsGroupBox.Controls.Add(this.stubCheckBox5);
+            this.raidsGroupBox.Controls.Add(this.CaughtInTheWebCheckBox);
             this.raidsGroupBox.Controls.Add(this.stubCheckBox4);
             this.raidsGroupBox.Controls.Add(this.stubCheckBox3);
             this.raidsGroupBox.Controls.Add(this.stubCheckBox2);
@@ -183,7 +183,7 @@
             // OldBabasHutCheckBox
             // 
             this.OldBabasHutCheckBox.AutoSize = true;
-            this.OldBabasHutCheckBox.Location = new System.Drawing.Point(178, 97);
+            this.OldBabasHutCheckBox.Location = new System.Drawing.Point(188, 122);
             this.OldBabasHutCheckBox.Name = "OldBabasHutCheckBox";
             this.OldBabasHutCheckBox.Size = new System.Drawing.Size(105, 19);
             this.OldBabasHutCheckBox.TabIndex = 29;
@@ -202,23 +202,22 @@
             this.DefaultCheckBox.UseVisualStyleBackColor = true;
             this.DefaultCheckBox.CheckedChanged += new System.EventHandler(this.DefaultCheckBox_CheckedChanged);
             // 
-            // stubCheckBox5
+            // CaughtInTheWebCheckBox
             // 
-            this.stubCheckBox5.AutoSize = true;
-            this.stubCheckBox5.Enabled = false;
-            this.stubCheckBox5.Location = new System.Drawing.Point(357, 197);
-            this.stubCheckBox5.Name = "stubCheckBox5";
-            this.stubCheckBox5.Size = new System.Drawing.Size(59, 19);
-            this.stubCheckBox5.TabIndex = 27;
-            this.stubCheckBox5.Text = "Stub 5";
-            this.stubCheckBox5.UseVisualStyleBackColor = true;
-            this.stubCheckBox5.Visible = false;
+            this.CaughtInTheWebCheckBox.AutoSize = true;
+            this.CaughtInTheWebCheckBox.Location = new System.Drawing.Point(6, 22);
+            this.CaughtInTheWebCheckBox.Name = "CaughtInTheWebCheckBox";
+            this.CaughtInTheWebCheckBox.Size = new System.Drawing.Size(125, 19);
+            this.CaughtInTheWebCheckBox.TabIndex = 27;
+            this.CaughtInTheWebCheckBox.Text = "Caught in the Web";
+            this.CaughtInTheWebCheckBox.UseVisualStyleBackColor = true;
+            this.CaughtInTheWebCheckBox.CheckedChanged += new System.EventHandler(this.CaughtInTheWebCheckBox_CheckedChanged);
             // 
             // stubCheckBox4
             // 
             this.stubCheckBox4.AutoSize = true;
             this.stubCheckBox4.Enabled = false;
-            this.stubCheckBox4.Location = new System.Drawing.Point(357, 172);
+            this.stubCheckBox4.Location = new System.Drawing.Point(357, 197);
             this.stubCheckBox4.Name = "stubCheckBox4";
             this.stubCheckBox4.Size = new System.Drawing.Size(59, 19);
             this.stubCheckBox4.TabIndex = 26;
@@ -230,7 +229,7 @@
             // 
             this.stubCheckBox3.AutoSize = true;
             this.stubCheckBox3.Enabled = false;
-            this.stubCheckBox3.Location = new System.Drawing.Point(357, 147);
+            this.stubCheckBox3.Location = new System.Drawing.Point(357, 172);
             this.stubCheckBox3.Name = "stubCheckBox3";
             this.stubCheckBox3.Size = new System.Drawing.Size(59, 19);
             this.stubCheckBox3.TabIndex = 25;
@@ -242,7 +241,7 @@
             // 
             this.stubCheckBox2.AutoSize = true;
             this.stubCheckBox2.Enabled = false;
-            this.stubCheckBox2.Location = new System.Drawing.Point(357, 122);
+            this.stubCheckBox2.Location = new System.Drawing.Point(357, 147);
             this.stubCheckBox2.Name = "stubCheckBox2";
             this.stubCheckBox2.Size = new System.Drawing.Size(59, 19);
             this.stubCheckBox2.TabIndex = 24;
@@ -254,7 +253,7 @@
             // 
             this.stubCheckBox1.AutoSize = true;
             this.stubCheckBox1.Enabled = false;
-            this.stubCheckBox1.Location = new System.Drawing.Point(357, 97);
+            this.stubCheckBox1.Location = new System.Drawing.Point(357, 122);
             this.stubCheckBox1.Name = "stubCheckBox1";
             this.stubCheckBox1.Size = new System.Drawing.Size(59, 19);
             this.stubCheckBox1.TabIndex = 23;
@@ -265,7 +264,7 @@
             // ZawabisRevengeCheckBox
             // 
             this.ZawabisRevengeCheckBox.AutoSize = true;
-            this.ZawabisRevengeCheckBox.Location = new System.Drawing.Point(357, 72);
+            this.ZawabisRevengeCheckBox.Location = new System.Drawing.Point(357, 97);
             this.ZawabisRevengeCheckBox.Name = "ZawabisRevengeCheckBox";
             this.ZawabisRevengeCheckBox.Size = new System.Drawing.Size(120, 19);
             this.ZawabisRevengeCheckBox.TabIndex = 22;
@@ -276,7 +275,7 @@
             // VaultOfNightCheckBox
             // 
             this.VaultOfNightCheckBox.AutoSize = true;
-            this.VaultOfNightCheckBox.Location = new System.Drawing.Point(357, 22);
+            this.VaultOfNightCheckBox.Location = new System.Drawing.Point(357, 47);
             this.VaultOfNightCheckBox.Name = "VaultOfNightCheckBox";
             this.VaultOfNightCheckBox.Size = new System.Drawing.Size(140, 19);
             this.VaultOfNightCheckBox.TabIndex = 21;
@@ -287,7 +286,7 @@
             // VisionOfDestructionCheckBox
             // 
             this.VisionOfDestructionCheckBox.AutoSize = true;
-            this.VisionOfDestructionCheckBox.Location = new System.Drawing.Point(357, 47);
+            this.VisionOfDestructionCheckBox.Location = new System.Drawing.Point(357, 72);
             this.VisionOfDestructionCheckBox.Name = "VisionOfDestructionCheckBox";
             this.VisionOfDestructionCheckBox.Size = new System.Drawing.Size(136, 19);
             this.VisionOfDestructionCheckBox.TabIndex = 20;
@@ -298,7 +297,7 @@
             // TooHotToHandleCheckBox
             // 
             this.TooHotToHandleCheckBox.AutoSize = true;
-            this.TooHotToHandleCheckBox.Location = new System.Drawing.Point(178, 247);
+            this.TooHotToHandleCheckBox.Location = new System.Drawing.Point(357, 22);
             this.TooHotToHandleCheckBox.Name = "TooHotToHandleCheckBox";
             this.TooHotToHandleCheckBox.Size = new System.Drawing.Size(123, 19);
             this.TooHotToHandleCheckBox.TabIndex = 19;
@@ -309,7 +308,7 @@
             // TempleOfDeathwyrmCheckBox
             // 
             this.TempleOfDeathwyrmCheckBox.AutoSize = true;
-            this.TempleOfDeathwyrmCheckBox.Location = new System.Drawing.Point(178, 222);
+            this.TempleOfDeathwyrmCheckBox.Location = new System.Drawing.Point(188, 247);
             this.TempleOfDeathwyrmCheckBox.Name = "TempleOfDeathwyrmCheckBox";
             this.TempleOfDeathwyrmCheckBox.Size = new System.Drawing.Size(142, 19);
             this.TempleOfDeathwyrmCheckBox.TabIndex = 18;
@@ -320,7 +319,7 @@
             // SkeletonsTalkingOptCheckBox
             // 
             this.SkeletonsTalkingOptCheckBox.AutoSize = true;
-            this.SkeletonsTalkingOptCheckBox.Location = new System.Drawing.Point(178, 197);
+            this.SkeletonsTalkingOptCheckBox.Location = new System.Drawing.Point(188, 222);
             this.SkeletonsTalkingOptCheckBox.Name = "SkeletonsTalkingOptCheckBox";
             this.SkeletonsTalkingOptCheckBox.Size = new System.Drawing.Size(139, 19);
             this.SkeletonsTalkingOptCheckBox.TabIndex = 17;
@@ -331,7 +330,7 @@
             // SkeletonsInTheClosetCheckBox
             // 
             this.SkeletonsInTheClosetCheckBox.AutoSize = true;
-            this.SkeletonsInTheClosetCheckBox.Location = new System.Drawing.Point(178, 172);
+            this.SkeletonsInTheClosetCheckBox.Location = new System.Drawing.Point(188, 197);
             this.SkeletonsInTheClosetCheckBox.Name = "SkeletonsInTheClosetCheckBox";
             this.SkeletonsInTheClosetCheckBox.Size = new System.Drawing.Size(145, 19);
             this.SkeletonsInTheClosetCheckBox.TabIndex = 16;
@@ -342,7 +341,7 @@
             // RidingTheStormOutCheckBox
             // 
             this.RidingTheStormOutCheckBox.AutoSize = true;
-            this.RidingTheStormOutCheckBox.Location = new System.Drawing.Point(178, 147);
+            this.RidingTheStormOutCheckBox.Location = new System.Drawing.Point(188, 172);
             this.RidingTheStormOutCheckBox.Name = "RidingTheStormOutCheckBox";
             this.RidingTheStormOutCheckBox.Size = new System.Drawing.Size(138, 19);
             this.RidingTheStormOutCheckBox.TabIndex = 15;
@@ -353,7 +352,7 @@
             // ProjectNemesisCheckBox
             // 
             this.ProjectNemesisCheckBox.AutoSize = true;
-            this.ProjectNemesisCheckBox.Location = new System.Drawing.Point(178, 122);
+            this.ProjectNemesisCheckBox.Location = new System.Drawing.Point(188, 147);
             this.ProjectNemesisCheckBox.Name = "ProjectNemesisCheckBox";
             this.ProjectNemesisCheckBox.Size = new System.Drawing.Size(111, 19);
             this.ProjectNemesisCheckBox.TabIndex = 14;
@@ -364,7 +363,7 @@
             // MasterArtificerCheckBox
             // 
             this.MasterArtificerCheckBox.AutoSize = true;
-            this.MasterArtificerCheckBox.Location = new System.Drawing.Point(178, 72);
+            this.MasterArtificerCheckBox.Location = new System.Drawing.Point(188, 97);
             this.MasterArtificerCheckBox.Name = "MasterArtificerCheckBox";
             this.MasterArtificerCheckBox.Size = new System.Drawing.Size(107, 19);
             this.MasterArtificerCheckBox.TabIndex = 12;
@@ -375,7 +374,7 @@
             // MarkOfDeathCheckBox
             // 
             this.MarkOfDeathCheckBox.AutoSize = true;
-            this.MarkOfDeathCheckBox.Location = new System.Drawing.Point(178, 47);
+            this.MarkOfDeathCheckBox.Location = new System.Drawing.Point(188, 72);
             this.MarkOfDeathCheckBox.Name = "MarkOfDeathCheckBox";
             this.MarkOfDeathCheckBox.Size = new System.Drawing.Size(101, 19);
             this.MarkOfDeathCheckBox.TabIndex = 11;
@@ -386,7 +385,7 @@
             // LordOfBladesCheckBox
             // 
             this.LordOfBladesCheckBox.AutoSize = true;
-            this.LordOfBladesCheckBox.Location = new System.Drawing.Point(178, 22);
+            this.LordOfBladesCheckBox.Location = new System.Drawing.Point(188, 47);
             this.LordOfBladesCheckBox.Name = "LordOfBladesCheckBox";
             this.LordOfBladesCheckBox.Size = new System.Drawing.Size(101, 19);
             this.LordOfBladesCheckBox.TabIndex = 10;
@@ -397,7 +396,7 @@
             // KillingTimeCheckBox
             // 
             this.KillingTimeCheckBox.AutoSize = true;
-            this.KillingTimeCheckBox.Location = new System.Drawing.Point(6, 247);
+            this.KillingTimeCheckBox.Location = new System.Drawing.Point(188, 22);
             this.KillingTimeCheckBox.Name = "KillingTimeCheckBox";
             this.KillingTimeCheckBox.Size = new System.Drawing.Size(88, 19);
             this.KillingTimeCheckBox.TabIndex = 9;
@@ -408,7 +407,7 @@
             // HuntOrBeHuntedCheckBox
             // 
             this.HuntOrBeHuntedCheckBox.AutoSize = true;
-            this.HuntOrBeHuntedCheckBox.Location = new System.Drawing.Point(6, 222);
+            this.HuntOrBeHuntedCheckBox.Location = new System.Drawing.Point(6, 247);
             this.HuntOrBeHuntedCheckBox.Name = "HuntOrBeHuntedCheckBox";
             this.HuntOrBeHuntedCheckBox.Size = new System.Drawing.Size(126, 19);
             this.HuntOrBeHuntedCheckBox.TabIndex = 8;
@@ -419,7 +418,7 @@
             // HoundOfXoriatCheckBox
             // 
             this.HoundOfXoriatCheckBox.AutoSize = true;
-            this.HoundOfXoriatCheckBox.Location = new System.Drawing.Point(6, 197);
+            this.HoundOfXoriatCheckBox.Location = new System.Drawing.Point(6, 222);
             this.HoundOfXoriatCheckBox.Name = "HoundOfXoriatCheckBox";
             this.HoundOfXoriatCheckBox.Size = new System.Drawing.Size(111, 19);
             this.HoundOfXoriatCheckBox.TabIndex = 7;
@@ -430,7 +429,7 @@
             // FireOnThunderPeakCheckBox
             // 
             this.FireOnThunderPeakCheckBox.AutoSize = true;
-            this.FireOnThunderPeakCheckBox.Location = new System.Drawing.Point(6, 172);
+            this.FireOnThunderPeakCheckBox.Location = new System.Drawing.Point(6, 197);
             this.FireOnThunderPeakCheckBox.Name = "FireOnThunderPeakCheckBox";
             this.FireOnThunderPeakCheckBox.Size = new System.Drawing.Size(137, 19);
             this.FireOnThunderPeakCheckBox.TabIndex = 6;
@@ -441,7 +440,7 @@
             // FallOfTruthCheckBox
             // 
             this.FallOfTruthCheckBox.AutoSize = true;
-            this.FallOfTruthCheckBox.Location = new System.Drawing.Point(6, 147);
+            this.FallOfTruthCheckBox.Location = new System.Drawing.Point(6, 172);
             this.FallOfTruthCheckBox.Name = "FallOfTruthCheckBox";
             this.FallOfTruthCheckBox.Size = new System.Drawing.Size(88, 19);
             this.FallOfTruthCheckBox.TabIndex = 5;
@@ -452,7 +451,7 @@
             // DryadAndTheDemigodCheckBox
             // 
             this.DryadAndTheDemigodCheckBox.AutoSize = true;
-            this.DryadAndTheDemigodCheckBox.Location = new System.Drawing.Point(6, 122);
+            this.DryadAndTheDemigodCheckBox.Location = new System.Drawing.Point(6, 147);
             this.DryadAndTheDemigodCheckBox.Name = "DryadAndTheDemigodCheckBox";
             this.DryadAndTheDemigodCheckBox.Size = new System.Drawing.Size(152, 19);
             this.DryadAndTheDemigodCheckBox.TabIndex = 4;
@@ -463,7 +462,7 @@
             // DefilerOfTheJustCheckBox
             // 
             this.DefilerOfTheJustCheckBox.AutoSize = true;
-            this.DefilerOfTheJustCheckBox.Location = new System.Drawing.Point(6, 97);
+            this.DefilerOfTheJustCheckBox.Location = new System.Drawing.Point(6, 122);
             this.DefilerOfTheJustCheckBox.Name = "DefilerOfTheJustCheckBox";
             this.DefilerOfTheJustCheckBox.Size = new System.Drawing.Size(117, 19);
             this.DefilerOfTheJustCheckBox.TabIndex = 3;
@@ -474,7 +473,7 @@
             // CurseOfStrahdCheckBox
             // 
             this.CurseOfStrahdCheckBox.AutoSize = true;
-            this.CurseOfStrahdCheckBox.Location = new System.Drawing.Point(6, 72);
+            this.CurseOfStrahdCheckBox.Location = new System.Drawing.Point(6, 97);
             this.CurseOfStrahdCheckBox.Name = "CurseOfStrahdCheckBox";
             this.CurseOfStrahdCheckBox.Size = new System.Drawing.Size(107, 19);
             this.CurseOfStrahdCheckBox.TabIndex = 2;
@@ -485,7 +484,7 @@
             // CodexAndTheShroudCheckBox
             // 
             this.CodexAndTheShroudCheckBox.AutoSize = true;
-            this.CodexAndTheShroudCheckBox.Location = new System.Drawing.Point(6, 47);
+            this.CodexAndTheShroudCheckBox.Location = new System.Drawing.Point(6, 72);
             this.CodexAndTheShroudCheckBox.Name = "CodexAndTheShroudCheckBox";
             this.CodexAndTheShroudCheckBox.Size = new System.Drawing.Size(144, 19);
             this.CodexAndTheShroudCheckBox.TabIndex = 1;
@@ -496,7 +495,7 @@
             // ChronoscopeCheckBox
             // 
             this.ChronoscopeCheckBox.AutoSize = true;
-            this.ChronoscopeCheckBox.Location = new System.Drawing.Point(6, 22);
+            this.ChronoscopeCheckBox.Location = new System.Drawing.Point(6, 47);
             this.ChronoscopeCheckBox.Name = "ChronoscopeCheckBox";
             this.ChronoscopeCheckBox.Size = new System.Drawing.Size(97, 19);
             this.ChronoscopeCheckBox.TabIndex = 0;
@@ -558,7 +557,7 @@
         private CheckBox ahkCheckbox;
         private GroupBox raidsGroupBox;
         private CheckBox DefaultCheckBox;
-        private CheckBox stubCheckBox5;
+        private CheckBox CaughtInTheWebCheckBox;
         private CheckBox stubCheckBox4;
         private CheckBox stubCheckBox3;
         private CheckBox stubCheckBox2;

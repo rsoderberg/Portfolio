@@ -38,6 +38,7 @@ namespace DDOAliasSwitcher
                 locTextBox.Text = UserSettings.Default.LayoutFileLocation;
             }
             ahkCheckbox.Checked = UserSettings.Default.RunAHK;
+            CaughtInTheWebCheckBox.Checked = UserSettings.Default.CaughtInTheWeb;
             ChronoscopeCheckBox.Checked = UserSettings.Default.Chronoscope;
             CodexAndTheShroudCheckBox.Checked = UserSettings.Default.CodexAndTheShroud;
             CurseOfStrahdCheckBox.Checked = UserSettings.Default.CodexAndTheShroud;
@@ -182,6 +183,11 @@ namespace DDOAliasSwitcher
         }
 
         #region Raid Checkboxes
+        private void CaughtInTheWebCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            GetSectionCount("CaughtInTheWeb", CaughtInTheWebCheckBox.Checked);
+        }
+
         private void ChronoscopeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GetSectionCount("Chronoscope", ChronoscopeCheckBox.Checked);
