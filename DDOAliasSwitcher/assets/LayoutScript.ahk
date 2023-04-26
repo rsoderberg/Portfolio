@@ -18,13 +18,13 @@ else							; if DDO is open
 	clipboard = /alias clearlist                    ; clears existing aliases
 	Send {enter}                              	; hit Enter to open chat
 	Send ^v						; paste clipboard
-	Sleep 100					; wait a lil 					
+	Sleep 250					; wait a lil 					
 	Send {enter}					; hit Enter to send command in DDO
 	clipboard = /UI layout load DASLayout    	; put the UI update string into your clipboard
-	Sleep 100					; wait a lil 				
+	Sleep 250					; wait a lil 				
 	Send {enter}                              	; hit Enter to open chat
 	Send ^v						; paste clipboard
-	Sleep 100					; wait a lil 
+	Sleep 250					; wait a lil 
 	Send {enter}					; hit Enter to send command in DDO
 	Clipboard := oldclip				; puts your old clipboard back
 	Oldclip := ""					; clears the variable for memory purposes
