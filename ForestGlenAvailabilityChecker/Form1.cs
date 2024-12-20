@@ -1,3 +1,5 @@
+using System.Media;
+
 namespace ForestGlenAvailabilityChecker
 {
     public partial class CheckForm : Form
@@ -9,7 +11,7 @@ namespace ForestGlenAvailabilityChecker
 
         private int _timeLeft;
         private bool _emailSent;
-        private int _timerMax = 30;
+        private int _timerMax = 5;
 
         public CheckForm()
         {
@@ -68,16 +70,6 @@ namespace ForestGlenAvailabilityChecker
                 catch (Exception ex)
                 {
                     UpdateTextBox($"Scraping Error:{Environment.NewLine}{ex}");
-                }
-
-                try
-                {
-                    Email email = new Email();
-                    email.BuildEmail("Test", "This is a test email");
-                }
-                catch (Exception ex)
-                {
-                    UpdateTextBox($"Daily Email Error:{Environment.NewLine}{ex}");
                 }
 
                 _timeLeft = _timerMax;
