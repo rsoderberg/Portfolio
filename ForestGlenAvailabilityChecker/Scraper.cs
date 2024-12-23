@@ -1,6 +1,7 @@
 ﻿using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Net;
@@ -34,12 +35,16 @@ namespace ForestGlenAvailabilityChecker
                         HtmlParser parser = new HtmlParser();
                         IHtmlDocument document = parser.ParseDocument(html);
 
-                        IElement? availability = document.All.FirstOrDefault(x => x.ClassName == "primary-action" && !x.InnerHtml.Contains("Get Notified")); //&& x.OuterHtml.Contains("Spruce") 
+                        IElement? availability = document.All.FirstOrDefault(x => x.ClassName == "primary-action" && x.OuterHtml.Contains("Spruce") && !x.InnerHtml.Contains("Get Notified")); 
                         if (availability != null)
                         {
-                            string memo = $"Your floor plan is available for move-in: {availability.InnerHtml}";
+                            string toastMemo = $"Your floor plan is available for move-in: {availability.InnerHtml}";
 
-                            // Toast popup?
+                            new ToastContentBuilder()
+                                .AddArgument("action", "viewConversation")
+                                .AddArgument("conversationId", 9813)
+                                .AddText(toastMemo)
+                                .Show();
                         }
                     }
                 }
@@ -48,11 +53,6 @@ namespace ForestGlenAvailabilityChecker
             {
                 _form.UpdateTextBox($"There was an error getting scrape results:{Environment.NewLine}{e}{Environment.NewLine}");
             }
-        }
-
-        private void NotifyIfAvaila(IHtmlDocument document)
-        {
-            
         }
     }
 }
