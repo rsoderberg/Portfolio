@@ -4,47 +4,45 @@ using AngleSharp.Html.Parser;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Net;
-using System.Windows.Forms;
 
 namespace ForestGlenAvailabilityChecker
 {
     internal class Scraper
     {
-        public string[] QueryTerms { get; } = {
-            "Intro", "Tutorial", "Education", "Learn", "Book",
-            "C#", "CSharp", "Software", "Developer", "Code", "Salesforce",
-            "Neural", "IoT", "Simulation", "Robot",
-            "Hack", "Cyber", "Security",
-            "Communication", "Translation", "French", "Français", "Mongolian",
-            "Green", "Animal", "Nature", "Climate", "Pollution", "Sea"
-        };
-
-        public static Dictionary<string, string> SavedArticles = new Dictionary<string, string> { };
-
         private static CheckForm _form = CheckForm.ProcessMonitor;
         internal readonly NameValueCollection _appSettings = ConfigurationManager.AppSettings;
 
-        internal async void ScrapeHackerNews()
+        internal async void ScrapeForestGlenFloorPlans()
         {
+            string webURL = _appSettings["ForestGlenURL"];
+
             try
             {
-                CancellationTokenSource cancellationToken = new CancellationTokenSource();
-                HttpClient httpClient = new HttpClient();
-                HttpResponseMessage request = await httpClient.GetAsync(_appSettings["ForestGlenURL"], cancellationToken.Token);
-                ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-                _form.UpdateTextBox($"Request: {request}");
+                CookieContainer cookies = new CookieContainer();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webURL);
+                request.Proxy.Credentials = CredentialCache.DefaultCredentials;
+                request.Method = "GET";
+                request.CookieContainer = cookies;
+                request.UserAgent = "definitely-not-a-web-scraper";
+                request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8";
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        string html = streamReader.ReadToEnd();
 
-                cancellationToken.Token.ThrowIfCancellationRequested();
+                        HtmlParser parser = new HtmlParser();
+                        IHtmlDocument document = parser.ParseDocument(html);
 
-                Stream response = await request.Content.ReadAsStreamAsync();
-                _form.UpdateTextBox($"Response: {response}");
-                cancellationToken.Token.ThrowIfCancellationRequested();
+                        IElement? availability = document.All.FirstOrDefault(x => x.ClassName == "primary-action" && !x.InnerHtml.Contains("Get Notified")); //&& x.OuterHtml.Contains("Spruce") 
+                        if (availability != null)
+                        {
+                            string memo = $"Your floor plan is available for move-in: {availability.InnerHtml}";
 
-                HtmlParser parser = new HtmlParser();
-                IHtmlDocument document = parser.ParseDocument(response);
-                _form.UpdateTextBox($"Document: {document}");
-
-                GetHackerNewsScrapeResults(document);
+                            // Toast popup?
+                        }
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -52,19 +50,9 @@ namespace ForestGlenAvailabilityChecker
             }
         }
 
-        private void GetHackerNewsScrapeResults(IHtmlDocument document)
+        private void NotifyIfAvaila(IHtmlDocument document)
         {
-            IEnumerable<IElement> articleLink;
-            foreach (var term in QueryTerms)
-            {
-                articleLink = document.All.Where(x => x.ClassName == "storylink" && (x.InnerHtml.Contains(term) || x.InnerHtml.Contains(term.ToLower())));
-                _form.UpdateTextBox($"Number of links found: {articleLink.Count()}");
-
-                if (articleLink.Any())
-                {
-                    // Notify of results
-                }
-            }
+            
         }
     }
 }

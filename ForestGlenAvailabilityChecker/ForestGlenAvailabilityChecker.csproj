@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="App.config~RF1e25c63e.TMP" />
+    <None Remove="Email.cs~RF1df46417.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AngleSharp" Version="1.1.2" />
   </ItemGroup>
 

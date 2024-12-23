@@ -1,17 +1,11 @@
-using System.Media;
-
 namespace ForestGlenAvailabilityChecker
 {
     public partial class CheckForm : Form
     {
         public static CheckForm ProcessMonitor;
 
-        private string Title { get; set; }
-        private string Url { get; set; }
-
         private int _timeLeft;
-        private bool _emailSent;
-        private int _timerMax = 5;
+        private int _timerMax = 30; // in seconds
 
         public CheckForm()
         {
@@ -34,7 +28,7 @@ namespace ForestGlenAvailabilityChecker
                 timer1.Start();
                 startButton.Text = "Stop";
 
-                //ScrapeWebsite();
+                ScrapeWebsite();
             }
             else
             {
@@ -80,7 +74,7 @@ namespace ForestGlenAvailabilityChecker
         private void ScrapeWebsite()
         {
             Scraper scraper = new Scraper();
-            //scraper.ScrapeHackerNews();
+            scraper.ScrapeForestGlenFloorPlans();
         }
 
         private void HandleTextBoxFull()
