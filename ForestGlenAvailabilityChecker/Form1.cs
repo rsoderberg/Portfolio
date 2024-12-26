@@ -1,16 +1,22 @@
+using System.Collections.Specialized;
+using System.Configuration;
+
 namespace ForestGlenAvailabilityChecker
 {
     public partial class CheckForm : Form
     {
         public static CheckForm ProcessMonitor;
 
+        internal readonly NameValueCollection _appSettings = ConfigurationManager.AppSettings;
+
         private int _timeLeft;
-        private int _timerMax = 30; // in seconds
+        private int _timerMax;
 
         public CheckForm()
         {
             InitializeComponent();
             ProcessMonitor = this;
+            _timerMax = Convert.ToInt32(_appSettings["TimerMax"]);
         }
 
         private void CheckForm_Shown(object sender, EventArgs e)

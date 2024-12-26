@@ -40,6 +40,7 @@
             resultsTextbox.Location = new Point(12, 12);
             resultsTextbox.Multiline = true;
             resultsTextbox.Name = "resultsTextbox";
+            resultsTextbox.ScrollBars = ScrollBars.Vertical;
             resultsTextbox.Size = new Size(462, 629);
             resultsTextbox.TabIndex = 0;
             // 
@@ -61,7 +62,7 @@
             // timerLabel
             // 
             timerLabel.AutoSize = true;
-            timerLabel.Location = new Point(459, 651);
+            timerLabel.Location = new Point(449, 651);
             timerLabel.Name = "timerLabel";
             timerLabel.Size = new Size(0, 15);
             timerLabel.TabIndex = 2;

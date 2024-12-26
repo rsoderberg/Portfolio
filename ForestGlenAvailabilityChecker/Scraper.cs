@@ -13,7 +13,7 @@ namespace ForestGlenAvailabilityChecker
         private static CheckForm _form = CheckForm.ProcessMonitor;
         internal readonly NameValueCollection _appSettings = ConfigurationManager.AppSettings;
 
-        internal async void ScrapeForestGlenFloorPlans()
+        internal void ScrapeForestGlenFloorPlans()
         {
             string webURL = _appSettings["ForestGlenURL"];
 
@@ -24,7 +24,7 @@ namespace ForestGlenAvailabilityChecker
                 request.Proxy.Credentials = CredentialCache.DefaultCredentials;
                 request.Method = "GET";
                 request.CookieContainer = cookies;
-                request.UserAgent = "definitely-not-a-web-scraper";
+                request.UserAgent = _appSettings["UserAgent"];
                 request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8";
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
