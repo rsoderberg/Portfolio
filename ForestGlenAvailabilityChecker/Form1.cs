@@ -79,8 +79,13 @@ namespace ForestGlenAvailabilityChecker
 
         private void ScrapeWebsite()
         {
-            Scraper scraper = new Scraper();
-            scraper.ScrapeForestGlenFloorPlans();
+            bool isBusinessHours = (DateTime.Now.Hour >= 8 && DateTime.Now.Hour <= 18) && DateTime.Now.DayOfWeek != DayOfWeek.Sunday;
+
+            if (isBusinessHours)
+            {
+                Scraper scraper = new Scraper();
+                scraper.ScrapeForestGlenFloorPlans();
+            }
         }
 
         private void HandleTextBoxFull()
