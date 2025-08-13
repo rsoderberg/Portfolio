@@ -1,6 +1,6 @@
 # ForestGlenAvailabilityChecker
-###### Once every 10 minutes, scan the desired webpage for an updated availability result. 
-###### When the apartment is found to be available, immediately send an email. 
+###### Once every N minutes, scan the specified webpage for an updated availability result. 
+
 ---
 #### Method
 ##### Libraries:    
