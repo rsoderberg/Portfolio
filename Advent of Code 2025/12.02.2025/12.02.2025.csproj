@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Files\Input.txt~RF1f4fecf7.TMP" />
+    <None Remove="Files\Input.txt~RF1fdec497.TMP" />
     <None Remove="Files\Sample.txt~RF1f22d478.TMP" />
   </ItemGroup>
 
