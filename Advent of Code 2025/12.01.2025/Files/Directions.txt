@@ -1,15 +1,3 @@
-
-Advent of Code
-
-    [About][Events][Shop][Settings][Log Out]
-
-rsoderberg
-          2025
-
-    [Calendar][AoC++][Sponsors][Leaderboards][Stats]
-
-Our sponsors help make Advent of Code possible:
-Accenture Federal Services - Just as you're tackling these daily puzzles with creativity and persistence, our teams are solving complex challenges for federal agencies that protect, serve, and improve lives. We're hiring developers, engineers and more.
 --- Day 1: Secret Entrance ---
 
 The Elves have good news and bad news.
